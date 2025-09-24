@@ -1,0 +1,246 @@
+{
+  "metadata": {
+    "createdOn": "2025-09-25T00:00:00.000Z",
+    "source": "POE2 Early Access 0.3.1 - Detailed item stats from game UI",
+    "version": "POE2 Early Access 0.3.1",
+    "note": "Detailed item statistics with images, requirements, and granted skills"
+  },
+  "detailedItems": {
+    "sceptres": {
+      "Rattling Sceptre": {
+        "name": "Rattling Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": null,
+        "statRequirements": {
+          "str": 4,
+          "int": 5
+        },
+        "grantedSkills": [
+          {
+            "name": "Skeletal Warrior",
+            "level": null,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Stoic Sceptre": {
+        "name": "Stoic Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 6,
+        "statRequirements": {
+          "str": 7,
+          "int": 12
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 3 Discipline",
+            "level": 3,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Lupine Sceptre": {
+        "name": "Lupine Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 12,
+        "statRequirements": {
+          "str": 10,
+          "int": 20
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 4 Skeletal Warrior",
+            "level": 4,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Omen Sceptre": {
+        "name": "Omen Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 16,
+        "statRequirements": {
+          "str": 12,
+          "int": 25
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 5 Mauge",
+            "level": 5,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Ochre Sceptre": {
+        "name": "Ochre Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 21,
+        "statRequirements": {
+          "str": 14,
+          "int": 31
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 6 Skeletal Warrior",
+            "level": 6,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Shrine Sceptre": {
+        "name": "Shrine Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 26,
+        "statRequirements": {
+          "str": 17,
+          "int": 38
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 8 Purify of Fire",
+            "level": 8,
+            "color": "orange"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Devouring Sceptre": {
+        "name": "Devouring Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 33,
+        "statRequirements": {
+          "str": 20,
+          "int": 47
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 9 Skeletal Warrior",
+            "level": 9,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Clasped Sceptre": {
+        "name": "Clasped Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 36,
+        "statRequirements": {
+          "str": 22,
+          "int": 51
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 10 Heart of Ice",
+            "level": 10,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Devotional Sceptre": {
+        "name": "Devotional Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 26,
+          "int": 63
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 11 Skeletal Warrior",
+            "level": 11,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Wrath Sceptre": {
+        "name": "Wrath Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 49,
+        "statRequirements": {
+          "str": 28,
+          "int": 68
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 12 Fulmination",
+            "level": 12,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Aromatic Sceptre": {
+        "name": "Aromatic Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 52,
+        "statRequirements": {
+          "str": 29,
+          "int": 72
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 13 Skeletal Warrior",
+            "level": 13,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Pious Sceptre": {
+        "name": "Pious Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 58,
+        "statRequirements": {
+          "str": 32,
+          "int": 80
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 14 Skeletal Warrior",
+            "level": 14,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Hallowed Sceptre": {
+        "name": "Hallowed Sceptre",
+        "category": "sceptres",
+        "spirit": 100,
+        "levelRequirement": 65,
+        "statRequirements": {
+          "str": 36,
+          "int": 89
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 15 Skeletal Warrior",
+            "level": 15,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      }
+    }
+  }
+}

@@ -1,0 +1,1364 @@
+﻿{
+    "success":  true,
+    "data":  {
+                 "currentPage":  1,
+                 "pages":  2,
+                 "total":  37,
+                 "items":  [
+                               {
+                                   "id":  18,
+                                   "itemId":  295,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "mirror",
+                                   "text":  "Mirror of Kalandra",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/26bc31680e/CurrencyDuplicate.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Mirror of Kalandra",
+                                                        "base_type":  "Mirror of Kalandra",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/b7f5cc7884/CurrencyDuplicate.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "Right click this item then left click an equipable non-unique item to apply it. Mirrored copies cannot be modified.",
+                                                        "effect":  [
+                                                                       "Creates a Mirrored copy of an item"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  392644.5087806669,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  10
+                                                     },
+                                                     {
+                                                         "price":  387357.9517312548,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  12
+                                                     },
+                                                     {
+                                                         "price":  341188.6582230428,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  14
+                                                     },
+                                                     {
+                                                         "price":  305041.145366818,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  9
+                                                     },
+                                                     {
+                                                         "price":  304034.9461012592,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  9
+                                                     },
+                                                     {
+                                                         "price":  310327.4214914798,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  5
+                                                     },
+                                                     {
+                                                         "price":  314569.38622220367,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  6
+                                                     }
+                                                 ],
+                                   "currentPrice":  392644.5087806669
+                               },
+                               {
+                                   "id":  271,
+                                   "itemId":  4287,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "hinekoras-lock",
+                                   "text":  "Hinekora\u0027s Lock",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvSGluZWtvcmFzTG9jayIsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/ab2163ae06/HinekorasLock.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  112902.27967230938,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  23
+                                                     },
+                                                     {
+                                                         "price":  111466.422051765,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  25
+                                                     },
+                                                     {
+                                                         "price":  104027.78933827313,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  17
+                                                     },
+                                                     {
+                                                         "price":  95336.0447246524,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  11
+                                                     },
+                                                     {
+                                                         "price":  93186.62692649032,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  28
+                                                     },
+                                                     {
+                                                         "price":  93434.0171293106,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  32
+                                                     },
+                                                     {
+                                                         "price":  93009.9124271449,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  31
+                                                     }
+                                                 ],
+                                   "currentPrice":  112902.27967230938
+                               },
+                               {
+                                   "id":  266,
+                                   "itemId":  4277,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "perfect-chaos-orb",
+                                   "text":  "Perfect Chaos Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/c0ca392a78/CurrencyRerollRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  729.3768151903168,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  965
+                                                     },
+                                                     {
+                                                         "price":  738.0118545688796,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  991
+                                                     },
+                                                     {
+                                                         "price":  705.236802354882,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  564
+                                                     },
+                                                     {
+                                                         "price":  673.8184826577067,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  772
+                                                     },
+                                                     {
+                                                         "price":  622.1966816965878,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  1246
+                                                     },
+                                                     {
+                                                         "price":  750.0779547320626,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  726
+                                                     },
+                                                     {
+                                                         "price":  599.8270115281186,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  729
+                                                     }
+                                                 ],
+                                   "currentPrice":  729.3768151903168
+                               },
+                               {
+                                   "id":  270,
+                                   "itemId":  4285,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "perfect-exalted-orb",
+                                   "text":  "Perfect Exalted Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRNb2RUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/ad7c366789/CurrencyAddModToRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  708.3414877234225,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  4076
+                                                     },
+                                                     {
+                                                         "price":  714.6495671717103,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  3613
+                                                     },
+                                                     {
+                                                         "price":  769.7530673755882,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  2864
+                                                     },
+                                                     {
+                                                         "price":  720.5355791318423,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  2041
+                                                     },
+                                                     {
+                                                         "price":  751.4280444164308,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  3942
+                                                     },
+                                                     {
+                                                         "price":  733.0876774813769,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  3034
+                                                     },
+                                                     {
+                                                         "price":  706.6713606821672,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  2471
+                                                     }
+                                                 ],
+                                   "currentPrice":  708.3414877234225
+                               },
+                               {
+                                   "id":  14,
+                                   "itemId":  291,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "divine",
+                                   "text":  "Divine Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RWYWx1ZXMiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/2986e220b3/CurrencyModValues.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Divine Orb",
+                                                        "base_type":  "Divine Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RWYWx1ZXMiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/af4036c345/CurrencyModValues.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "Right click this item then left click an item to apply it.",
+                                                        "effect":  [
+                                                                       "Randomises the numeric values of modifiers on an item"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  334.93517766840137,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  48333
+                                                     },
+                                                     {
+                                                         "price":  330.95731012994355,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  43235
+                                                     },
+                                                     {
+                                                         "price":  309.769209800428,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  36154
+                                                     },
+                                                     {
+                                                         "price":  277.50634876188843,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  30510
+                                                     },
+                                                     {
+                                                         "price":  278.7038617754464,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  53327
+                                                     },
+                                                     {
+                                                         "price":  277.22656913657295,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  46149
+                                                     },
+                                                     {
+                                                         "price":  276.09951979713605,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  30966
+                                                     }
+                                                 ],
+                                   "currentPrice":  334.93517766840137
+                               },
+                               {
+                                   "id":  15,
+                                   "itemId":  292,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "annul",
+                                   "text":  "Orb of Annulment",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQW5udWxsT3JiIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/2daba8ccca/AnnullOrb.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Orb of Annulment",
+                                                        "base_type":  "Orb of Annulment",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQW5udWxsT3JiIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/9b33007500/AnnullOrb.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click on a magic or rare item to apply it.",
+                                                        "effect":  [
+                                                                       "Removes a random modifier from an item"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  155.62764233665897,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  58131
+                                                     },
+                                                     {
+                                                         "price":  154.23361036376983,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  54380
+                                                     },
+                                                     {
+                                                         "price":  143.59429146410136,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  35240
+                                                     },
+                                                     {
+                                                         "price":  133.88509367685535,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  34079
+                                                     },
+                                                     {
+                                                         "price":  130.44373046795306,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  55723
+                                                     },
+                                                     {
+                                                         "price":  130.1599257394023,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  51985
+                                                     },
+                                                     {
+                                                         "price":  124.34806923599618,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  32071
+                                                     }
+                                                 ],
+                                   "currentPrice":  155.62764233665897
+                               },
+                               {
+                                   "id":  17,
+                                   "itemId":  294,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "fracturing-orb",
+                                   "text":  "Fracturing Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvRnJhY3R1cmluZ09yYiIsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/8b85ed1dc2/FracturingOrb.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Fracturing Orb",
+                                                        "base_type":  "Fracturing Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvRnJhY3R1cmluZ09yYiIsInciOjEsImgiOjEsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/c88bcda072/FracturingOrb.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a rare item to apply it. Cannot be used on Fractured items.",
+                                                        "effect":  [
+                                                                       "Fracture a random modifier on a rare item with at least 4 modifiers, locking it in place."
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  88.96189848882261,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  3642
+                                                     },
+                                                     {
+                                                         "price":  88.81959391917894,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  3211
+                                                     },
+                                                     {
+                                                         "price":  91.96701076417526,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  2797
+                                                     },
+                                                     {
+                                                         "price":  97.37294532484552,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  1923
+                                                     },
+                                                     {
+                                                         "price":  91.91149455408367,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  3561
+                                                     },
+                                                     {
+                                                         "price":  87.2152719507082,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  2898
+                                                     },
+                                                     {
+                                                         "price":  81.2629496882441,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  2083
+                                                     }
+                                                 ],
+                                   "currentPrice":  88.96189848882261
+                               },
+                               {
+                                   "id":  265,
+                                   "itemId":  4275,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "greater-chaos-orb",
+                                   "text":  "Greater Chaos Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/c0ca392a78/CurrencyRerollRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  31.454226901808912,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  17385
+                                                     },
+                                                     {
+                                                         "price":  30.91562100701583,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  14126
+                                                     },
+                                                     {
+                                                         "price":  29.560979936213506,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  12348
+                                                     },
+                                                     {
+                                                         "price":  29.260449349819133,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  7954
+                                                     },
+                                                     {
+                                                         "price":  29.338870834173054,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  15153
+                                                     },
+                                                     {
+                                                         "price":  29.497913634622215,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  12455
+                                                     },
+                                                     {
+                                                         "price":  28.729918300538653,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  8421
+                                                     }
+                                                 ],
+                                   "currentPrice":  31.454226901808912
+                               },
+                               {
+                                   "id":  207,
+                                   "itemId":  4015,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "perfect-jewellers-orb",
+                                   "text":  "Perfect Jeweller\u0027s Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxTb2NrZXROdW1iZXJzMDMiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/ac6398e6a0/CurrencyRerollSocketNumbers03.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Perfect Jeweller\u0027s Orb",
+                                                        "base_type":  "Perfect Jeweller\u0027s Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxTb2NrZXROdW1iZXJzMDMiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/5fed40edcf/CurrencyRerollSocketNumbers03.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a Skill Gem to apply it. Can only apply to Skill Gems with fewer than 5 Support Gem Sockets.",
+                                                        "effect":  [
+                                                                       "Sets a Skill Gem to have 5 Support Gem Sockets"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  25.604705233935256,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  9392
+                                                     },
+                                                     {
+                                                         "price":  24.758007105888986,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  8900
+                                                     },
+                                                     {
+                                                         "price":  26.350000188225906,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  8610
+                                                     },
+                                                     {
+                                                         "price":  30.540093267469064,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  5305
+                                                     },
+                                                     {
+                                                         "price":  30.439349703171654,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  9955
+                                                     },
+                                                     {
+                                                         "price":  30.794515197346435,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  8011
+                                                     },
+                                                     {
+                                                         "price":  33.85794191658325,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  5382
+                                                     }
+                                                 ],
+                                   "currentPrice":  25.604705233935256
+                               },
+                               {
+                                   "id":  8,
+                                   "itemId":  285,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "chance",
+                                   "text":  "Orb of Chance",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9VbmlxdWUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/93c6cc8d5b/CurrencyUpgradeToUnique.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Orb of Chance",
+                                                        "base_type":  "Orb of Chance",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9VbmlxdWUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/a5813cbccd/CurrencyUpgradeToUnique.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "Right click this item then left click a normal item to apply it.",
+                                                        "effect":  [
+                                                                       "Unpredictably either upgrades a Normal item to Unique rarity or destroys it"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  25.25698805417172,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  31341
+                                                     },
+                                                     {
+                                                         "price":  25.24805439800042,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  27175
+                                                     },
+                                                     {
+                                                         "price":  22.705172238228748,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  23234
+                                                     },
+                                                     {
+                                                         "price":  22.904719393114043,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  21513
+                                                     },
+                                                     {
+                                                         "price":  23.40275786056184,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  30286
+                                                     },
+                                                     {
+                                                         "price":  23.326116194783182,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  29490
+                                                     },
+                                                     {
+                                                         "price":  23.32336596448132,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  18260
+                                                     }
+                                                 ],
+                                   "currentPrice":  25.25698805417172
+                               },
+                               {
+                                   "id":  268,
+                                   "itemId":  4281,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "perfect-regal-orb",
+                                   "text":  "Perfect Regal Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/e8fb148e80/CurrencyUpgradeMagicToRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  17.516090804444207,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  4494
+                                                     },
+                                                     {
+                                                         "price":  16.82867230910354,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  5287
+                                                     },
+                                                     {
+                                                         "price":  16.915331684497843,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  3491
+                                                     },
+                                                     {
+                                                         "price":  20.926424334194877,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  2835
+                                                     },
+                                                     {
+                                                         "price":  17.313672774253575,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  5181
+                                                     },
+                                                     {
+                                                         "price":  16.61627656692867,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  4048
+                                                     },
+                                                     {
+                                                         "price":  16.68290789526284,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  3492
+                                                     }
+                                                 ],
+                                   "currentPrice":  17.516090804444207
+                               },
+                               {
+                                   "id":  10,
+                                   "itemId":  287,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "chaos",
+                                   "text":  "Chaos Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/c0ca392a78/CurrencyRerollRare.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Chaos Orb",
+                                                        "base_type":  "Chaos Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/20cd0159b7/CurrencyRerollRare.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a rare item to apply it.",
+                                                        "effect":  [
+                                                                       "Removes a random modifier and augments a Rare item with a new random modifier"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  10.388810524283954,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  67349
+                                                     },
+                                                     {
+                                                         "price":  10.2784442876186,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  63765
+                                                     },
+                                                     {
+                                                         "price":  10.084366713461238,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  51288
+                                                     },
+                                                     {
+                                                         "price":  9.483677935068995,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  44786
+                                                     },
+                                                     {
+                                                         "price":  9.606202377532455,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  73101
+                                                     },
+                                                     {
+                                                         "price":  9.426229786944619,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  58811
+                                                     },
+                                                     {
+                                                         "price":  9.323850593207611,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  46611
+                                                     }
+                                                 ],
+                                   "currentPrice":  10.388810524283954
+                               },
+                               {
+                                   "id":  269,
+                                   "itemId":  4283,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "greater-exalted-orb",
+                                   "text":  "Greater Exalted Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRNb2RUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/ad7c366789/CurrencyAddModToRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  2.9505452679886104,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  37136
+                                                     },
+                                                     {
+                                                         "price":  2.982309631841077,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  39134
+                                                     },
+                                                     {
+                                                         "price":  2.833615542922153,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  30658
+                                                     },
+                                                     {
+                                                         "price":  3.0322527531550847,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  24074
+                                                     },
+                                                     {
+                                                         "price":  3.0317613945370843,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  41722
+                                                     },
+                                                     {
+                                                         "price":  3.3323461221555832,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  34511
+                                                     },
+                                                     {
+                                                         "price":  3.2159444911060335,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  25544
+                                                     }
+                                                 ],
+                                   "currentPrice":  2.9505452679886104
+                               },
+                               {
+                                   "id":  2,
+                                   "itemId":  279,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "chance-shard",
+                                   "text":  "Chance Shard",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9VbmlxdWVTaGFyZCIsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/9828a70270/CurrencyUpgradeToUniqueShard.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Chance Shard",
+                                                        "base_type":  "Chance Shard",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9VbmlxdWVTaGFyZCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/f096031fb4/CurrencyUpgradeToUniqueShard.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "A stack of 10 shards becomes an Orb of Chance.",
+                                                        "effect":  [
+
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  2.3113824585784086,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  1430
+                                                     },
+                                                     {
+                                                         "price":  2.2703457459613907,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  1083
+                                                     },
+                                                     {
+                                                         "price":  2.088690943925976,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  1060
+                                                     },
+                                                     {
+                                                         "price":  2.0384234916901374,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  858
+                                                     },
+                                                     {
+                                                         "price":  2.0872983386673543,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  1737
+                                                     },
+                                                     {
+                                                         "price":  2.078569992994047,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  1549
+                                                     },
+                                                     {
+                                                         "price":  2.0840262540445975,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  880
+                                                     }
+                                                 ],
+                                   "currentPrice":  2.3113824585784086
+                               },
+                               {
+                                   "id":  264,
+                                   "itemId":  4273,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "perfect-orb-of-augmentation",
+                                   "text":  "Perfect Orb of Augmentation",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRNb2RUb01hZ2ljIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/c8ad0ddc84/CurrencyAddModToMagic.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  1.6702113075981737,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  47672
+                                                     },
+                                                     {
+                                                         "price":  1.6520269572706772,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  37843
+                                                     },
+                                                     {
+                                                         "price":  1.6299092082180517,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  39610
+                                                     },
+                                                     {
+                                                         "price":  2.1310519323825927,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  19602
+                                                     },
+                                                     {
+                                                         "price":  1.7601664300350368,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  52983
+                                                     },
+                                                     {
+                                                         "price":  1.7788269185790277,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  34121
+                                                     },
+                                                     {
+                                                         "price":  1.7360611476071381,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  27310
+                                                     }
+                                                 ],
+                                   "currentPrice":  1.6702113075981737
+                               },
+                               {
+                                   "id":  11,
+                                   "itemId":  288,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "vaal",
+                                   "text":  "Vaal Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lWYWFsIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/72bc84396c/CurrencyVaal.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Vaal Orb",
+                                                        "base_type":  "Vaal Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lWYWFsIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/2a4a95ff38/CurrencyVaal.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click an item to corrupt it. Corrupted items cannot be modified again.",
+                                                        "effect":  [
+                                                                       "Modifies an item unpredictably and Corrupts it"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  1.2169909526228495,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  118335
+                                                     },
+                                                     {
+                                                         "price":  1.2738439205748429,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  127228
+                                                     },
+                                                     {
+                                                         "price":  1.00956800658729,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  94945
+                                                     },
+                                                     {
+                                                         "price":  0.9608190788857645,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  92529
+                                                     },
+                                                     {
+                                                         "price":  0.9793478469429024,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  139559
+                                                     },
+                                                     {
+                                                         "price":  1.0495051236119064,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  110473
+                                                     },
+                                                     {
+                                                         "price":  0.9353313087922503,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  89669
+                                                     }
+                                                 ],
+                                   "currentPrice":  1.2169909526228495
+                               },
+                               {
+                                   "id":  13,
+                                   "itemId":  290,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "exalted",
+                                   "text":  "Exalted Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRNb2RUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/ad7c366789/CurrencyAddModToRare.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Exalted Orb",
+                                                        "base_type":  "Exalted Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRNb2RUb1JhcmUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/4ef5836606/CurrencyAddModToRare.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a rare item to apply it. Rare items can have up to six random modifiers.",
+                                                        "effect":  [
+                                                                       "Augments a Rare item with a new random modifier"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  1
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  1
+                                                     }
+                                                 ],
+                                   "currentPrice":  1
+                               },
+                               {
+                                   "id":  267,
+                                   "itemId":  4279,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "greater-regal-orb",
+                                   "text":  "Greater Regal Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/e8fb148e80/CurrencyUpgradeMagicToRare.png",
+                                   "itemMetadata":  null,
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.5949006285758586,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  18327
+                                                     },
+                                                     {
+                                                         "price":  0.625101408399554,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  18363
+                                                     },
+                                                     {
+                                                         "price":  0.5968763119307332,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  10873
+                                                     },
+                                                     {
+                                                         "price":  0.6457309028867297,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  10848
+                                                     },
+                                                     {
+                                                         "price":  0.7613983227000467,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  13530
+                                                     },
+                                                     {
+                                                         "price":  0.6353621397524595,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  12592
+                                                     },
+                                                     {
+                                                         "price":  0.6139540931315276,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  9334
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.5949006285758586
+                               },
+                               {
+                                   "id":  4,
+                                   "itemId":  281,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "artificers-shard",
+                                   "text":  "Artificer\u0027s Shard",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRFcXVpcG1lbnRTb2NrZXRTaGFyZCIsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/cdcdd8bf3f/CurrencyAddEquipmentSocketShard.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Artificer\u0027s Shard",
+                                                        "base_type":  "Artificer\u0027s Shard",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lBZGRFcXVpcG1lbnRTb2NrZXRTaGFyZCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/addca9d654/CurrencyAddEquipmentSocketShard.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "A stack of 10 shards becomes an Artificer\u0027s Orb.",
+                                                        "effect":  [
+
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.5142857142857142,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  140
+                                                     },
+                                                     {
+                                                         "price":  0.16981132075471697,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  53
+                                                     },
+                                                     {
+                                                         "price":  0.2857142857142857,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  42
+                                                     },
+                                                     {
+                                                         "price":  0.1111111111111111,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  54
+                                                     },
+                                                     {
+                                                         "price":  0.5480957555448894,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  23
+                                                     },
+                                                     {
+                                                         "price":  0.1276595744680851,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  188
+                                                     },
+                                                     {
+                                                         "price":  0.2,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  10
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.5142857142857142
+                               },
+                               {
+                                   "id":  21,
+                                   "itemId":  298,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "etcher",
+                                   "text":  "Arcanist\u0027s Etcher",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lXZWFwb25NYWdpY1F1YWxpdHkiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/516e8f1131/CurrencyWeaponMagicQuality.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Arcanist\u0027s Etcher",
+                                                        "base_type":  "Arcanist\u0027s Etcher",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lXZWFwb25NYWdpY1F1YWxpdHkiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/ef9f8f0aa2/CurrencyWeaponMagicQuality.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a wand, staff or sceptre to apply it. The maximum quality is 20%.",
+                                                        "effect":  [
+                                                                       "Improves the quality of a wand, staff or sceptre"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.4132346069194936,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  12770
+                                                     },
+                                                     {
+                                                         "price":  0.37613128195693074,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  17456
+                                                     },
+                                                     {
+                                                         "price":  0.3812917801837595,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  9873
+                                                     },
+                                                     {
+                                                         "price":  0.5291185899844184,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  6285
+                                                     },
+                                                     {
+                                                         "price":  0.2635170270827044,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  15927
+                                                     },
+                                                     {
+                                                         "price":  0.25594245962240975,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  10426
+                                                     },
+                                                     {
+                                                         "price":  0.36988451545751466,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  9481
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.4132346069194936
+                               },
+                               {
+                                   "id":  3,
+                                   "itemId":  280,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "regal-shard",
+                                   "text":  "Regal Shard",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmVTaGFyZCIsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/e4128abe92/CurrencyUpgradeMagicToRareShard.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Regal Shard",
+                                                        "base_type":  "Regal Shard",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmVTaGFyZCIsInciOjEsImgiOjEsInNjYWxlIjoxLCJyZWFsbSI6InBvZTIifV0/795e43e374/CurrencyUpgradeMagicToRareShard.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "A stack of 10 shards becomes a Regal Orb.",
+                                                        "effect":  [
+
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     null,
+                                                     null,
+                                                     {
+                                                         "price":  0.4,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  5
+                                                     },
+                                                     {
+                                                         "price":  0.5,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  2
+                                                     },
+                                                     null,
+                                                     null,
+                                                     {
+                                                         "price":  0.125,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  8
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.4
+                               },
+                               {
+                                   "id":  12,
+                                   "itemId":  289,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "regal",
+                                   "text":  "Regal Orb",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmUiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/e8fb148e80/CurrencyUpgradeMagicToRare.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Regal Orb",
+                                                        "base_type":  "Regal Orb",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlTWFnaWNUb1JhcmUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/c27779a8b7/CurrencyUpgradeMagicToRare.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a magic item to apply it. Current modifiers are retained and a new one is added.",
+                                                        "effect":  [
+                                                                       "Upgrades a Magic item to a Rare item, adding 1 modifier"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.33556927039334633,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  59777
+                                                     },
+                                                     {
+                                                         "price":  0.36750468702367817,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  57527
+                                                     },
+                                                     {
+                                                         "price":  0.2588470859349187,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  49173
+                                                     },
+                                                     {
+                                                         "price":  0.27486297098924406,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  49110
+                                                     },
+                                                     {
+                                                         "price":  0.28320554330960634,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  69631
+                                                     },
+                                                     {
+                                                         "price":  0.2989460993982291,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  55144
+                                                     },
+                                                     {
+                                                         "price":  0.3287210991366166,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  38214
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.33556927039334633
+                               },
+                               {
+                                   "id":  1,
+                                   "itemId":  278,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "transmutation-shard",
+                                   "text":  "Transmutation Shard",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9NYWdpY1NoYXJkIiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/e67bca229b/CurrencyUpgradeToMagicShard.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Transmutation Shard",
+                                                        "base_type":  "Transmutation Shard",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lVcGdyYWRlVG9NYWdpY1NoYXJkIiwidyI6MSwiaCI6MSwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/ba4cb5a0fa/CurrencyUpgradeToMagicShard.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  10,
+                                                        "description":  "A stack of 10 shards becomes an Orb of Transmutation",
+                                                        "effect":  [
+
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.3333333333333333,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  3
+                                                     },
+                                                     {
+                                                         "price":  0.5,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  4
+                                                     },
+                                                     {
+                                                         "price":  0.5,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  2
+                                                     },
+                                                     {
+                                                         "price":  0.5,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  2
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  5
+                                                     },
+                                                     {
+                                                         "price":  1.04,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  25
+                                                     },
+                                                     {
+                                                         "price":  1,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  1
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.3333333333333333
+                               },
+                               {
+                                   "id":  23,
+                                   "itemId":  300,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "gcp",
+                                   "text":  "Gemcutter\u0027s Prism",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lHZW1RdWFsaXR5Iiwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/f4bace18d7/CurrencyGemQuality.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Gemcutter\u0027s Prism",
+                                                        "base_type":  "Gemcutter\u0027s Prism",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lHZW1RdWFsaXR5IiwidyI6MSwiaCI6MSwic2NhbGUiOjEsInJlYWxtIjoicG9lMiJ9XQ/b813ef94bd/CurrencyGemQuality.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a skill gem to apply it. The maximum quality is 20%.",
+                                                        "effect":  [
+                                                                       "Improves the quality of a skill gem"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.30936829676001065,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  33929
+                                                     },
+                                                     {
+                                                         "price":  0.3403025817365051,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  29532
+                                                     },
+                                                     {
+                                                         "price":  0.3008982430027316,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  33558
+                                                     },
+                                                     {
+                                                         "price":  0.39990131607291024,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  23060
+                                                     },
+                                                     {
+                                                         "price":  0.4339275184566817,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  37901
+                                                     },
+                                                     {
+                                                         "price":  0.3011315643549712,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  30552
+                                                     },
+                                                     {
+                                                         "price":  0.4041428382905707,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  25996
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.30936829676001065
+                               },
+                               {
+                                   "id":  22,
+                                   "itemId":  299,
+                                   "currencyCategoryId":  1,
+                                   "apiId":  "bauble",
+                                   "text":  "Glassblower\u0027s Bauble",
+                                   "categoryApiId":  "currency",
+                                   "iconUrl":  "https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lGbGFza1F1YWxpdHkiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/1cec279e01/CurrencyFlaskQuality.png",
+                                   "itemMetadata":  {
+                                                        "name":  "Glassblower\u0027s Bauble",
+                                                        "base_type":  "Glassblower\u0027s Bauble",
+                                                        "icon":  "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lGbGFza1F1YWxpdHkiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/0bc9edd6ed/CurrencyFlaskQuality.png",
+                                                        "stack_size":  1,
+                                                        "max_stack_size":  20,
+                                                        "description":  "Right click this item then left click a flask to apply it. The maximum quality is 20%.",
+                                                        "effect":  [
+                                                                       "Improves the quality of a flask"
+                                                                   ]
+                                                    },
+                                   "priceLogs":  [
+                                                     {
+                                                         "price":  0.29550297621766625,
+                                                         "time":  "2025-09-24T12:00:00",
+                                                         "quantity":  7296
+                                                     },
+                                                     {
+                                                         "price":  0.3559970178468841,
+                                                         "time":  "2025-09-24T06:00:00",
+                                                         "quantity":  7699
+                                                     },
+                                                     {
+                                                         "price":  0.29856969993433646,
+                                                         "time":  "2025-09-24T00:00:00",
+                                                         "quantity":  5955
+                                                     },
+                                                     {
+                                                         "price":  0.3085867185383781,
+                                                         "time":  "2025-09-23T18:00:00",
+                                                         "quantity":  6011
+                                                     },
+                                                     {
+                                                         "price":  0.34293962586354754,
+                                                         "time":  "2025-09-23T12:00:00",
+                                                         "quantity":  10767
+                                                     },
+                                                     {
+                                                         "price":  0.2957925578832702,
+                                                         "time":  "2025-09-23T06:00:00",
+                                                         "quantity":  6575
+                                                     },
+                                                     {
+                                                         "price":  0.39027477720619624,
+                                                         "time":  "2025-09-23T00:00:00",
+                                                         "quantity":  7374
+                                                     }
+                                                 ],
+                                   "currentPrice":  0.29550297621766625
+                               }
+                           ]
+             }
+}
