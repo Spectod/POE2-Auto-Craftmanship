@@ -241,6 +241,2585 @@
         ],
         "rarity": "normal"
       }
+    },
+    "wands": {
+      "Withered Wand": {
+        "name": "Withered Wand",
+        "category": "wands",
+        "levelRequirement": null,
+        "statRequirements": {
+          "int": 6
+        },
+        "grantedSkills": [
+          {
+            "name": "Chaos Bolt",
+            "level": null,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Bone Wand": {
+        "name": "Bone Wand",
+        "category": "wands",
+        "levelRequirement": 2,
+        "statRequirements": {
+          "int": 7
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 1 Bone Blast",
+            "level": 1,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Attuned Wand": {
+        "name": "Attuned Wand",
+        "category": "wands",
+        "levelRequirement": 2,
+        "statRequirements": {
+          "int": 7
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 1 Mana Drain",
+            "level": 1,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Siphoning Wand": {
+        "name": "Siphoning Wand",
+        "category": "wands",
+        "levelRequirement": 11,
+        "statRequirements": {
+          "int": 23
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 4 Power Siphon",
+            "level": 4,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Volatile Wand": {
+        "name": "Volatile Wand",
+        "category": "wands",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "int": 31
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 5 Volatile Dead",
+            "level": 5,
+            "color": "orange"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Galvanic Wand": {
+        "name": "Galvanic Wand",
+        "category": "wands",
+        "levelRequirement": 25,
+        "statRequirements": {
+          "int": 46
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 7 Galvanic Field",
+            "level": 7,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Acrid Wand": {
+        "name": "Acrid Wand",
+        "category": "wands",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "int": 60
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 9 Decompose",
+            "level": 9,
+            "color": "green"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Offering Wand": {
+        "name": "Offering Wand",
+        "category": "wands",
+        "levelRequirement": 38,
+        "statRequirements": {
+          "int": 69
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 10 Exsanguinate",
+            "level": 10,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Frigid Wand": {
+        "name": "Frigid Wand",
+        "category": "wands",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "int": 80
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 11 Chaos Bolt",
+            "level": 11,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Torture Wand": {
+        "name": "Torture Wand",
+        "category": "wands",
+        "levelRequirement": 49,
+        "statRequirements": {
+          "int": 87
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 12 Chaos Bolt",
+            "level": 12,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Critical Wand": {
+        "name": "Critical Wand",
+        "category": "wands",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "int": 92
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 13 Chaos Bolt",
+            "level": 13,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Primordial Wand": {
+        "name": "Primordial Wand",
+        "category": "wands",
+        "levelRequirement": 56,
+        "statRequirements": {
+          "int": 99
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 13 Wither",
+            "level": 13,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Dueling Wand": {
+        "name": "Dueling Wand",
+        "category": "wands",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "int": 114
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 15 Spellslinger",
+            "level": 15,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      }
+    },
+    "spears": {
+      "Hardwood Spear": {
+        "name": "Hardwood Spear",
+        "category": "spears",
+        "physicalDamage": "5-9",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Ironhead Spear": {
+        "name": "Ironhead Spear",
+        "category": "spears",
+        "physicalDamage": "7-13",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 5,
+        "statRequirements": {
+          "dex": 10
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Hunting Spear": {
+        "name": "Hunting Spear",
+        "category": "spears",
+        "physicalDamage": "10-18",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.5",
+        "levelRequirement": 10,
+        "statRequirements": {
+          "str": 9,
+          "dex": 17
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(15-25)% chance to Maim on Hit",
+        "rarity": "normal"
+      },
+      "Winged Spear": {
+        "name": "Winged Spear",
+        "category": "spears",
+        "physicalDamage": "12-22",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.65",
+        "weaponRange": "1.5",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "str": 12,
+          "dex": 25
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "War Spear": {
+        "name": "War Spear",
+        "category": "spears",
+        "physicalDamage": "14-26",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 21,
+        "statRequirements": {
+          "str": 14,
+          "dex": 31
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(25-35)% increased Projectile Speed with this Weapon",
+        "rarity": "normal"
+      },
+      "Forked Spear": {
+        "name": "Forked Spear",
+        "category": "spears",
+        "physicalDamage": "17-32",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 26,
+        "statRequirements": {
+          "str": 17,
+          "dex": 38
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Barbed Spear": {
+        "name": "Barbed Spear",
+        "category": "spears",
+        "physicalDamage": "20-38",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "str": 20,
+          "dex": 47
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Broad Spear": {
+        "name": "Broad Spear",
+        "category": "spears",
+        "physicalDamage": "26-48",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.5",
+        "levelRequirement": 40,
+        "statRequirements": {
+          "str": 23,
+          "dex": 56
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Crossblade Spear": {
+        "name": "Crossblade Spear",
+        "category": "spears",
+        "physicalDamage": "28-51",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.5",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 26,
+          "dex": 63
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Seaglass Spear": {
+        "name": "Seaglass Spear",
+        "category": "spears",
+        "physicalDamage": "31-57",
+        "criticalHitChance": "7%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.5",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "str": 29,
+          "dex": 71,
+          "int": 50
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Sword Spear": {
+        "name": "Sword Spear",
+        "category": "spears",
+        "physicalDamage": "30-56",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "str": 29,
+          "dex": 72
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Striking Spear": {
+        "name": "Striking Spear",
+        "category": "spears",
+        "physicalDamage": "11.5-45.5",
+        "lightningDamage": "11.5-45.5",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 55,
+        "statRequirements": {
+          "str": 31,
+          "dex": 76
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "local weapon implicit hidden % base damage is lightning [50]",
+        "rarity": "normal"
+      },
+      "Helix Spear": {
+        "name": "Helix Spear",
+        "category": "spears",
+        "physicalDamage": "37-68",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "str": 36,
+          "dex": 89
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Steelhead Spear": {
+        "name": "Steelhead Spear",
+        "category": "spears",
+        "physicalDamage": "27-50",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 26,
+          "dex": 63
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Coursing Spear": {
+        "name": "Coursing Spear",
+        "category": "spears",
+        "physicalDamage": "29-54",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.5",
+        "levelRequirement": 48,
+        "statRequirements": {
+          "str": 27,
+          "dex": 67
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(15-25)% chance to Maim on Hit",
+        "rarity": "normal"
+      },
+      "Swift Spear": {
+        "name": "Swift Spear",
+        "category": "spears",
+        "physicalDamage": "28-53",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "str": 29,
+          "dex": 71
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(25-35)% increased Projectile Speed with this Weapon",
+        "rarity": "normal"
+      },
+      "Branched Spear": {
+        "name": "Branched Spear",
+        "category": "spears",
+        "physicalDamage": "31-58",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "str": 30,
+          "dex": 75
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Jagged Spear": {
+        "name": "Jagged Spear",
+        "category": "spears",
+        "physicalDamage": "33-61",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 59,
+        "statRequirements": {
+          "str": 33,
+          "dex": 81
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Massive Spear": {
+        "name": "Massive Spear",
+        "category": "spears",
+        "physicalDamage": "38-70",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.5",
+        "levelRequirement": 62,
+        "statRequirements": {
+          "str": 34,
+          "dex": 85
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Orichalcum Spear": {
+        "name": "Orichalcum Spear",
+        "category": "spears",
+        "physicalDamage": "38-70",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 67,
+        "statRequirements": {
+          "str": 41,
+          "dex": 104
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Pronged Spear": {
+        "name": "Pronged Spear",
+        "category": "spears",
+        "physicalDamage": "40-75",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 72,
+        "statRequirements": {
+          "str": 46,
+          "dex": 115
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Stalking Spear": {
+        "name": "Stalking Spear",
+        "category": "spears",
+        "physicalDamage": "44-82",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.5",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 50,
+          "dex": 127
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(15-25)% chance to Maim on Hit",
+        "rarity": "normal"
+      },
+      "Flying Spear": {
+        "name": "Flying Spear",
+        "category": "spears",
+        "physicalDamage": "41-76",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 50,
+          "dex": 127
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "special": "(25-35)% increased Projectile Speed with this Weapon",
+        "rarity": "normal"
+      },
+      "Grand Spear": {
+        "name": "Grand Spear",
+        "category": "spears",
+        "physicalDamage": "46-85",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.5",
+        "levelRequirement": 79,
+        "statRequirements": {
+          "str": 50,
+          "dex": 127
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Spiked Spear": {
+        "name": "Spiked Spear",
+        "category": "spears",
+        "physicalDamage": "41-76",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.6",
+        "weaponRange": "1.5",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 50,
+          "dex": 127
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Akoyan Spear": {
+        "name": "Akoyan Spear",
+        "category": "spears",
+        "physicalDamage": "43-80",
+        "criticalHitChance": "7%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.5",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 50,
+          "dex": 127,
+          "int": 90
+        },
+        "grantedSkills": [
+          {
+            "name": "Spear Throw",
+            "level": null,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      }
+    },
+    "maces": {
+      "Wooden Club": {
+        "name": "Wooden Club",
+        "category": "maces",
+        "physicalDamage": "6-10",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Smithing Hammer": {
+        "name": "Smithing Hammer",
+        "category": "maces",
+        "physicalDamage": "5.5-9",
+        "fireDamage": "5.5-9",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 4,
+        "statRequirements": {
+          "str": 11
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden % base damage is fire [50]",
+        "rarity": "normal"
+      },
+      "Slim Mace": {
+        "name": "Slim Mace",
+        "category": "maces",
+        "physicalDamage": "11-17",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.1",
+        "levelRequirement": 10,
+        "statRequirements": {
+          "str": 21
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Spiked Club": {
+        "name": "Spiked Club",
+        "category": "maces",
+        "physicalDamage": "15-24",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "str": 31
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Warpick": {
+        "name": "Warpick",
+        "category": "maces",
+        "physicalDamage": "18-24",
+        "criticalHitChance": "7%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 22,
+        "statRequirements": {
+          "str": 41
+        },
+        "grantedSkills": [],
+        "special": "-(5-10)% to Critical Damage Bonus",
+        "rarity": "normal"
+      },
+      "Plated Mace": {
+        "name": "Plated Mace",
+        "category": "maces",
+        "physicalDamage": "18-38",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 26,
+        "statRequirements": {
+          "str": 48
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Brigand Mace": {
+        "name": "Brigand Mace",
+        "category": "maces",
+        "physicalDamage": "28-38",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "str": 60
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Construct Hammer": {
+        "name": "Construct Hammer",
+        "category": "maces",
+        "physicalDamage": "31-38",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 36,
+        "statRequirements": {
+          "str": 65
+        },
+        "grantedSkills": [],
+        "special": "40% chance to Daze on Hit",
+        "rarity": "normal"
+      },
+      "Morning Star": {
+        "name": "Morning Star",
+        "category": "maces",
+        "physicalDamage": "33-49",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 80
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Jade Club": {
+        "name": "Jade Club",
+        "category": "maces",
+        "physicalDamage": "31-51",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 49,
+        "statRequirements": {
+          "str": 87
+        },
+        "grantedSkills": [],
+        "special": "Always Hits",
+        "rarity": "normal"
+      },
+      "Lumen Mace": {
+        "name": "Lumen Mace",
+        "category": "maces",
+        "physicalDamage": "36-60",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "str": 92
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Execratus Hammer": {
+        "name": "Execratus Hammer",
+        "category": "maces",
+        "physicalDamage": "40-60",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 55,
+        "statRequirements": {
+          "str": 97
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Torment Club": {
+        "name": "Torment Club",
+        "category": "maces",
+        "physicalDamage": "44-73",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "str": 114
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Kalguran Forgehammer": {
+        "name": "Kalguran Forgehammer",
+        "category": "maces",
+        "physicalDamage": "30-49",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 47,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "special": "Has 3 Sockets",
+        "rarity": "normal"
+      },
+      "Calescent Hammer": {
+        "name": "Calescent Hammer",
+        "category": "maces",
+        "physicalDamage": "22-37",
+        "fireDamage": "22-37",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 80
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden % base damage is fire [50]",
+        "rarity": "normal"
+      },
+      "Flared Mace": {
+        "name": "Flared Mace",
+        "category": "maces",
+        "physicalDamage": "33-50",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.1",
+        "levelRequirement": 48,
+        "statRequirements": {
+          "str": 86
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Battle Pick": {
+        "name": "Battle Pick",
+        "category": "maces",
+        "physicalDamage": "35-47",
+        "criticalHitChance": "7%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "str": 91
+        },
+        "grantedSkills": [],
+        "special": "-(5-10)% to Critical Damage Bonus",
+        "rarity": "normal"
+      },
+      "Marching Mace": {
+        "name": "Marching Mace",
+        "category": "maces",
+        "physicalDamage": "33-69",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "str": 96
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Bandit Mace": {
+        "name": "Bandit Mace",
+        "category": "maces",
+        "physicalDamage": "45-61",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 59,
+        "statRequirements": {
+          "str": 104
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Structured Hammer": {
+        "name": "Structured Hammer",
+        "category": "maces",
+        "physicalDamage": "49-60",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 62,
+        "statRequirements": {
+          "str": 109
+        },
+        "grantedSkills": [],
+        "special": "40% chance to Daze on Hit",
+        "rarity": "normal"
+      },
+      "Crown Mace": {
+        "name": "Crown Mace",
+        "category": "maces",
+        "physicalDamage": "43-89",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 72,
+        "statRequirements": {
+          "str": 149
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Flanged Mace": {
+        "name": "Flanged Mace",
+        "category": "maces",
+        "physicalDamage": "45-67",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "weaponRange": "1.1",
+        "levelRequirement": 67,
+        "statRequirements": {
+          "str": 134
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Molten Hammer": {
+        "name": "Molten Hammer",
+        "category": "maces",
+        "physicalDamage": "35.5-59",
+        "fireDamage": "35.5-59",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden % base damage is fire [50]",
+        "rarity": "normal"
+      },
+      "Strife Pick": {
+        "name": "Strife Pick",
+        "category": "maces",
+        "physicalDamage": "49-66",
+        "criticalHitChance": "7%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "-(5-10)% to Critical Damage Bonus",
+        "rarity": "normal"
+      },
+      "Fortified Hammer": {
+        "name": "Fortified Hammer",
+        "category": "maces",
+        "physicalDamage": "60-73",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.1",
+        "levelRequirement": 79,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "40% chance to Daze on Hit",
+        "rarity": "normal"
+      },
+      "Marauding Mace": {
+        "name": "Marauding Mace",
+        "category": "maces",
+        "physicalDamage": "51-84",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Akoyan Club": {
+        "name": "Akoyan Club",
+        "category": "maces",
+        "physicalDamage": "46-76",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.45",
+        "weaponRange": "1.1",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "Always Hits",
+        "rarity": "normal"
+      }
+    },
+    "bows": {
+      "Crude Bow": {
+        "name": "Crude Bow",
+        "category": "bows",
+        "physicalDamage": "6-9",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Shortbow": {
+        "name": "Shortbow",
+        "category": "bows",
+        "physicalDamage": "7-14",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.25",
+        "levelRequirement": 5,
+        "statRequirements": {
+          "dex": 12
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Warden Bow": {
+        "name": "Warden Bow",
+        "category": "bows",
+        "physicalDamage": "12-18",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 11,
+        "statRequirements": {
+          "dex": 23
+        },
+        "grantedSkills": [],
+        "special": "(20-30)% chance to Chain an Additional Time",
+        "rarity": "normal"
+      },
+      "Recurve Bow": {
+        "name": "Recurve Bow",
+        "category": "bows",
+        "physicalDamage": "15-31",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "dex": 31
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Composite Bow": {
+        "name": "Composite Bow",
+        "category": "bows",
+        "physicalDamage": "19-31",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 22,
+        "statRequirements": {
+          "dex": 41
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Duolisting Bow": {
+        "name": "Duolisting Bow",
+        "category": "bows",
+        "physicalDamage": "16-31",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "levelRequirement": 28,
+        "statRequirements": {
+          "dex": 52
+        },
+        "grantedSkills": [],
+        "special": "Bow Attacks fire an Additional Arrow",
+        "rarity": "normal"
+      },
+      "Cultist Bow": {
+        "name": "Cultist Bow",
+        "category": "bows",
+        "physicalDamage": "10-17",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "dex": 60
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum chaos damage [17], local weapon implicit hidden added minimum chaos damage [10]",
+        "rarity": "normal"
+      },
+      "Zealot Bow": {
+        "name": "Zealot Bow",
+        "category": "bows",
+        "physicalDamage": "31-47",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 39,
+        "statRequirements": {
+          "dex": 70
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Artillery Bow": {
+        "name": "Artillery Bow",
+        "category": "bows",
+        "physicalDamage": "39-72",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "dex": 80
+        },
+        "grantedSkills": [],
+        "special": "30% reduced Projectile Range",
+        "rarity": "normal"
+      },
+      "Tribal Bow": {
+        "name": "Tribal Bow",
+        "category": "bows",
+        "physicalDamage": "38-57",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 50,
+        "statRequirements": {
+          "dex": 89
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Greatbow": {
+        "name": "Greatbow",
+        "category": "bows",
+        "physicalDamage": "40-82",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "str": 92,
+          "dex": 92
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Double Limb Bow": {
+        "name": "Double Limb Bow",
+        "category": "bows",
+        "physicalDamage": "42-63",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 56,
+        "statRequirements": {
+          "dex": 99
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Heavy Bow": {
+        "name": "Heavy Bow",
+        "category": "bows",
+        "physicalDamage": "45-75",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 58,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Snakewood Shortbow": {
+        "name": "Snakewood Shortbow",
+        "category": "bows",
+        "physicalDamage": "29-54",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.25",
+        "levelRequirement": 60,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Protector Bow": {
+        "name": "Protector Bow",
+        "category": "bows",
+        "physicalDamage": "35-53",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 48,
+        "statRequirements": {
+          "dex": 86
+        },
+        "grantedSkills": [],
+        "special": "(20-30)% chance to Chain an Additional Time",
+        "rarity": "normal"
+      },
+      "Rider Bow": {
+        "name": "Rider Bow",
+        "category": "bows",
+        "physicalDamage": "36-61",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "dex": 91
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Twin Bow": {
+        "name": "Twin Bow",
+        "category": "bows",
+        "physicalDamage": "32-60",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "dex": 96
+        },
+        "grantedSkills": [],
+        "special": "Bow Attacks fire an Additional Arrow",
+        "rarity": "normal"
+      },
+      "Adherent Bow": {
+        "name": "Adherent Bow",
+        "category": "bows",
+        "physicalDamage": "21-34",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 59,
+        "statRequirements": {
+          "dex": 104
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum chaos damage [59], local weapon implicit hidden added minimum chaos damage [31]",
+        "rarity": "normal"
+      },
+      "Militant Bow": {
+        "name": "Militant Bow",
+        "category": "bows",
+        "physicalDamage": "46-69",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 62,
+        "statRequirements": {
+          "dex": 109
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Ironwood Shortbow": {
+        "name": "Ironwood Shortbow",
+        "category": "bows",
+        "physicalDamage": "41-76",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.25",
+        "levelRequirement": 67,
+        "statRequirements": {
+          "dex": 134
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Cavalry Bow": {
+        "name": "Cavalry Bow",
+        "category": "bows",
+        "physicalDamage": "49-82",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 72,
+        "statRequirements": {
+          "dex": 149
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Guardian Bow": {
+        "name": "Guardian Bow",
+        "category": "bows",
+        "physicalDamage": "53-80",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "dex": 163
+        },
+        "grantedSkills": [],
+        "special": "(20-30)% chance to Chain an Additional Time",
+        "rarity": "normal"
+      },
+      "Gemini Bow": {
+        "name": "Gemini Bow",
+        "category": "bows",
+        "physicalDamage": "39-72",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "dex": 163
+        },
+        "grantedSkills": [],
+        "special": "Bow Attacks fire an Additional Arrow",
+        "rarity": "normal"
+      },
+      "Fanatic Bow": {
+        "name": "Fanatic Bow",
+        "category": "bows",
+        "physicalDamage": "42-70",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 79,
+        "statRequirements": {
+          "dex": 163
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum chaos damage [71], local weapon implicit hidden added minimum chaos damage [43]",
+        "rarity": "normal"
+      },
+      "Warmonger Bow": {
+        "name": "Warmonger Bow",
+        "category": "bows",
+        "physicalDamage": "56-84",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "dex": 163
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Obliterator Bow": {
+        "name": "Obliterator Bow",
+        "category": "bows",
+        "physicalDamage": "62-115",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.15",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "dex": 163
+        },
+        "grantedSkills": [],
+        "special": "30% reduced Projectile Range",
+        "rarity": "normal"
+      }
+    },
+    "twoHandMaces": {
+      "Felled Greatclub": {
+        "name": "Felled Greatclub",
+        "category": "twoHandedMaces",
+        "physicalDamage": "13-18",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Oak Greathammer": {
+        "name": "Oak Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "14-26",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 4,
+        "statRequirements": {
+          "str": 11
+        },
+        "grantedSkills": [],
+        "special": "Causes (30-50)% increased Stun Buildup",
+        "rarity": "normal"
+      },
+      "Forge Maul": {
+        "name": "Forge Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "29-39",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 11,
+        "statRequirements": {
+          "str": 23
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Studded Greatclub": {
+        "name": "Studded Greatclub",
+        "category": "twoHandedMaces",
+        "physicalDamage": "32-48",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "str": 31
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Cultist Greathammer": {
+        "name": "Cultist Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "32-43",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 22,
+        "statRequirements": {
+          "str": 41
+        },
+        "grantedSkills": [],
+        "special": "Strikes deal Splash damage to targets within 1.5 metres",
+        "rarity": "normal"
+      },
+      "Temple Maul": {
+        "name": "Temple Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "35-72",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "weaponRange": "1.3",
+        "levelRequirement": 28,
+        "statRequirements": {
+          "str": 52
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Leaden Greathammer": {
+        "name": "Leaden Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "58-78",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "str": 60
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Grumbling Maul": {
+        "name": "Grumbling Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "62-75",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 38,
+        "statRequirements": {
+          "str": 68
+        },
+        "grantedSkills": [],
+        "special": "Causes Enemies to Explode on Critical kill for 10% of their Life as Physical Damage",
+        "rarity": "normal"
+      },
+      "Pointed Maul": {
+        "name": "Pointed Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "68-102",
+        "criticalHitChance": "6.5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 80
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Totemic Greatclub": {
+        "name": "Totemic Greatclub",
+        "category": "twoHandedMaces",
+        "physicalDamage": "73-99",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 50,
+        "statRequirements": {
+          "str": 89
+        },
+        "grantedSkills": [],
+        "special": "Crushes Enemies on Hit",
+        "rarity": "normal"
+      },
+      "Greatmace": {
+        "name": "Greatmace",
+        "category": "twoHandedMaces",
+        "physicalDamage": "74-124",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "str": 92
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Precise Greathammer": {
+        "name": "Precise Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "87-118",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "str": 96
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Giant Maul": {
+        "name": "Giant Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "96-144",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "str": 114
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Snakewood Greathammer": {
+        "name": "Snakewood Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "59-109",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "str": 80
+        },
+        "grantedSkills": [],
+        "special": "Causes (30-50)% increased Stun Buildup",
+        "rarity": "normal"
+      },
+      "Blacksmith Maul": {
+        "name": "Blacksmith Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "84-113",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 48,
+        "statRequirements": {
+          "str": 86
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Zealot Greathammer": {
+        "name": "Zealot Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "62-83",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "str": 91
+        },
+        "grantedSkills": [],
+        "special": "Strikes deal Splash damage to targets within 1.5 metres",
+        "rarity": "normal"
+      },
+      "Solemn Maul": {
+        "name": "Solemn Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "59-123",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "weaponRange": "1.3",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "str": 96
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Heavy Greathammer": {
+        "name": "Heavy Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "94-127",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 59,
+        "statRequirements": {
+          "str": 104
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Disintegrating Maul": {
+        "name": "Disintegrating Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "93-114",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 62,
+        "statRequirements": {
+          "str": 109
+        },
+        "grantedSkills": [],
+        "special": "Causes Enemies to Explode on Critical kill for 10% of their Life as Physical Damage",
+        "rarity": "normal"
+      },
+      "Anvil Maul": {
+        "name": "Anvil Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "112-151",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 67,
+        "statRequirements": {
+          "str": 134
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Sacred Maul": {
+        "name": "Sacred Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "76-158",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.2",
+        "weaponRange": "1.3",
+        "levelRequirement": 72,
+        "statRequirements": {
+          "str": 149
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Ironwood Greathammer": {
+        "name": "Ironwood Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "94-174",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "Causes (30-50)% increased Stun Buildup",
+        "rarity": "normal"
+      },
+      "Fanatic Greathammer": {
+        "name": "Fanatic Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "89-120",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.05",
+        "weaponRange": "1.3",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "Strikes deal Splash damage to targets within 1.5 metres",
+        "rarity": "normal"
+      },
+      "Ruination Maul": {
+        "name": "Ruination Maul",
+        "category": "twoHandedMaces",
+        "physicalDamage": "113-138",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 73,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "Causes Enemies to Explode on Critical kill for 10% of their Life as Physical Damage",
+        "rarity": "normal"
+      },
+      "Massive Greathammer": {
+        "name": "Massive Greathammer",
+        "category": "twoHandedMaces",
+        "physicalDamage": "119-161",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Tawhoan Greatclub": {
+        "name": "Tawhoan Greatclub",
+        "category": "twoHandedMaces",
+        "physicalDamage": "107-145",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.1",
+        "weaponRange": "1.3",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "str": 163
+        },
+        "grantedSkills": [],
+        "special": "Crushes Enemies on Hit",
+        "rarity": "normal"
+      }
+    },
+    "quarterstaves": {
+      "Wrapped Quarterstaff": {
+        "name": "Wrapped Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "7-12",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Long Quarterstaff": {
+        "name": "Long Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "9-18",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 4,
+        "statRequirements": {
+          "dex": 9
+        },
+        "grantedSkills": [],
+        "special": "16% increased Melee Strike Range with this weapon",
+        "rarity": "normal"
+      },
+      "Gothic Quarterstaff": {
+        "name": "Gothic Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "16-26",
+        "criticalHitChance": "11.5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 11,
+        "statRequirements": {
+          "dex": 18,
+          "int": 9
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Crackling Quarterstaff": {
+        "name": "Crackling Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "5-22",
+        "lightningDamage": "1-15",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "dex": 25,
+          "int": 12
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum lightning damage [15], local weapon implicit hidden added minimum lightning damage [1]",
+        "rarity": "normal"
+      },
+      "Crescent Quarterstaff": {
+        "name": "Crescent Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "19-39",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.3",
+        "levelRequirement": 20,
+        "statRequirements": {
+          "dex": 30,
+          "int": 14
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Steelpoint Quarterstaff": {
+        "name": "Steelpoint Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "26-51",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 28,
+        "statRequirements": {
+          "dex": 41,
+          "int": 18
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Slicing Quarterstaff": {
+        "name": "Slicing Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "23-60",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "dex": 47,
+          "int": 20
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Barrier Quarterstaff": {
+        "name": "Barrier Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "33-55",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 37,
+        "statRequirements": {
+          "dex": 52,
+          "int": 22
+        },
+        "grantedSkills": [],
+        "special": "+(18-19)% to Block chance",
+        "rarity": "normal"
+      },
+      "Hefty Quarterstaff": {
+        "name": "Hefty Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "39-80",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.35",
+        "weaponRange": "1.3",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "dex": 63,
+          "int": 26
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Smooth Quarterstaff": {
+        "name": "Smooth Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "64-87",
+        "criticalHitChance": "0%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.3",
+        "levelRequirement": 49,
+        "statRequirements": {
+          "dex": 68,
+          "int": 28
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Anima Quarterstaff": {
+        "name": "Anima Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "47-79",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "dex": 72,
+          "int": 29
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Graceful Quarterstaff": {
+        "name": "Graceful Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "47-87",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 56,
+        "statRequirements": {
+          "dex": 77,
+          "int": 31
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Wyrm Quarterstaff": {
+        "name": "Wyrm Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "57-94",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "dex": 89,
+          "int": 36
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Reaching Quarterstaff": {
+        "name": "Reaching Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "52-72",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "dex": 63,
+          "int": 26
+        },
+        "grantedSkills": [],
+        "special": "16% increased Melee Strike Range with this weapon",
+        "rarity": "normal"
+      },
+      "Barbarous Quarterstaff": {
+        "name": "Barbarous Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "43-72",
+        "criticalHitChance": "11.5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 48,
+        "statRequirements": {
+          "dex": 67,
+          "int": 27
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Arcing Quarterstaff": {
+        "name": "Arcing Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "14-55",
+        "lightningDamage": "1-35",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 51,
+        "statRequirements": {
+          "dex": 71,
+          "int": 29
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum lightning damage [75], local weapon implicit hidden added minimum lightning damage [1]",
+        "rarity": "normal"
+      },
+      "Waxing Quarterstaff": {
+        "name": "Waxing Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "39-82",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.3",
+        "levelRequirement": 54,
+        "statRequirements": {
+          "dex": 75,
+          "int": 30
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Bladed Quarterstaff": {
+        "name": "Bladed Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "45-94",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 59,
+        "statRequirements": {
+          "dex": 81,
+          "int": 33
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Guardian Quarterstaff": {
+        "name": "Guardian Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "49-82",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 62,
+        "statRequirements": {
+          "dex": 85,
+          "int": 34
+        },
+        "grantedSkills": [],
+        "special": "+(18-19)% to Block chance",
+        "rarity": "normal"
+      },
+      "Sinister Quarterstaff": {
+        "name": "Sinister Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "55-92",
+        "criticalHitChance": "11.5%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 67,
+        "statRequirements": {
+          "dex": 104,
+          "int": 41
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Lunar Quarterstaff": {
+        "name": "Lunar Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "50-103",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.3",
+        "levelRequirement": 72,
+        "statRequirements": {
+          "dex": 115,
+          "int": 46
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Striking Quarterstaff": {
+        "name": "Striking Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "53-111",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "dex": 127,
+          "int": 50
+        },
+        "grantedSkills": [],
+        "special": "16% increased Melee Strike Range with this weapon",
+        "rarity": "normal"
+      },
+      "Bolting Quarterstaff": {
+        "name": "Bolting Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "24-97",
+        "lightningDamage": "1-100",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 78,
+        "statRequirements": {
+          "dex": 127,
+          "int": 50
+        },
+        "grantedSkills": [],
+        "special": "local weapon implicit hidden added maximum lightning damage [100], local weapon implicit hidden added minimum lightning damage [1]",
+        "rarity": "normal"
+      },
+      "Aegis Quarterstaff": {
+        "name": "Aegis Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "58-97",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 79,
+        "statRequirements": {
+          "dex": 127,
+          "int": 50
+        },
+        "grantedSkills": [],
+        "special": "+(18-19)% to Block chance",
+        "rarity": "normal"
+      },
+      "Razor Quarterstaff": {
+        "name": "Razor Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "65-108",
+        "criticalHitChance": "10%",
+        "attacksPerSecond": "1.4",
+        "weaponRange": "1.3",
+        "levelRequirement": 77,
+        "statRequirements": {
+          "dex": 127,
+          "int": 50
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Dreaming Quarterstaff": {
+        "name": "Dreaming Quarterstaff",
+        "category": "quarterstaves",
+        "physicalDamage": "99-133",
+        "criticalHitChance": "0%",
+        "attacksPerSecond": "1.5",
+        "weaponRange": "1.3",
+        "levelRequirement": 79,
+        "statRequirements": {
+          "dex": 127,
+          "int": 50
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      }
+    },
+    "crossbows": {
+      "Makeshift Crossbow": {
+        "name": "Makeshift Crossbow",
+        "category": "crossbows",
+        "physicalDamage": "7-12",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "reloadTime": "0.8",
+        "levelRequirement": null,
+        "statRequirements": {},
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Tense Crossbow": {
+        "name": "Tense Crossbow",
+        "category": "crossbows",
+        "physicalDamage": "8-15",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.6",
+        "reloadTime": "0.85",
+        "levelRequirement": 4,
+        "statRequirements": {
+          "str": 8,
+          "dex": 8
+        },
+        "grantedSkills": [],
+        "special": "(20-30)% Increased Bolt Speed",
+        "rarity": "normal"
+      },
+      "Sturdy Crossbow": {
+        "name": "Sturdy Crossbow",
+        "category": "crossbows",
+        "physicalDamage": "11-26",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.55",
+        "reloadTime": "0.75",
+        "levelRequirement": 10,
+        "statRequirements": {
+          "str": 13,
+          "dex": 13
+        },
+        "grantedSkills": [],
+        "rarity": "normal"
+      },
+      "Elegant Crossbow": {
+        "name": "Elegant Crossbow",
+        "category": "crossbows",
+        "physicalDamage": "31-123",
+        "criticalHitChance": "5%",
+        "attacksPerSecond": "1.65",
+        "reloadTime": "0.85",
+        "levelRequirement": 85,
+        "statRequirements": {
+          "str": 89,
+          "dex": 89
+        },
+        "grantedSkills": [],
+        "special": "(20-30)% Chance to Pierce an Enemy",
+        "rarity": "normal"
+      }
+    },
+    "staves": {
+      "Ashen Staff": {
+        "name": "Ashen Staff",
+        "category": "staves",
+        "levelRequirement": null,
+        "statRequirements": {
+          "int": 6
+        },
+        "grantedSkills": [
+          {
+            "name": "Firebolt",
+            "level": null,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Gelid Staff": {
+        "name": "Gelid Staff",
+        "category": "staves",
+        "levelRequirement": 2,
+        "statRequirements": {
+          "int": 7
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 1 Freezing Shards",
+            "level": 1,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Voltaic Staff": {
+        "name": "Voltaic Staff",
+        "category": "staves",
+        "levelRequirement": 2,
+        "statRequirements": {
+          "int": 7
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 1 Lightning Bolt",
+            "level": 1,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Spriggan Staff": {
+        "name": "Spriggan Staff",
+        "category": "staves",
+        "levelRequirement": 11,
+        "statRequirements": {
+          "int": 23
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 4 Firebolt",
+            "level": 4,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Pyrophyte Staff": {
+        "name": "Pyrophyte Staff",
+        "category": "staves",
+        "levelRequirement": 16,
+        "statRequirements": {
+          "int": 31
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 5 Solar Orb",
+            "level": 5,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Chiming Staff": {
+        "name": "Chiming Staff",
+        "category": "staves",
+        "levelRequirement": 25,
+        "statRequirements": {
+          "int": 46
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 7 Sigil of Power",
+            "level": 7,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Rending Staff": {
+        "name": "Rending Staff",
+        "category": "staves",
+        "levelRequirement": 33,
+        "statRequirements": {
+          "int": 60
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 9 Soulrend",
+            "level": 9,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Reaping Staff": {
+        "name": "Reaping Staff",
+        "category": "staves",
+        "levelRequirement": 38,
+        "statRequirements": {
+          "int": 69
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 10 Reap",
+            "level": 10,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Icicle Staff": {
+        "name": "Icicle Staff",
+        "category": "staves",
+        "levelRequirement": 45,
+        "statRequirements": {
+          "int": 80
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 11 Firebolt",
+            "level": 11,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Roaring Staff": {
+        "name": "Roaring Staff",
+        "category": "staves",
+        "levelRequirement": 49,
+        "statRequirements": {
+          "int": 87
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 12 Unleash",
+            "level": 12,
+            "color": "yellow"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Paralysing Staff": {
+        "name": "Paralysing Staff",
+        "category": "staves",
+        "levelRequirement": 52,
+        "statRequirements": {
+          "int": 92
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 13 Enervating Nova",
+            "level": 13,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Sanctified Staff": {
+        "name": "Sanctified Staff",
+        "category": "staves",
+        "levelRequirement": 56,
+        "statRequirements": {
+          "int": 99
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 13 Consecrate",
+            "level": 13,
+            "color": "yellow"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Dark Staff": {
+        "name": "Dark Staff",
+        "category": "staves",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "int": 114
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 15 Dark Pact",
+            "level": 15,
+            "color": "purple"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Ravenous Staff": {
+        "name": "Ravenous Staff",
+        "category": "staves",
+        "levelRequirement": 65,
+        "statRequirements": {
+          "int": 114
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 15 Feast of Flesh",
+            "level": 15,
+            "color": "red"
+          }
+        ],
+        "rarity": "normal"
+      },
+      "Permafrost Staff": {
+        "name": "Permafrost Staff",
+        "category": "staves",
+        "levelRequirement": 75,
+        "statRequirements": {
+          "int": 131
+        },
+        "grantedSkills": [
+          {
+            "name": "Level 17 Heart of Ice",
+            "level": 17,
+            "color": "blue"
+          }
+        ],
+        "rarity": "normal"
+      }
     }
   }
 }

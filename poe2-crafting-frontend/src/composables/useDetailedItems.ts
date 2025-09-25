@@ -17,9 +17,17 @@ interface DetailedItem {
   name: string
   category: string
   spirit?: number
+  physicalDamage?: string
+  fireDamage?: string
+  lightningDamage?: string
+  criticalHitChance?: string
+  attacksPerSecond?: string
+  weaponRange?: string
+  reloadTime?: string
   levelRequirement?: number | null
   statRequirements: ItemRequirements
   grantedSkills?: GrantedSkill[]
+  special?: string
   rarity: string
 }
 

@@ -18,10 +18,15 @@
 
     <!-- Item Stats -->
     <div class="item-stats">
-      <!-- Spirit -->
-      <div class="stat-line spirit">
-        <span class="stat-label">Spirit:</span>
-        <span class="stat-value">{{ item.spirit }}</span>
+      <!-- Dynamic Stats Display -->
+      <div v-for="stat in displayStats" :key="stat.key" class="stat-line" :class="stat.cssClass">
+        <span class="stat-label">{{ stat.label }}:</span>
+        <span class="stat-value">{{ stat.value }}</span>
+      </div>
+
+      <!-- Special Properties -->
+      <div v-if="item.special" class="stat-line special">
+        <span class="stat-value special-text">{{ item.special }}</span>
       </div>
 
       <!-- Requirements -->
@@ -81,9 +86,16 @@ interface DetailedItem {
   name: string
   category: string
   spirit?: number
+  physicalDamage?: string
+  fireDamage?: string
+  lightningDamage?: string
+  criticalHitChance?: string
+  attacksPerSecond?: string
+  weaponRange?: string
   levelRequirement?: number | null
   statRequirements: ItemRequirements
   grantedSkills?: GrantedSkill[]
+  special?: string
   rarity: string
 }
 
@@ -105,6 +117,43 @@ const hasRequirements = computed(() => {
          props.item.statRequirements.str || 
          props.item.statRequirements.dex || 
          props.item.statRequirements.int
+})
+
+// Dynamic stats display - generic for all weapon types
+const displayStats = computed(() => {
+  const stats: Array<{
+    key: string
+    label: string
+    value: string | number
+    cssClass: string
+  }> = []
+  const item = props.item
+
+  // Define stat mappings with labels and CSS classes
+  const statMappings = [
+    { key: 'spirit', property: 'spirit', label: 'Spirit', cssClass: 'spirit' },
+    { key: 'physicalDamage', property: 'physicalDamage', label: 'Physical Damage', cssClass: 'damage' },
+    { key: 'fireDamage', property: 'fireDamage', label: 'Fire Damage', cssClass: 'fire-damage' },
+    { key: 'lightningDamage', property: 'lightningDamage', label: 'Lightning Damage', cssClass: 'lightning-damage' },
+    { key: 'criticalHitChance', property: 'criticalHitChance', label: 'Critical Hit Chance', cssClass: 'crit-chance' },
+    { key: 'attacksPerSecond', property: 'attacksPerSecond', label: 'Attacks per Second', cssClass: 'attack-speed' },
+    { key: 'weaponRange', property: 'weaponRange', label: 'Weapon Range', cssClass: 'weapon-range' }
+  ]
+
+  // Add stats that exist on this item
+  statMappings.forEach(mapping => {
+    const value = (item as any)[mapping.property]
+    if (value !== undefined && value !== null) {
+      stats.push({
+        key: mapping.key,
+        label: mapping.label,
+        value: value,
+        cssClass: mapping.cssClass
+      })
+    }
+  })
+
+  return stats
 })
 
 const formatCategory = (category: string): string => {
@@ -262,6 +311,61 @@ const getSkillIcon = (color: string): string => {
 .stat-line.spirit {
   color: #7c3aed;
   font-weight: 500;
+}
+
+.stat-line.damage {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.stat-line.fire-damage {
+  color: #ea580c;
+  font-weight: 500;
+}
+
+.stat-line.lightning-damage {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.stat-line.crit-chance {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.stat-line.attack-speed {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.stat-line.weapon-range {
+  color: #8b5cf6;
+  font-weight: 500;
+}
+
+.stat-line.special {
+  color: #f59e0b;
+  font-style: italic;
+}
+
+.special-text {
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+}
+
+.weapon-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0;
+  border-top: 1px solid #21262d;
+  border-bottom: 1px solid #21262d;
+}
+
+.weapon-stats .stat-line {
+  font-size: 13px;
+  margin: 0;
 }
 
 .stat-label {
