@@ -444,7 +444,7 @@ const getSkillIcon = (color: string): string => {
 }
 
 .stat-line.weapon-range {
-  color: #8b5cf6;
+  color: darkslateblue;
   font-weight: 500;
 }
 

@@ -115,6 +115,24 @@
             <option v-for="baseItem in availableBaseItems" :key="baseItem" :value="baseItem">{{ baseItem }}</option>
           </select>
         </div>
+
+        <!-- Item Level Picker -->
+        <div v-if="selectedBaseItem" class="ilvl-picker">
+          <div class="ilvl-label">Select item level</div>
+          <div class="ilvl-grid">
+            <button
+              v-for="lvl in 84"
+              :key="lvl"
+              type="button"
+              :class="['ilvl-btn', { active: selectedIlvl === lvl, disabled: lvl < minIlvl } ]"
+              :disabled="lvl < minIlvl"
+              @click="onSelectIlvl(lvl)"
+            >
+              {{ lvl }}
+            </button>
+          </div>
+          <div class="ilvl-help">Min iLvl: {{ minIlvl }} • Max: 84 • Current: {{ selectedIlvl }}</div>
+        </div>
       </div>
     </div>
 
@@ -127,7 +145,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { usePOE2Data } from '../composables/usePOE2'
 import ItemCard from './ItemCard.vue'
 import poe2BaseItems from '../assets/poe2_base_items.json'
@@ -147,6 +165,8 @@ const strategies = ref<any[]>([])
 const selectedItemCategory = ref<string | null>(null)
 const selectedWeaponType = ref<string | null>(null)
 const selectedBaseItem = ref<string | null>(null)
+// Item level selection (default 81, clamped by min..84)
+const selectedIlvl = ref<number>(81)
 
 const currentFilterMode = computed<'all' | 'endgame'>(
   {
@@ -375,6 +395,20 @@ const selectDetailedItem = (item: any) => { selectedBaseItem.value = item.name }
 const onBaseItemChange = () => {}
 
 onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { error.value = 'โหลดข้อมูลเบื้องต้นไม่สำเร็จ โปรดลองใหม่' } })
+// ========== iLvl picker logic ==========
+const minIlvl = computed(() => {
+  const base = selectedBaseItem.value
+  const typeId = selectedWeaponType.value
+  if (!base || !typeId) return 1
+  const d = getDetailedItem(base, typeId)
+  const req = (d?.levelRequirement ?? 1)
+  const min = Math.max(1, Math.min(84, req))
+  return min
+})
+const clampIlvl = (lvl: number) => Math.max(minIlvl.value, Math.min(84, lvl))
+const onSelectIlvl = (lvl: number) => { selectedIlvl.value = clampIlvl(lvl) }
+watch([selectedBaseItem, selectedWeaponType], () => { selectedIlvl.value = clampIlvl(81) })
+
 </script>
 
 <style scoped>
@@ -409,6 +443,13 @@ onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { erro
 .filter-option{display:flex;align-items:center;gap:.35rem}
 .base-item-select{width:100%;padding:.8rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.1);color:#fff}
 .item-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:1rem}
+.ilvl-picker{margin-top:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.75rem}
+.ilvl-label{font-weight:700;margin-bottom:.5rem;color:#fff;opacity:.95}
+.ilvl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:.35rem}
+.ilvl-btn{padding:.35rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.2);color:#fff;cursor:pointer}
+.ilvl-btn.active{border-color:#ffd700;background:rgba(255,215,0,.2)}
+.ilvl-btn.disabled{opacity:.35;cursor:not-allowed}
+.ilvl-help{margin-top:.4rem;font-size:.85rem;color:#eee;opacity:.85}
 .empty-state{text-align:center;padding:3rem 1rem;color:#444}
 .empty-icon{font-size:3rem;margin-bottom:.5rem}
 @media (max-width:768px){.item-cards-grid{grid-template-columns:1fr}}

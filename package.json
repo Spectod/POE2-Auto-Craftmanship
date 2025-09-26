@@ -7,6 +7,7 @@
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd poe2-crafting-frontend && npm run dev",
     "dev:backend": "cd poe2-crafting-backend && npm run dev",
+    "build:mods": "node scripts/normalize_coe_poe2_mods.js",
     "install:all": "npm install && cd poe2-crafting-frontend && npm install && cd ../poe2-crafting-backend && npm install",
     "build": "cd poe2-crafting-frontend && npm run build",
     "preview": "cd poe2-crafting-frontend && npm run preview"
