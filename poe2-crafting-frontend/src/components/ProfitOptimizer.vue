@@ -91,7 +91,7 @@
 
       <!-- Step 3: Base item -->
       <div v-if="selectedWeaponType" class="base-item-selection">
-        <div class="filter-row">
+        <div v-if="showFilterRow" class="filter-row">
           <label class="filter-label">Filter</label>
           <div class="filter-options">
             <label class="filter-option">
@@ -148,14 +148,6 @@ const selectedItemCategory = ref<string | null>(null)
 const selectedWeaponType = ref<string | null>(null)
 const selectedBaseItem = ref<string | null>(null)
 
-// Per-type base item filter: 'all' | 'endgame'
-const filterModeByType = ref<Record<string, 'all' | 'endgame'>>({})
-const endgameFilterAllowed = computed(() => {
-  if (selectedItemCategory.value === 'jewellery') return false
-  if (selectedWeaponType.value === 'quivers') return false
-  return true
-})
-const getDefaultFilterForCurrent = () => ((selectedItemCategory.value === 'jewellery' || selectedWeaponType.value === 'quivers') ? 'all' : 'endgame') as 'all' | 'endgame'
 const currentFilterMode = computed<'all' | 'endgame'>(
   {
     get: () => {
@@ -176,6 +168,40 @@ const currentFilterMode = computed<'all' | 'endgame'>(
   }
 )
 
+// show/hide filter-row (hidden for quivers) กำหนดว่าจะให้แสดง ui ที่ใช้สำหรับการ filter ไหม
+const showFilterRow = computed(() => {
+  return !(selectedWeaponType.value === 'quivers'|| selectedWeaponType.value === 'shields' || selectedItemCategory.value === 'jewellery')
+})
+
+// Per-type base item filter: 'all' | 'endgame' กำหนดค่าเริ่มต้นของการ filter แบบเรียลไทม์
+const filterModeByType = ref<Record<string, 'all' | 'endgame'>>({})
+const endgameFilterAllowed = computed(() => {
+  if (selectedItemCategory.value === 'jewellery') return false
+  if (selectedWeaponType.value === 'quivers') return false
+  if (selectedWeaponType.value === 'shields') return false 
+  return true
+})
+
+//กำหรดค่าเริ่มต้นว่า filter จะเป็น all หรือ endgame ในอตนเริ่มต้นครังแรก
+const getDefaultFilterForCurrent = () =>{
+  const t = selectedWeaponType.value ?? ''
+  const isSpecial = selectedItemCategory.value === 'jewellery' || ['quivers', 'shields'].includes(t)
+  return isSpecial ? 'all' : 'endgame'
+}
+const selectWeaponType = (typeId: string) => {
+  selectedWeaponType.value = typeId
+  selectedBaseItem.value = null
+
+  const isSpecialType = ['quivers', 'shields'].includes(typeId)
+  const isJewelleryCategory = selectedItemCategory.value === 'jewellery'
+  const defaultMode = isSpecialType || isJewelleryCategory ? 'all' : getDefaultFilterForCurrent()
+
+  if (filterModeByType.value[typeId] === undefined) {
+    filterModeByType.value[typeId] = defaultMode
+  }
+}
+
+//กำหนด หมวดหมู่รองให้ Armours
 const armourSubcategories = [
   { id: 'gloves', name: 'Gloves', icon: '🧤' },
   { id: 'boots', name: 'Boots', icon: '🥾' },
@@ -183,6 +209,7 @@ const armourSubcategories = [
   { id: 'helmets', name: 'Helmets', icon: '🪖' }
 ]
 
+//กำหนดว่ามีหมวหมูเป็ฯ Attribute ไหนบ้าง
 const attributeTypes = [
   { id: 'str', name: 'str' },
   { id: 'dex', name: 'dex' },
@@ -230,6 +257,23 @@ const selectShieldAttribute = (id: string) => {
   if (selectedShieldAttribute.value === id) return
   selectedShieldAttribute.value = id
   selectedBaseItem.value = null
+  selectedItemCategory.value = 'offHanded'
+  selectedWeaponType.value = 'shields'
+
+  // ensure filter mode exists for shields (force 'all')
+  if (filterModeByType.value['shields'] === undefined) {
+    filterModeByType.value['shields'] = 'all'
+  }
+
+  // debug logs ...
+  console.log('selectShieldAttribute:', {
+    selectedItemCategory: selectedItemCategory.value,
+    selectedWeaponType: selectedWeaponType.value,
+    selectedShieldAttribute: selectedShieldAttribute.value,
+    hasDetailed: hasDetailedItemsForCategory.value,
+    availableBase: availableBaseItems.value,
+    availableDetailed: availableDetailedItems.value
+  })
 }
 
 const allLeagues = computed(() => {
@@ -280,8 +324,9 @@ const availableBaseItems = computed(() => {
 })
 
 const hasDetailedItemsForCategory = computed(() => {
-  if (!selectedWeaponType.value) return false
-  return hasDetailedData(selectedWeaponType.value)
+  const t = selectedWeaponType.value
+  if (!t) return false
+  return hasDetailedData(t)
 })
 
 const availableDetailedItems = computed(() => {
@@ -326,13 +371,6 @@ const generateStrategies = async () => {
 }
 
 const selectWeaponCategory = (categoryId: string) => { selectedItemCategory.value = categoryId; selectedWeaponType.value = null; selectedBaseItem.value = null }
-const selectWeaponType = (typeId: string) => {
-  selectedWeaponType.value = typeId
-  selectedBaseItem.value = null
-  if (filterModeByType.value[typeId] === undefined) {
-    filterModeByType.value[typeId] = getDefaultFilterForCurrent()
-  }
-}
 const selectDetailedItem = (item: any) => { selectedBaseItem.value = item.name }
 const onBaseItemChange = () => {}
 
@@ -350,9 +388,9 @@ onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { erro
 .success-rate-control{display:flex;align-items:center;gap:.5rem}
 .success-rate-slider{width:150px}
 .success-rate-value{font-weight:700;color:#2c3e50;min-width:50px;text-align:center}
-.generate-btn{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;padding:.7rem 1.4rem;border-radius:8px;font-weight:600;cursor:pointer;display:flex;gap:.5rem;align-items:center}
+.generate-btn{background-color: darkslateblue;color:#fff;border:none;padding:.7rem 1.4rem;border-radius:8px;font-weight:600;cursor:pointer;display:flex;gap:.5rem;align-items:center}
 .error-message{background:#fee;border:1px solid #fcc;color:#a00;padding:1rem;border-radius:8px;margin-bottom:1rem;text-align:center}
-.weapon-selection-section{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:12px;padding:1.5rem;margin-bottom:2rem;color:#fff}
+.weapon-selection-section{background-color: darkslateblue;border-radius:12px;padding:1.5rem;margin-bottom:2rem;color:#fff}
 .section-subtitle{text-align:center;margin:.25rem 0 1rem 0;opacity:.9}
 .category-grid,.weapon-type-grid{display:grid;gap:1rem}
 .category-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}

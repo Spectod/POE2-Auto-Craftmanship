@@ -32,7 +32,7 @@ const appVersion = import.meta.env.VITE_APP_VERSION || '1.0.0'
 }
 
 .app-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: darkslateblue;
   color: white;
   padding: 20px;
   text-align: center;
