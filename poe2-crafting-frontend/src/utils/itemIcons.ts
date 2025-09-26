@@ -50,11 +50,11 @@ export function getItemTypeIcon(key: string): string {
     // Jewellery
     amulets: '📿',
     rings: '💍',
-    belts: '🧷',
+    belts: '💎',
     // Armour
     gloves: '🧤',
     boots: '🥾',
-    bodyArmours: '👕',
+    bodyArmours: '🥋',
     helmets: '🪖',
   }
   return iconMap[key] || '❔'
