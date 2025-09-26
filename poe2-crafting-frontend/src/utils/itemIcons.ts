@@ -1,4 +1,4 @@
-export function getCategoryDisplayName(key: string): string {
+﻿export function getCategoryDisplayName(key: string): string {
   const nameMap: Record<string, string> = {
     // One Handed Weapons
     wands: 'Wand',
@@ -7,6 +7,7 @@ export function getCategoryDisplayName(key: string): string {
     spears: 'Spear',
     // Two Handed Weapons
     twoHandMaces: 'Two Hand Mace',
+    twoHandedMaces: 'Two Hand Mace',
     quarterstaves: 'Quarterstaff',
     crossbows: 'Crossbow',
     bows: 'Bow',
@@ -30,35 +31,40 @@ export function getCategoryDisplayName(key: string): string {
 }
 
 export function getItemTypeIcon(key: string): string {
-  // Force emoji for two-handed maces using Unicode escape
-  if (key === 'twoHandMaces') return '\u{1FA93}'
-  if (key === 'twoHandMaces') return '🪓'
+  if (key === 'twoHandedMaces') key = 'twoHandMaces'
+  // Prefer a clear emoji for two-hand maces
+  if (key === 'twoHandMaces') return String.fromCodePoint(0x1FA93) // 🪓
   const iconMap: Record<string, string> = {
     // One Handed Weapons
     wands: '🪄',
     maces: '🔨',
-    sceptres: '🔮',
-    spears: '🔱',
+    sceptres: '⚚',
+    spears: '🗡️',
     // Two Handed Weapons
     twoHandMaces: '🪓',
     quarterstaves: '🪵',
-    crossbows: '🎯',
+    crossbows: '🏹',
     bows: '🏹',
     staves: '🪄',
     // Off Handed Items
-    foci: '🌀',
+    foci: '🔮',
     quivers: '🎯',
     shields: '🛡️',
     bucklers: '🛡️',
     // Jewellery
     amulets: '📿',
     rings: '💍',
-    belts: '💎',
+    belts: '🧷',
     // Armour
     gloves: '🧤',
     boots: '🥾',
-    bodyArmours: '🥋',
+    bodyArmours: '🦺',
     helmets: '🪖',
   }
-  return iconMap[key] || '\u2754'
+  return iconMap[key] || '❔'
 }
+
+
+
+
+

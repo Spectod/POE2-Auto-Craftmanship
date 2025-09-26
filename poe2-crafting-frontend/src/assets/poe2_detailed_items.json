@@ -1864,7 +1864,7 @@
                           "twoHandMaces":  {
                                                "Felled Greatclub":  {
                                                                         "name":  "Felled Greatclub",
-                                                                        "category":  "twoHandedMaces",
+                                                                        "category":  "twoHandMaces",
                                                                         "physicalDamage":  "13-18",
                                                                         "criticalHitChance":  "5%",
                                                                         "attacksPerSecond":  "1.1",
@@ -1880,7 +1880,7 @@
                                                                     },
                                                "Oak Greathammer":  {
                                                                        "name":  "Oak Greathammer",
-                                                                       "category":  "twoHandedMaces",
+                                                                       "category":  "twoHandMaces",
                                                                        "physicalDamage":  "14-26",
                                                                        "criticalHitChance":  "5%",
                                                                        "attacksPerSecond":  "1.05",
@@ -1897,7 +1897,7 @@
                                                                    },
                                                "Forge Maul":  {
                                                                   "name":  "Forge Maul",
-                                                                  "category":  "twoHandedMaces",
+                                                                  "category":  "twoHandMaces",
                                                                   "physicalDamage":  "29-39",
                                                                   "criticalHitChance":  "5%",
                                                                   "attacksPerSecond":  "1.05",
@@ -1913,7 +1913,7 @@
                                                               },
                                                "Studded Greatclub":  {
                                                                          "name":  "Studded Greatclub",
-                                                                         "category":  "twoHandedMaces",
+                                                                         "category":  "twoHandMaces",
                                                                          "physicalDamage":  "32-48",
                                                                          "criticalHitChance":  "5%",
                                                                          "attacksPerSecond":  "1.1",
@@ -1929,7 +1929,7 @@
                                                                      },
                                                "Cultist Greathammer":  {
                                                                            "name":  "Cultist Greathammer",
-                                                                           "category":  "twoHandedMaces",
+                                                                           "category":  "twoHandMaces",
                                                                            "physicalDamage":  "32-43",
                                                                            "criticalHitChance":  "5%",
                                                                            "attacksPerSecond":  "1.05",
@@ -1946,7 +1946,7 @@
                                                                        },
                                                "Temple Maul":  {
                                                                    "name":  "Temple Maul",
-                                                                   "category":  "twoHandedMaces",
+                                                                   "category":  "twoHandMaces",
                                                                    "physicalDamage":  "35-72",
                                                                    "criticalHitChance":  "5%",
                                                                    "attacksPerSecond":  "1.2",
@@ -1962,7 +1962,7 @@
                                                                },
                                                "Leaden Greathammer":  {
                                                                           "name":  "Leaden Greathammer",
-                                                                          "category":  "twoHandedMaces",
+                                                                          "category":  "twoHandMaces",
                                                                           "physicalDamage":  "58-78",
                                                                           "criticalHitChance":  "5%",
                                                                           "attacksPerSecond":  "1.1",
@@ -1978,7 +1978,7 @@
                                                                       },
                                                "Grumbling Maul":  {
                                                                       "name":  "Grumbling Maul",
-                                                                      "category":  "twoHandedMaces",
+                                                                      "category":  "twoHandMaces",
                                                                       "physicalDamage":  "62-75",
                                                                       "criticalHitChance":  "5%",
                                                                       "attacksPerSecond":  "1.1",
@@ -1995,7 +1995,7 @@
                                                                   },
                                                "Pointed Maul":  {
                                                                     "name":  "Pointed Maul",
-                                                                    "category":  "twoHandedMaces",
+                                                                    "category":  "twoHandMaces",
                                                                     "physicalDamage":  "68-102",
                                                                     "criticalHitChance":  "6.5%",
                                                                     "attacksPerSecond":  "1.1",
@@ -2011,7 +2011,7 @@
                                                                 },
                                                "Totemic Greatclub":  {
                                                                          "name":  "Totemic Greatclub",
-                                                                         "category":  "twoHandedMaces",
+                                                                         "category":  "twoHandMaces",
                                                                          "physicalDamage":  "73-99",
                                                                          "criticalHitChance":  "5%",
                                                                          "attacksPerSecond":  "1.1",
@@ -2028,7 +2028,7 @@
                                                                      },
                                                "Greatmace":  {
                                                                  "name":  "Greatmace",
-                                                                 "category":  "twoHandedMaces",
+                                                                 "category":  "twoHandMaces",
                                                                  "physicalDamage":  "74-124",
                                                                  "criticalHitChance":  "5%",
                                                                  "attacksPerSecond":  "1.1",
@@ -2044,7 +2044,7 @@
                                                              },
                                                "Precise Greathammer":  {
                                                                            "name":  "Precise Greathammer",
-                                                                           "category":  "twoHandedMaces",
+                                                                           "category":  "twoHandMaces",
                                                                            "physicalDamage":  "87-118",
                                                                            "criticalHitChance":  "5%",
                                                                            "attacksPerSecond":  "1.1",
@@ -2060,7 +2060,7 @@
                                                                        },
                                                "Giant Maul":  {
                                                                   "name":  "Giant Maul",
-                                                                  "category":  "twoHandedMaces",
+                                                                  "category":  "twoHandMaces",
                                                                   "physicalDamage":  "96-144",
                                                                   "criticalHitChance":  "5%",
                                                                   "attacksPerSecond":  "1.1",
@@ -2076,7 +2076,7 @@
                                                               },
                                                "Snakewood Greathammer":  {
                                                                              "name":  "Snakewood Greathammer",
-                                                                             "category":  "twoHandedMaces",
+                                                                             "category":  "twoHandMaces",
                                                                              "physicalDamage":  "59-109",
                                                                              "criticalHitChance":  "5%",
                                                                              "attacksPerSecond":  "1.05",
@@ -2093,7 +2093,7 @@
                                                                          },
                                                "Blacksmith Maul":  {
                                                                        "name":  "Blacksmith Maul",
-                                                                       "category":  "twoHandedMaces",
+                                                                       "category":  "twoHandMaces",
                                                                        "physicalDamage":  "84-113",
                                                                        "criticalHitChance":  "5%",
                                                                        "attacksPerSecond":  "1.05",
@@ -2109,7 +2109,7 @@
                                                                    },
                                                "Zealot Greathammer":  {
                                                                           "name":  "Zealot Greathammer",
-                                                                          "category":  "twoHandedMaces",
+                                                                          "category":  "twoHandMaces",
                                                                           "physicalDamage":  "62-83",
                                                                           "criticalHitChance":  "5%",
                                                                           "attacksPerSecond":  "1.05",
@@ -2126,7 +2126,7 @@
                                                                       },
                                                "Solemn Maul":  {
                                                                    "name":  "Solemn Maul",
-                                                                   "category":  "twoHandedMaces",
+                                                                   "category":  "twoHandMaces",
                                                                    "physicalDamage":  "59-123",
                                                                    "criticalHitChance":  "5%",
                                                                    "attacksPerSecond":  "1.2",
@@ -2142,7 +2142,7 @@
                                                                },
                                                "Heavy Greathammer":  {
                                                                          "name":  "Heavy Greathammer",
-                                                                         "category":  "twoHandedMaces",
+                                                                         "category":  "twoHandMaces",
                                                                          "physicalDamage":  "94-127",
                                                                          "criticalHitChance":  "5%",
                                                                          "attacksPerSecond":  "1.1",
@@ -2158,7 +2158,7 @@
                                                                      },
                                                "Disintegrating Maul":  {
                                                                            "name":  "Disintegrating Maul",
-                                                                           "category":  "twoHandedMaces",
+                                                                           "category":  "twoHandMaces",
                                                                            "physicalDamage":  "93-114",
                                                                            "criticalHitChance":  "5%",
                                                                            "attacksPerSecond":  "1.1",
@@ -2175,7 +2175,7 @@
                                                                        },
                                                "Anvil Maul":  {
                                                                   "name":  "Anvil Maul",
-                                                                  "category":  "twoHandedMaces",
+                                                                  "category":  "twoHandMaces",
                                                                   "physicalDamage":  "112-151",
                                                                   "criticalHitChance":  "5%",
                                                                   "attacksPerSecond":  "1.05",
@@ -2191,7 +2191,7 @@
                                                               },
                                                "Sacred Maul":  {
                                                                    "name":  "Sacred Maul",
-                                                                   "category":  "twoHandedMaces",
+                                                                   "category":  "twoHandMaces",
                                                                    "physicalDamage":  "76-158",
                                                                    "criticalHitChance":  "5%",
                                                                    "attacksPerSecond":  "1.2",
@@ -2207,7 +2207,7 @@
                                                                },
                                                "Ironwood Greathammer":  {
                                                                             "name":  "Ironwood Greathammer",
-                                                                            "category":  "twoHandedMaces",
+                                                                            "category":  "twoHandMaces",
                                                                             "physicalDamage":  "94-174",
                                                                             "criticalHitChance":  "5%",
                                                                             "attacksPerSecond":  "1.05",
@@ -2224,7 +2224,7 @@
                                                                         },
                                                "Fanatic Greathammer":  {
                                                                            "name":  "Fanatic Greathammer",
-                                                                           "category":  "twoHandedMaces",
+                                                                           "category":  "twoHandMaces",
                                                                            "physicalDamage":  "89-120",
                                                                            "criticalHitChance":  "5%",
                                                                            "attacksPerSecond":  "1.05",
@@ -2241,7 +2241,7 @@
                                                                        },
                                                "Ruination Maul":  {
                                                                       "name":  "Ruination Maul",
-                                                                      "category":  "twoHandedMaces",
+                                                                      "category":  "twoHandMaces",
                                                                       "physicalDamage":  "113-138",
                                                                       "criticalHitChance":  "5%",
                                                                       "attacksPerSecond":  "1.1",
@@ -2258,7 +2258,7 @@
                                                                   },
                                                "Massive Greathammer":  {
                                                                            "name":  "Massive Greathammer",
-                                                                           "category":  "twoHandedMaces",
+                                                                           "category":  "twoHandMaces",
                                                                            "physicalDamage":  "119-161",
                                                                            "criticalHitChance":  "5%",
                                                                            "attacksPerSecond":  "1.1",
@@ -2274,7 +2274,7 @@
                                                                        },
                                                "Tawhoan Greatclub":  {
                                                                          "name":  "Tawhoan Greatclub",
-                                                                         "category":  "twoHandedMaces",
+                                                                         "category":  "twoHandMaces",
                                                                          "physicalDamage":  "107-145",
                                                                          "criticalHitChance":  "5%",
                                                                          "attacksPerSecond":  "1.1",
