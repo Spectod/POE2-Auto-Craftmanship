@@ -84,9 +84,10 @@ export function useDetailedItems() {
     if (detailedItems.value.detailedItems[category]) {
       return category
     }
-    if (category.startsWith('gloves')) {
-      return 'gloves'
-    }
+    if (category.startsWith('gloves')) return 'gloves'
+    if (category.startsWith('boots')) return 'boots'
+    if (category.startsWith('bodyArmours')) return 'bodyArmours'
+    if (category.startsWith('helmets')) return 'helmets'
     return null
   }
 

@@ -152,7 +152,8 @@ const attributeTypes = [
 ]
 
 const selectedArmourSubcategory = ref<string | null>(null)
-const selectedArmourAttribute = ref<string | null>(null)
+// Default Armour attribute to 'int' so armour types start at INT by default
+const selectedArmourAttribute = ref<string>('int')
 const selectArmourSubcategory = (id: string) => {
   selectedArmourSubcategory.value = id
   selectedWeaponType.value = null
@@ -303,4 +304,3 @@ onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { erro
 .empty-icon{font-size:3rem;margin-bottom:.5rem}
 @media (max-width:768px){.item-cards-grid{grid-template-columns:1fr}}
 </style>
-
