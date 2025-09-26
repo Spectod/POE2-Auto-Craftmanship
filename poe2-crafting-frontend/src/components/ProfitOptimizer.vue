@@ -91,6 +91,19 @@
 
       <!-- Step 3: Base item -->
       <div v-if="selectedWeaponType" class="base-item-selection">
+        <div class="filter-row">
+          <label class="filter-label">Filter</label>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="base-filter" value="all" v-model="currentFilterMode" />
+              <span>All</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="base-filter" value="endgame" v-model="currentFilterMode" :disabled="!endgameFilterAllowed" />
+              <span>End-game (Req Lvl ≥ 67)</span>
+            </label>
+          </div>
+        </div>
         <h4>Step 3: เลือกฐานไอเท็ม (Base Item)</h4>
         <p class="section-subtitle">เลือกฐานไอเท็มที่ต้องการเพื่อดูรายละเอียดและวิธีการได้มา</p>
         <div v-if="hasDetailedItemsForCategory" class="item-cards-grid">
@@ -116,13 +129,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { usePOE2Data } from '../composables/usePOE2'
-import { useDetailedItems } from '../composables/useDetailedItems'
 import ItemCard from './ItemCard.vue'
 import poe2BaseItems from '../assets/poe2_base_items.json'
 import { getItemTypeIcon } from '../utils/itemIcons'
 
 const poe2Data = usePOE2Data()
 const { leagues } = poe2Data
+import { useDetailedItems } from '../composables/useDetailedItems'
 const { hasDetailedData, getItemsByCategory, getDetailedItem } = useDetailedItems()
 
 const selectedLeague = ref('Rise of the Abyssal')
@@ -134,6 +147,34 @@ const strategies = ref<any[]>([])
 const selectedItemCategory = ref<string | null>(null)
 const selectedWeaponType = ref<string | null>(null)
 const selectedBaseItem = ref<string | null>(null)
+
+// Per-type base item filter: 'all' | 'endgame'
+const filterModeByType = ref<Record<string, 'all' | 'endgame'>>({})
+const endgameFilterAllowed = computed(() => {
+  if (selectedItemCategory.value === 'jewellery') return false
+  if (selectedWeaponType.value === 'quivers') return false
+  return true
+})
+const getDefaultFilterForCurrent = () => ((selectedItemCategory.value === 'jewellery' || selectedWeaponType.value === 'quivers') ? 'all' : 'endgame') as 'all' | 'endgame'
+const currentFilterMode = computed<'all' | 'endgame'>(
+  {
+    get: () => {
+      const t = selectedWeaponType.value
+      if (!t) return 'all'
+      const stored = filterModeByType.value[t] ?? getDefaultFilterForCurrent()
+      return (stored === 'endgame' && !endgameFilterAllowed.value) ? 'all' : stored
+    },
+    set: (val: 'all' | 'endgame') => {
+      const t = selectedWeaponType.value
+      if (!t) return
+      if (val === 'endgame' && !endgameFilterAllowed.value) {
+        filterModeByType.value[t] = 'all'
+      } else {
+        filterModeByType.value[t] = val
+      }
+    }
+  }
+)
 
 const armourSubcategories = [
   { id: 'gloves', name: 'Gloves', icon: '🧤' },
@@ -160,6 +201,10 @@ const selectArmourSubcategory = (id: string) => {
   selectedBaseItem.value = null
   if (selectedArmourAttribute.value) {
     selectedWeaponType.value = `${id}_${selectedArmourAttribute.value}`
+    const t = selectedWeaponType.value
+    if (t && filterModeByType.value[t] === undefined) {
+      filterModeByType.value[t] = getDefaultFilterForCurrent()
+    }
   }
 }
 const selectArmourAttribute = (id: string) => {
@@ -168,6 +213,10 @@ const selectArmourAttribute = (id: string) => {
   selectedBaseItem.value = null
   if (selectedArmourSubcategory.value) {
     selectedWeaponType.value = `${selectedArmourSubcategory.value}_${id}`
+    const t = selectedWeaponType.value
+    if (t && filterModeByType.value[t] === undefined) {
+      filterModeByType.value[t] = getDefaultFilterForCurrent()
+    }
   }
 }
 
@@ -218,7 +267,16 @@ const availableBaseItems = computed(() => {
   else if (selectedItemCategory.value === 'jewellery') itemData = (poe2BaseItems as any).jewellery
   else if (selectedItemCategory.value === 'armour') itemData = (poe2BaseItems as any).armour
   else return []
-  return (itemData[selectedWeaponType.value] as string[]) || []
+  let names = (itemData[selectedWeaponType.value] as string[]) || []
+  if (currentFilterMode.value === 'endgame') {
+    const typeId = selectedWeaponType.value
+    names = names.filter(n => {
+      const d = getDetailedItem(n, typeId!)
+      const lvl = (d?.levelRequirement ?? 0)
+      return !d || lvl >= 67
+    })
+  }
+  return names
 })
 
 const hasDetailedItemsForCategory = computed(() => {
@@ -244,6 +302,9 @@ const availableDetailedItems = computed(() => {
       return true
     })
   }
+  if (currentFilterMode.value === 'endgame') {
+    items = items.filter((it: any) => (it?.levelRequirement ?? 0) >= 67)
+  }
   return [...items].sort((a, b) => ((a.levelRequirement ?? 0) - (b.levelRequirement ?? 0)) || a.name.localeCompare(b.name))
 })
 
@@ -265,7 +326,13 @@ const generateStrategies = async () => {
 }
 
 const selectWeaponCategory = (categoryId: string) => { selectedItemCategory.value = categoryId; selectedWeaponType.value = null; selectedBaseItem.value = null }
-const selectWeaponType = (typeId: string) => { selectedWeaponType.value = typeId; selectedBaseItem.value = null }
+const selectWeaponType = (typeId: string) => {
+  selectedWeaponType.value = typeId
+  selectedBaseItem.value = null
+  if (filterModeByType.value[typeId] === undefined) {
+    filterModeByType.value[typeId] = getDefaultFilterForCurrent()
+  }
+}
 const selectDetailedItem = (item: any) => { selectedBaseItem.value = item.name }
 const onBaseItemChange = () => {}
 
@@ -298,6 +365,10 @@ onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { erro
 .attr-btn{padding:.6rem .8rem;border-radius:8px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-weight:700;letter-spacing:.04em;cursor:pointer}
 .attr-btn.active{border-color:#ffd700;background:rgba(255,215,0,.2)}
 .base-item-selection{margin-top:1rem}
+.filter-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.filter-label{font-weight:700;color:#fff;opacity:.9}
+.filter-options{display:flex;gap:1rem}
+.filter-option{display:flex;align-items:center;gap:.35rem}
 .base-item-select{width:100%;padding:.8rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.1);color:#fff}
 .item-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:1rem}
 .empty-state{text-align:center;padding:3rem 1rem;color:#444}

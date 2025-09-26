@@ -2795,15 +2795,399 @@
 
                                                                                       ],
                                                                     "rarity":  "normal"
-                                                                },
-                                            "Elegant Crossbow":  {
+                                                                 },
+                                             "Varnished Crossbow":  {
+                                                                     "name":  "Varnished Crossbow",
+                                                                     "category":  "crossbows",
+                                                                     "physicalDamage":  "12-36",
+                                                                     "criticalHitChance":  "5%",
+                                                                     "attacksPerSecond":  "1.6",
+                                                                     "reloadTime":  "0.8",
+                                                                     "levelRequirement":  16,
+                                                                     "statRequirements":  {
+                                                                                              "str":  19,
+                                                                                              "dex":  19
+                                                                                          },
+                                                                     "grantedSkills":  [
+ 
+                                                                                       ],
+                                                                     "rarity":  "normal"
+                                                                 },
+                                             "Dyad Crossbow":  {
+                                                                  "name":  "Dyad Crossbow",
+                                                                  "category":  "crossbows",
+                                                                  "physicalDamage":  "9-37",
+                                                                  "criticalHitChance":  "5%",
+                                                                  "attacksPerSecond":  "1.6",
+                                                                  "reloadTime":  "1.1",
+                                                                  "levelRequirement":  20,
+                                                                  "statRequirements":  {
+                                                                                           "str":  22,
+                                                                                           "dex":  22
+                                                                                       },
+                                                                  "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                  "special":  "Loads an additional bolt",
+                                                                  "rarity":  "normal"
+                                                                 },
+                                             "Alloy Crossbow":  {
+                                                                   "name":  "Alloy Crossbow",
+                                                                   "category":  "crossbows",
+                                                                   "physicalDamage":  "12-50",
+                                                                   "criticalHitChance":  "5%",
+                                                                   "attacksPerSecond":  "1.7",
+                                                                   "reloadTime":  "0.7",
+                                                                   "levelRequirement":  26,
+                                                                   "statRequirements":  {
+                                                                                                "str":  28,
+                                                                                                "dex":  28
+                                                                                            },
+                                                                   "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                   "rarity":  "normal"
+                                                                 },
+                                             "Bombard Crossbow":  {
+                                                                     "name":  "Bombard Crossbow",
+                                                                     "category":  "crossbows",
+                                                                     "physicalDamage":  "14-56",
+                                                                     "criticalHitChance":  "5%",
+                                                                     "attacksPerSecond":  "1.65",
+                                                                     "reloadTime":  "0.75",
+                                                                     "levelRequirement":  33,
+                                                                     "statRequirements":  {
+                                                                                              "str":  34,
+                                                                                              "dex":  34
+                                                                                          },
+                                                                     "grantedSkills":  [
+ 
+                                                                                       ],
+                                                                     "special":  "Grenade Skills Fire an additional Projectile",
+                                                                     "rarity":  "normal"
+                                                                 },
+                                             "Construct Crossbow":  {
+                                                                       "name":  "Construct Crossbow",
+                                                                       "category":  "crossbows",
+                                                                       "physicalDamage":  "18-72",
+                                                                       "criticalHitChance":  "5%",
+                                                                       "attacksPerSecond":  "1.6",
+                                                                       "reloadTime":  "0.8",
+                                                                       "levelRequirement":  38,
+                                                                       "statRequirements":  {
+                                                                                                "str":  39,
+                                                                                                "dex":  39
+                                                                                            },
+                                                                       "grantedSkills":  [
+ 
+                                                                                         ],
+                                                                       "rarity":  "normal"
+                                                                 },
+                                             "Blackfire Crossbow":  {
+                                                                       "name":  "Blackfire Crossbow",
+                                                                       "category":  "crossbows",
+                                                                       "physicalDamage":  "20-80",
+                                                                       "criticalHitChance":  "7%",
+                                                                       "attacksPerSecond":  "1.6",
+                                                                       "reloadTime":  "0.85",
+                                                                       "levelRequirement":  45,
+                                                                       "statRequirements":  {
+                                                                                                "str":  45,
+                                                                                                "dex":  45
+                                                                                            },
+                                                                       "grantedSkills":  [
+ 
+                                                                                         ],
+                                                                       "rarity":  "normal"
+                                                                 },
+                                             "Piercing Crossbow":  {
+                                                                      "name":  "Piercing Crossbow",
+                                                                      "category":  "crossbows",
+                                                                      "physicalDamage":  "21-84",
+                                                                      "criticalHitChance":  "5%",
+                                                                      "attacksPerSecond":  "1.65",
+                                                                      "reloadTime":  "0.85",
+                                                                      "levelRequirement":  50,
+                                                                      "statRequirements":  {
+                                                                                               "str":  49,
+                                                                                               "dex":  49
+                                                                                           },
+                                                                      "grantedSkills":  [
+ 
+                                                                                        ],
+                                                                      "special":  "(20-30)% chance to Pierce an Enemy",
+                                                                      "rarity":  "normal"
+                                                                 },
+                                             "Cumbrous Crossbow":  {
+                                                                     "name":  "Cumbrous Crossbow",
+                                                                     "category":  "crossbows",
+                                                                     "physicalDamage":  "19-76",
+                                                                     "criticalHitChance":  "5%",
+                                                                     "attacksPerSecond":  "1.6",
+                                                                     "reloadTime":  "0.9",
+                                                                     "levelRequirement":  52,
+                                                                     "statRequirements":  {
+                                                                                              "str":  51,
+                                                                                              "dex":  51
+                                                                                          },
+                                                                     "grantedSkills":  [
+ 
+                                                                                       ],
+                                                                     "special":  "+1 to maximum number of Summoned Ballista Totems",
+                                                                     "rarity":  "normal"
+                                                                 },
+                                             "Dedalian Crossbow":  {
+                                                                      "name":  "Dedalian Crossbow",
+                                                                      "category":  "crossbows",
+                                                                      "physicalDamage":  "25-99",
+                                                                      "criticalHitChance":  "7%",
+                                                                      "attacksPerSecond":  "1.55",
+                                                                      "reloadTime":  "0.85",
+                                                                      "levelRequirement":  56,
+                                                                      "statRequirements":  {
+                                                                                               "str":  55,
+                                                                                               "dex":  55
+                                                                                           },
+                                                                      "grantedSkills":  [
+ 
+                                                                                        ],
+                                                                      "rarity":  "normal"
+                                                                 },
+                                             "Esoteric Crossbow":  {
+                                                                      "name":  "Esoteric Crossbow",
+                                                                      "category":  "crossbows",
+                                                                      "physicalDamage":  "28-113",
+                                                                      "criticalHitChance":  "5%",
+                                                                      "attacksPerSecond":  "1.6",
+                                                                      "reloadTime":  "0.8",
+                                                                      "levelRequirement":  65,
+                                                                      "statRequirements":  {
+                                                                                               "str":  63,
+                                                                                               "dex":  63
+                                                                                           },
+                                                                      "grantedSkills":  [
+ 
+                                                                                        ],
+                                                                      "rarity":  "normal"
+                                                                 },
+                                             "Taut Crossbow":  {
+                                                                   "name":  "Taut Crossbow",
+                                                                   "category":  "crossbows",
+                                                                   "physicalDamage":  "20-79",
+                                                                   "criticalHitChance":  "5%",
+                                                                   "attacksPerSecond":  "1.6",
+                                                                   "reloadTime":  "0.85",
+                                                                   "levelRequirement":  45,
+                                                                   "statRequirements":  {
+                                                                                                "str":  45,
+                                                                                                "dex":  45
+                                                                                            },
+                                                                   "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                   "special":  "(20-30)% increased Bolt Speed",
+                                                                   "rarity":  "normal"
+                                                                 },
+                                             "Robust Crossbow":  {
+                                                                    "name":  "Robust Crossbow",
+                                                                    "category":  "crossbows",
+                                                                    "physicalDamage":  "22-89",
+                                                                    "criticalHitChance":  "5%",
+                                                                    "attacksPerSecond":  "1.55",
+                                                                    "reloadTime":  "0.75",
+                                                                    "levelRequirement":  48,
+                                                                    "statRequirements":  {
+                                                                                             "str":  48,
+                                                                                             "dex":  48
+                                                                                         },
+                                                                    "grantedSkills":  [
+ 
+                                                                                      ],
+                                                                    "rarity":  "normal"
+                                                                 },
+                                             "Painted Crossbow":  {
+                                                                     "name":  "Painted Crossbow",
+                                                                     "category":  "crossbows",
+                                                                     "physicalDamage":  "23-92",
+                                                                     "criticalHitChance":  "5%",
+                                                                     "attacksPerSecond":  "1.6",
+                                                                     "reloadTime":  "0.8",
+                                                                     "levelRequirement":  51,
+                                                                     "statRequirements":  {
+                                                                                              "str":  50,
+                                                                                              "dex":  50
+                                                                                          },
+                                                                     "grantedSkills":  [
+ 
+                                                                                       ],
+                                                                     "rarity":  "normal"
+                                                                 },
+                                             "Twin Crossbow":  {
+                                                                  "name":  "Twin Crossbow",
+                                                                  "category":  "crossbows",
+                                                                  "physicalDamage":  "20-82",
+                                                                  "criticalHitChance":  "5%",
+                                                                  "attacksPerSecond":  "1.6",
+                                                                  "reloadTime":  "1.1",
+                                                                  "levelRequirement":  54,
+                                                                  "statRequirements":  {
+                                                                                           "str":  53,
+                                                                                           "dex":  53
+                                                                                       },
+                                                                  "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                  "special":  "Loads an additional bolt",
+                                                                  "rarity":  "normal"
+                                                                 },
+                                             "Cannonade Crossbow":  {
+                                                                       "name":  "Cannonade Crossbow",
+                                                                       "category":  "crossbows",
+                                                                       "physicalDamage":  "23-90",
+                                                                       "criticalHitChance":  "5%",
+                                                                       "attacksPerSecond":  "1.65",
+                                                                       "reloadTime":  "0.75",
+                                                                       "levelRequirement":  59,
+                                                                       "statRequirements":  {
+                                                                                                "str":  58,
+                                                                                                "dex":  58
+                                                                                            },
+                                                                       "grantedSkills":  [
+ 
+                                                                                         ],
+                                                                       "special":  "Grenade Skills Fire an additional Projectile",
+                                                                       "rarity":  "normal"
+                                                                 },
+                                             "Bleak Crossbow":  {
+                                                                    "name":  "Bleak Crossbow",
+                                                                    "category":  "crossbows",
+                                                                    "physicalDamage":  "27-109",
+                                                                    "criticalHitChance":  "5%",
+                                                                    "attacksPerSecond":  "1.6",
+                                                                    "reloadTime":  "0.8",
+                                                                    "levelRequirement":  62,
+                                                                    "statRequirements":  {
+                                                                                             "str":  60,
+                                                                                             "dex":  60
+                                                                                         },
+                                                                    "grantedSkills":  [
+ 
+                                                                                      ],
+                                                                    "rarity":  "normal"
+                                                                 },
+                                             "Stout Crossbow":  {
+                                                                   "name":  "Stout Crossbow",
+                                                                   "category":  "crossbows",
+                                                                   "physicalDamage":  "30-119",
+                                                                   "criticalHitChance":  "5%",
+                                                                   "attacksPerSecond":  "1.55",
+                                                                   "reloadTime":  "0.75",
+                                                                   "levelRequirement":  67,
+                                                                   "statRequirements":  {
+                                                                                                "str":  74,
+                                                                                                "dex":  74
+                                                                                            },
+                                                                   "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                   "rarity":  "normal"
+                                                                 },
+                                             "Engraved Crossbow":  {
+                                                                      "name":  "Engraved Crossbow",
+                                                                      "category":  "crossbows",
+                                                                      "physicalDamage":  "31-124",
+                                                                      "criticalHitChance":  "5%",
+                                                                      "attacksPerSecond":  "1.6",
+                                                                      "reloadTime":  "0.8",
+                                                                      "levelRequirement":  72,
+                                                                      "statRequirements":  {
+                                                                                               "str":  82,
+                                                                                               "dex":  82
+                                                                                           },
+                                                                      "grantedSkills":  [
+ 
+                                                                                        ],
+                                                                      "rarity":  "normal"
+                                                                 },
+                                             "Flexed Crossbow":  {
+                                                                   "name":  "Flexed Crossbow",
+                                                                   "category":  "crossbows",
+                                                                   "physicalDamage":  "32-127",
+                                                                   "criticalHitChance":  "5%",
+                                                                   "attacksPerSecond":  "1.6",
+                                                                   "reloadTime":  "0.85",
+                                                                   "levelRequirement":  77,
+                                                                   "statRequirements":  {
+                                                                                                "str":  89,
+                                                                                                "dex":  89
+                                                                                            },
+                                                                   "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                   "special":  "(20-30)% increased Bolt Speed",
+                                                                   "rarity":  "normal"
+                                                                 },
+                                             "Gemini Crossbow":  {
+                                                                    "name":  "Gemini Crossbow",
+                                                                    "category":  "crossbows",
+                                                                    "physicalDamage":  "28-112",
+                                                                    "criticalHitChance":  "5%",
+                                                                    "attacksPerSecond":  "1.6",
+                                                                    "reloadTime":  "1.1",
+                                                                    "levelRequirement":  78,
+                                                                    "statRequirements":  {
+                                                                                             "str":  89,
+                                                                                             "dex":  89
+                                                                                         },
+                                                                    "grantedSkills":  [
+ 
+                                                                                      ],
+                                                                    "special":  "Loads an additional bolt",
+                                                                    "rarity":  "normal"
+                                                                 },
+                                             "Siege Crossbow":  {
+                                                                  "name":  "Siege Crossbow",
+                                                                  "category":  "crossbows",
+                                                                  "physicalDamage":  "29-115",
+                                                                  "criticalHitChance":  "5%",
+                                                                  "attacksPerSecond":  "1.65",
+                                                                  "reloadTime":  "0.75",
+                                                                  "levelRequirement":  79,
+                                                                  "statRequirements":  {
+                                                                                           "str":  89,
+                                                                                           "dex":  89
+                                                                                       },
+                                                                  "grantedSkills":  [
+ 
+                                                                                     ],
+                                                                  "special":  "Grenade Skills Fire an additional Projectile",
+                                                                  "rarity":  "normal"
+                                                                 },
+                                             "Desolate Crossbow":  {
+                                                                     "name":  "Desolate Crossbow",
+                                                                     "category":  "crossbows",
+                                                                     "physicalDamage":  "33-132",
+                                                                     "criticalHitChance":  "5%",
+                                                                     "attacksPerSecond":  "1.6",
+                                                                     "reloadTime":  "0.8",
+                                                                     "levelRequirement":  77,
+                                                                     "statRequirements":  {
+                                                                                              "str":  89,
+                                                                                              "dex":  89
+                                                                                          },
+                                                                     "grantedSkills":  [
+ 
+                                                                                       ],
+                                                                     "rarity":  "normal"
+                                                                 },
+                                             "Elegant Crossbow":  {
                                                                      "name":  "Elegant Crossbow",
                                                                      "category":  "crossbows",
                                                                      "physicalDamage":  "31-123",
                                                                      "criticalHitChance":  "5%",
                                                                      "attacksPerSecond":  "1.65",
                                                                      "reloadTime":  "0.85",
-                                                                     "levelRequirement":  85,
+                                                                      "levelRequirement":  78,
                                                                      "statRequirements":  {
                                                                                               "str":  89,
                                                                                               "dex":  89
@@ -2811,7 +3195,7 @@
                                                                      "grantedSkills":  [
 
                                                                                        ],
-                                                                     "special":  "(20-30)% Chance to Pierce an Enemy",
+                                                                      "special":  "(20-30)% chance to Pierce an Enemy",
                                                                      "rarity":  "normal"
                                                                  }
                                         },

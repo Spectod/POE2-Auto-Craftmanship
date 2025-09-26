@@ -30,18 +30,21 @@ export function getCategoryDisplayName(key: string): string {
 }
 
 export function getItemTypeIcon(key: string): string {
+  // Force emoji for two-handed maces using Unicode escape
+  if (key === 'twoHandMaces') return '\u{1FA93}'
+  if (key === 'twoHandMaces') return '🪓'
   const iconMap: Record<string, string> = {
     // One Handed Weapons
     wands: '🪄',
     maces: '🔨',
-    sceptres: '🔱',
-    spears: '🗡️',
+    sceptres: '🔮',
+    spears: '🔱',
     // Two Handed Weapons
     twoHandMaces: '🪓',
     quarterstaves: '🪵',
     crossbows: '🎯',
     bows: '🏹',
-    staves: '🔮',
+    staves: '🪄',
     // Off Handed Items
     foci: '🌀',
     quivers: '🎯',
@@ -57,6 +60,5 @@ export function getItemTypeIcon(key: string): string {
     bodyArmours: '🥋',
     helmets: '🪖',
   }
-  return iconMap[key] || '❔'
+  return iconMap[key] || '\u2754'
 }
-
