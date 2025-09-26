@@ -6,15 +6,20 @@ import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import { POE2ScoutService } from './services/poe2scout.service';
+import Trade2Service from './services/trade2.service';
+import craftingMethods from './data/craftingMethods';
+// @ts-ignore - JSON import
+import currencyMetadata from './shared/crafting_currency_metadata.json';
 
 // Load environment variables
 dotenv.config();
 
 // Initialize services
 const poe2Service = new POE2ScoutService();
+const trade2Service = new Trade2Service();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3002;
 
 // ==================== MIDDLEWARE ====================
 
@@ -30,7 +35,7 @@ const limiter = rateLimit({
 // Security & CORS
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5174',
   credentials: true
 }));
 
@@ -52,8 +57,15 @@ app.get('/', (req, res) => {
     endpoints: {
       health: '/health',
       leagues: '/api/leagues',
-      currency: '/api/currency'
-      // items: '/api/items' // TODO: รอข้อมูล base items ใหม่จากคุณ
+      currency: '/api/currency',
+      trade: {
+        leagues: '/api/trade/leagues',
+        itemsData: '/api/trade/data/items',
+        statsData: '/api/trade/data/stats',
+        search: '/api/trade/search/:league',
+        fetch: '/api/trade/fetch/:queryId?ids=...'
+      }
+      // items: '/api/items' // TODO: à¸£à¸­à¸‚à¹‰à¸­à¸¡à¸¹à¸¥ base items à¹ƒà¸«à¸¡à¹ˆà¸ˆà¸²à¸à¸„à¸¸à¸“
     }
   });
 });
@@ -178,7 +190,7 @@ app.get('/api/currency/pairs', async (req: Request, res: Response, next: NextFun
 });
 
 // ==================== ITEMS ROUTES ====================
-// TODO: รอข้อมูล base items ใหม่จากคุณ
+// TODO: à¸£à¸­à¸‚à¹‰à¸­à¸¡à¸¹à¸¥ base items à¹ƒà¸«à¸¡à¹ˆà¸ˆà¸²à¸à¸„à¸¸à¸“
 
 /*
 /**
@@ -222,6 +234,71 @@ app.get('/api/items/categories', async (req: Request, res: Response, next: NextF
   }
 });
 */
+
+
+// ==================== CRAFTING METADATA ====================
+
+app.get('/api/currency/metadata', (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    data: currencyMetadata
+  });
+});
+
+app.get('/api/crafting/methods', (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    data: craftingMethods
+  });
+});
+
+// ==================== OFFICIAL TRADE ROUTES ====================
+
+/** GET /api/trade/leagues - leagues for poe2 realm */
+app.get('/api/trade/leagues', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const leagues = await trade2Service.getLeagues();
+    res.json({ success: true, data: leagues });
+  } catch (err) { next(err as any); }
+});
+
+/** GET /api/trade/data/items - items catalog */
+app.get('/api/trade/data/items', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const data = await trade2Service.getItemsData();
+    res.json({ success: true, data });
+  } catch (err) { next(err as any); }
+});
+
+/** GET /api/trade/data/stats - stats catalog */
+app.get('/api/trade/data/stats', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const data = await trade2Service.getStatsData();
+    res.json({ success: true, data });
+  } catch (err) { next(err as any); }
+});
+
+/** POST /api/trade/search/:league - create query */
+app.post('/api/trade/search/:league', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { league } = req.params;
+    const body = req.body;
+    const search = await trade2Service.search(league, body);
+    res.json({ success: true, data: search });
+  } catch (err) { next(err as any); }
+});
+
+/** GET /api/trade/fetch/:queryId?ids=a,b,c - fetch results */
+app.get('/api/trade/fetch/:queryId', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { queryId } = req.params;
+    const idsParam = (req.query.ids as string) || '';
+    const ids = idsParam.split(',').map(s => s.trim()).filter(Boolean);
+    if (!ids.length) return res.status(400).json({ success: false, error: 'ids query param required' });
+    const details = await trade2Service.fetch(queryId, ids);
+    res.json({ success: true, data: details });
+  } catch (err) { next(err as any); }
+});
 
 // ==================== UTILITY ROUTES ====================
 
@@ -292,26 +369,8 @@ app.use((req: Request, res: Response) => {
 // ==================== SERVER START ====================
 
 app.listen(PORT, () => {
-  console.log(`🚀 POE2 Auto-Craftmanship Backend running on port ${PORT}`);
-  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🌐 API Base URL: http://localhost:${PORT}`);
-  console.log(`🛡️  CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  process.exit(0);
-});
-
-process.on('SIGINT', () => {
-  console.log('SIGINT received, shutting down gracefully');
-  process.exit(0);
-});
-
-export default app;
-
-app.listen(PORT, () => {
-  console.log(`🚀 POE2 Crafting Backend running on port ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/health`);
+  console.log(`POE2 Auto-Craftmanship Backend running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`API Base URL: http://localhost:${PORT}`);
+  console.log(`CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:5174'}`);
 });

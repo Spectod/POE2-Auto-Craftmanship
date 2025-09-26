@@ -138,7 +138,10 @@ export function useCurrency(league?: string) {
 
   const extendedCurrencyIds = [
     'chance', 'vaal', 'annul', 'fracturing-orb', 
-    'perfect-jewellers-orb', 'artificers-orb', 'greater-chaos-orb', 'greater-exalted-orb'
+    'perfect-jewellers-orb', 'artificers-orb', 'greater-chaos-orb', 'greater-exalted-orb',
+    // Added per request for Top Currencies section
+    'perfect-exalted-orb', 'perfect-chaos-orb', 'perfect-orb-of-augmentation',
+    'greater-regal-orb', 'perfect-regal-orb', 'perfect-orb-of-transmutation'
   ]
 
   const fetchCraftingCurrency = async (leagueName?: string) => {
@@ -295,20 +298,6 @@ export function useItems(league?: string) {
     }
   }
 
-  const fetchCategories = async () => {
-    loading.value = true
-    error.value = null
-    
-    try {
-      const data = await poe2Api.getCategories()
-      categories.value = data
-    } catch (err: any) {
-      error.value = err.message || 'Failed to fetch categories'
-      console.error('Error fetching categories:', err)
-    } finally {
-      loading.value = false
-    }
-  }
 
   // Get item by name
   const getItemByName = (name: string) => {
@@ -338,13 +327,11 @@ export function useItems(league?: string) {
   return {
     // State
     items,
-    categories,
     loading,
     error,
     
     // Actions
     fetchItems,
-    fetchCategories,
     getItemByName,
     getItemsByCategory,
     
@@ -434,14 +421,7 @@ export function usePOE2Data() {
         // Fallback: load without league parameter
         await currency.fetchCraftingCurrency()
       }
-      
-      // Step 3: Load other data
-      await Promise.all([
-        items.fetchCategories(),
-        leagues.currentLeague.value ? items.fetchItems({
-          league: leagues.currentLeague.value.value
-        }) : Promise.resolve()
-      ])
+
     }
   }
 

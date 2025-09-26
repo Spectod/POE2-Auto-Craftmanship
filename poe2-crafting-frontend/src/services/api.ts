@@ -81,7 +81,7 @@ class POE2ApiClient {
   private baseURL: string
 
   constructor() {
-    this.baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'
+    this.baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3002'
     
     this.api = axios.create({
       baseURL: this.baseURL,
@@ -231,7 +231,7 @@ class POE2ApiClient {
       throw error
     }
   }
-
+/*
   async getCategories(): Promise<CategoriesResponse> {
     try {
       const response: AxiosResponse<ApiResponse<CategoriesResponse>> = await this.api.get('/api/items/categories')
@@ -241,7 +241,7 @@ class POE2ApiClient {
       throw error
     }
   }
-
+*/
   // ==================== UTILITY ====================
 
   async clearCache(): Promise<void> {

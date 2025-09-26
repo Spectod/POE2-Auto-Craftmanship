@@ -2,10 +2,8 @@
   <div class="profit-optimizer">
     <!-- Header Section -->
     <div class="optimizer-header">
-      <h2 class="section-title">🎯 Profit Optimizer</h2>
-      <p class="section-description">
-        วิเคราะห์และหากลยุทธ์ที่จะให้กำไรสูงสุดในการคราฟ
-      </p>
+      <h2 class="section-title">Profit Optimizer</h2>
+      <p class="section-description">เครื่องมือวิเคราะห์กำไรจากการคราฟ เปรียบเทียบต้นทุน ความน่าจะเป็น และเวลา เพื่อหาวิธีที่คุ้มค่าที่สุดสำหรับฐานไอเท็มที่เลือก</p>
     </div>
 
     <!-- Controls Section -->
@@ -49,65 +47,113 @@
         :disabled="!selectedLeague || loading" 
         class="generate-btn"
       >
-        <span v-if="loading" class="loading-spinner">⟳</span>
-        {{ loading ? 'กำลังวิเคราะห์...' : 'วิเคราะห์กลยุทธ์' }}
+        <span v-if="loading" class="loading-spinner">⏳</span>
+        {{ loading ? 'กำลังสร้างกลยุทธ์...' : 'สร้างกลยุทธ์' }}
       </button>
     </div>
 
     <!-- Error Display -->
     <div v-if="error" class="error-message">
-      ❌ {{ error }}
+      เกิดข้อผิดพลาด: {{ error }}
     </div>
 
     <!-- Weapon Selection Section -->
-    <div class="weapon-selection-section">
-      <h3>⚔️ Select Weapon for Crafting Analysis</h3>
-      <p class="section-subtitle">เลือกประเภทอาวุธเพื่อเริ่มการวิเคราะห์การคราฟ</p>
+    ือกหมวดและชนิดไอเท็ม เพื่อดูฐานไอเท็มที่พร้อมคำนวณและเปรียบเทียบวิธีการได้มา
       
       <!-- Step 1: Category Selection -->
       <div class="category-selection">
-        <h4>� Step 1: Choose Weapon Category</h4>
+        <h4>Step 1: เลือกหมวดไอเท็ม</h4>
         <div class="category-grid">
           <div 
-            v-for="category in weaponCategories" 
+            v-for="category in itemCategories" 
             :key="category.id"
             class="category-card"
-            :class="{ selected: selectedWeaponCategory === category.id }"
+            :class="{ selected: selectedItemCategory === category.id }"
             @click="selectWeaponCategory(category.id)"
           >
             <div class="category-icon">{{ category.icon }}</div>
             <div class="category-info">
               <h5>{{ category.name }}</h5>
-              <p>{{ category.count }} weapon types</p>
+              <p>{{ category.count }} item types</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Step 2: Weapon Type Selection -->
-      <div v-if="selectedWeaponCategory" class="weapon-type-selection">
-        <h4>🗡️ Step 2: Choose Weapon Type</h4>
-        <div class="weapon-type-grid">
-          <div 
-            v-for="weaponType in availableWeaponTypes" 
-            :key="weaponType.id"
-            class="weapon-type-card"
-            :class="{ selected: selectedWeaponType === weaponType.id }"
-            @click="selectWeaponType(weaponType.id)"
-          >
-            <div class="weapon-type-icon">{{ weaponType.icon }}</div>
-            <div class="weapon-type-info">
-              <h5>{{ weaponType.name }}</h5>
-              <p>{{ weaponType.items?.length || 0 }} base items</p>
+      <!-- Step 2: Item Type Selection -->
+      <div v-if="selectedItemCategory" class="weapon-type-selection">
+        <h4>Step 2: เลือกชนิดไอเท็ม</h4>
+
+        <!-- Special flow for Armour: first choose subcategory (Gloves/Boots/Body/Helmets), then attribute type -->
+        <template v-if="selectedItemCategory === 'armour'">
+          <div class="armour-subcategory-grid">
+            <div
+              v-for="sub in armourSubcategories"
+              :key="sub.id"
+              class="weapon-type-card"
+              :class="{ selected: selectedArmourSubcategory === sub.id }"
+              @click="selectArmourSubcategory(sub.id)"
+            >
+              <div class="weapon-type-icon">{{sub.icon}}</div>
+              <div class="weapon-type-info">
+                <h5>{{ sub.name }}</h5>
+              </div>
             </div>
           </div>
-        </div>
+            <div class="attribute-grid">
+              <button
+                v-for="attr in attributeTypes"
+                :key="attr.id"
+                type="button"
+                :class="['attr-btn', { active: selectedArmourAttribute === attr.id }]"
+                :aria-pressed="selectedArmourAttribute === attr.id"
+                @click="selectArmourAttribute(attr.id)"
+              >
+                {{ attr.name }}
+              </button>
+            </div>
+        </template>
+
+        <!-- Default flow for non-armour categories -->
+        <template v-else>
+          <div class="weapon-type-grid">
+            <div 
+              v-for="weaponType in availableWeaponTypes" 
+              :key="weaponType.id"
+              class="weapon-type-card"
+              :class="{ selected: selectedWeaponType === weaponType.id }"
+              @click="selectWeaponType(weaponType.id)"
+            >
+              <div class="weapon-type-icon">{{ weaponType.icon }}</div>
+              <div class="weapon-type-info">
+                <h5>{{ weaponType.name }}</h5>
+                <p>{{ weaponType.items?.length || 0 }} base items</p>
+              </div>
+            </div>
+          </div>
+          <!-- Off-Handed Shields: attribute selection (str / str_dex / str_int) -->
+          <div v-if="selectedItemCategory === 'offHanded' && selectedWeaponType === 'shields'" class="attribute-type-selection">
+            <p class="section-subtitle">เลือกหมวดและชนิดไอเท็ม เพื่อดูฐานไอเท็มที่พร้อมคำนวณและเปรียบเทียบวิธีการได้มา</p>
+            <div class="attribute-grid">
+              <button
+                v-for="attr in shieldAttributeTypes"
+                :key="attr.id"
+                type="button"
+                :class="['attr-btn', { active: selectedShieldAttribute === attr.id }]"
+                :aria-pressed="selectedShieldAttribute === attr.id"
+                @click="selectShieldAttribute(attr.id)"
+              >
+                {{ attr.name }}
+              </button>
+            </div>
+          </div>
+        </template>
       </div>
 
       <!-- Step 3: Base Item Selection -->
       <div v-if="selectedWeaponType" class="base-item-selection">
-        <h4>📦 Step 3: Choose Base Item</h4>
-        <p class="section-subtitle">เลือก base item เพื่อเริ่มการวิเคราะห์การคราฟ</p>
+        <h4>Step 3: เลือกฐานไอเท็ม (Base Item)</h4>
+        <p class="section-subtitle">เลือกหมวดและชนิดไอเท็ม เพื่อดูฐานไอเท็มที่พร้อมคำนวณและเปรียบเทียบวิธีการได้มา</p>
         
         <!-- Check if we have detailed item data -->
         <div v-if="hasDetailedItemsForCategory" class="item-cards-grid">
@@ -142,8 +188,8 @@
 
     <!-- Method Cards Section - Only show after weapon selection -->
     <div v-if="showMethodCards" class="base-acquisition-section">
-      <h3>🎯 Base Acquisition Methods</h3>
-      <p class="section-subtitle">เลือกวิธีการหา {{ selectedBaseItem }} เพื่อเริ่มคราฟ</p>
+      <h3>วิธีได้มาซึ่งฐานไอเท็ม</h3>
+      <p class="section-subtitle">เลือกหมวดและชนิดไอเท็ม เพื่อดูฐานไอเท็มที่พร้อมคำนวณและเปรียบเทียบวิธีการได้มา</p>
 
       <div class="base-methods-grid">
         <div 
@@ -179,7 +225,7 @@
       <!-- Alert System -->
       <div class="alert-system">
         <div class="alert-header">
-          <h4>🔔 Base Value Alerts</h4>
+          <h4>Ã°Å¸â€â€ Base Value Alerts</h4>
           <div class="alert-controls">
             <label>
               Profit Threshold:
@@ -196,7 +242,7 @@
               class="alert-toggle"
               :class="{ active: alertsEnabled }"
             >
-              {{ alertsEnabled ? '🔔 ON' : '🔕 OFF' }}
+              {{ alertsEnabled ? 'Ã°Å¸â€â€ ON' : 'Ã°Å¸â€â€¢ OFF' }}
             </button>
           </div>
         </div>
@@ -225,7 +271,7 @@
         </div>
         
         <div v-else class="no-alerts">
-          <span>{{ alertsEnabled ? 'ไม่มี base ที่เกินเกณฑ์ในขณะนี้' : 'เปิด alerts เพื่อดูโอกาสที่น่าสนใจ' }}</span>
+          <span>{{ alertsEnabled ? 'Ã Â¹â€žÃ Â¸Â¡Ã Â¹Ë†Ã Â¸Â¡Ã Â¸Âµ base Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¹â‚¬Ã Â¸ÂÃ Â¸Â´Ã Â¸â„¢Ã Â¹â‚¬Ã Â¸ÂÃ Â¸â€œÃ Â¸â€˜Ã Â¹Å’Ã Â¹Æ’Ã Â¸â„¢Ã Â¸â€šÃ Â¸â€œÃ Â¸Â°Ã Â¸â„¢Ã Â¸ÂµÃ Â¹â€°' : 'Ã Â¹â‚¬Ã Â¸â€ºÃ Â¸Â´Ã Â¸â€ alerts Ã Â¹â‚¬Ã Â¸Å¾Ã Â¸Â·Ã Â¹Ë†Ã Â¸Â­Ã Â¸â€Ã Â¸Â¹Ã Â¹â€šÃ Â¸Â­Ã Â¸ÂÃ Â¸Â²Ã Â¸ÂªÃ Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â„¢Ã Â¹Ë†Ã Â¸Â²Ã Â¸ÂªÃ Â¸â„¢Ã Â¹Æ’Ã Â¸Ë†' }}</span>
         </div>
       </div>
     </div>
@@ -235,7 +281,7 @@
       <!-- Summary Cards -->
       <div class="summary-cards">
         <div class="summary-card best-strategy">
-          <h3>🏆 กลยุทธ์ที่ดีที่สุด</h3>
+          <h3>Ã°Å¸Ââ€  Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â€Ã Â¸ÂµÃ Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸ÂªÃ Â¸Â¸Ã Â¸â€</h3>
           <div v-if="bestStrategy" class="strategy-preview">
             <div class="item-info">
               <strong>{{ bestStrategy.itemType }}</strong>
@@ -255,17 +301,17 @@
         </div>
 
         <div class="summary-card total-profit">
-          <h3>💰 กำไรรวมที่คาดว่าจะได้</h3>
+          <h3>Ã°Å¸â€™Â° Ã Â¸ÂÃ Â¸Â³Ã Â¹â€žÃ Â¸Â£Ã Â¸Â£Ã Â¸Â§Ã Â¸Â¡Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â€žÃ Â¸Â²Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹â€žÃ Â¸â€Ã Â¹â€°</h3>
           <div class="total-amount">
             {{ totalPotentialProfit.toFixed(1) }} chaos
           </div>
           <div class="strategies-count">
-            {{ profitableStrategies.length }} กลยุทธ์ที่มีกำไร
+            {{ profitableStrategies.length }} Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸Â¡Ã Â¸ÂµÃ Â¸ÂÃ Â¸Â³Ã Â¹â€žÃ Â¸Â£
           </div>
         </div>
 
         <div class="summary-card market-conditions">
-          <h3>📊 สภาพตลาด</h3>
+          <h3>Ã°Å¸â€œÅ  Ã Â¸ÂªÃ Â¸Â Ã Â¸Â²Ã Â¸Å¾Ã Â¸â€¢Ã Â¸Â¥Ã Â¸Â²Ã Â¸â€</h3>
           <div class="market-info">
             <div class="market-metric">
               <span class="label">League:</span>
@@ -281,7 +327,7 @@
 
       <!-- Strategies List -->
       <div class="strategies-list">
-        <h3>📊 รายละเอียดกลยุทธ์ทั้งหมด</h3>
+        <h3>Ã°Å¸â€œÅ  Ã Â¸Â£Ã Â¸Â²Ã Â¸Â¢Ã Â¸Â¥Ã Â¸Â°Ã Â¹â‚¬Ã Â¸Â­Ã Â¸ÂµÃ Â¸Â¢Ã Â¸â€Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’Ã Â¸â€”Ã Â¸Â±Ã Â¹â€°Ã Â¸â€¡Ã Â¸Â«Ã Â¸Â¡Ã Â¸â€</h3>
         
         <div 
           v-for="(strategy, index) in strategies" 
@@ -302,7 +348,7 @@
 
           <!-- Target Modifiers -->
           <div class="target-modifiers">
-            <h5>🎯 Target Modifiers:</h5>
+            <h5>Ã°Å¸Å½Â¯ Target Modifiers:</h5>
             <div class="modifiers-list">
               <span 
                 v-for="mod in strategy.targetModifiers" 
@@ -318,18 +364,18 @@
           <div class="financial-analysis">
             <div class="analysis-row">
               <div class="metric">
-                <span class="metric-label">ต้นทุนรวม:</span>
+                <span class="metric-label">Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€”Ã Â¸Â¸Ã Â¸â„¢Ã Â¸Â£Ã Â¸Â§Ã Â¸Â¡:</span>
                 <span class="metric-value">{{ strategy.totalCost.toFixed(1) }} chaos</span>
               </div>
               <div class="metric">
-                <span class="metric-label">ราคาขายคาดการณ์:</span>
+                <span class="metric-label">Ã Â¸Â£Ã Â¸Â²Ã Â¸â€žÃ Â¸Â²Ã Â¸â€šÃ Â¸Â²Ã Â¸Â¢Ã Â¸â€žÃ Â¸Â²Ã Â¸â€Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£Ã Â¸â€œÃ Â¹Å’:</span>
                 <span class="metric-value">{{ strategy.expectedSellPrice.toFixed(1) }} chaos</span>
               </div>
             </div>
             
             <div class="analysis-row">
               <div class="metric">
-                <span class="metric-label">กำไรที่คาดว่าจะได้:</span>
+                <span class="metric-label">Ã Â¸ÂÃ Â¸Â³Ã Â¹â€žÃ Â¸Â£Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â€žÃ Â¸Â²Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹â€žÃ Â¸â€Ã Â¹â€°:</span>
                 <span 
                   class="metric-value profit"
                   :class="{ 
@@ -358,15 +404,15 @@
           <!-- Probability & Risk Info -->
           <div class="probability-risk">
             <div class="prob-info">
-              <span class="label">โอกาสสำเร็จ:</span>
+              <span class="label">Ã Â¹â€šÃ Â¸Â­Ã Â¸ÂÃ Â¸Â²Ã Â¸ÂªÃ Â¸ÂªÃ Â¸Â³Ã Â¹â‚¬Ã Â¸Â£Ã Â¹â€¡Ã Â¸Ë†:</span>
               <span class="value">{{ (strategy.successRate * 100).toFixed(2) }}%</span>
             </div>
             <div class="attempts-info">
-              <span class="label">จำนวนครั้งที่คาดว่าจะใช้:</span>
-              <span class="value">{{ strategy.expectedAttempts }} ครั้ง</span>
+              <span class="label">Ã Â¸Ë†Ã Â¸Â³Ã Â¸â„¢Ã Â¸Â§Ã Â¸â„¢Ã Â¸â€žÃ Â¸Â£Ã Â¸Â±Ã Â¹â€°Ã Â¸â€¡Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â€žÃ Â¸Â²Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹Æ’Ã Â¸Å Ã Â¹â€°:</span>
+              <span class="value">{{ strategy.expectedAttempts }} Ã Â¸â€žÃ Â¸Â£Ã Â¸Â±Ã Â¹â€°Ã Â¸â€¡</span>
             </div>
             <div class="risk-info">
-              <span class="label">ระดับความเสี่ยง:</span>
+              <span class="label">Ã Â¸Â£Ã Â¸Â°Ã Â¸â€Ã Â¸Â±Ã Â¸Å¡Ã Â¸â€žÃ Â¸Â§Ã Â¸Â²Ã Â¸Â¡Ã Â¹â‚¬Ã Â¸ÂªÃ Â¸ÂµÃ Â¹Ë†Ã Â¸Â¢Ã Â¸â€¡:</span>
               <span class="value risk-level" :class="strategy.riskLevel">
                 {{ getRiskLevelText(strategy.riskLevel) }}
               </span>
@@ -376,7 +422,7 @@
           <!-- Market Data -->
           <div class="market-data">
             <div class="market-metric">
-              <span class="label">Listings ในตลาด:</span>
+              <span class="label">Listings Ã Â¹Æ’Ã Â¸â„¢Ã Â¸â€¢Ã Â¸Â¥Ã Â¸Â²Ã Â¸â€:</span>
               <span class="value">{{ strategy.listings }}</span>
             </div>
             <div class="market-metric">
@@ -386,19 +432,18 @@
               </span>
             </div>
             <div class="market-metric">
-              <span class="label">ความมั่นใจ:</span>
+              <span class="label">Ã Â¸â€žÃ Â¸Â§Ã Â¸Â²Ã Â¸Â¡Ã Â¸Â¡Ã Â¸Â±Ã Â¹Ë†Ã Â¸â„¢Ã Â¹Æ’Ã Â¸Ë†:</span>
               <span class="value confidence">{{ strategy.confidence.toFixed(0) }}%</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
     <!-- Empty State -->
     <div v-if="!loading && strategies.length === 0" class="empty-state">
-      <div class="empty-icon">📈</div>
-      <h3>เริ่มต้นวิเคราะห์กำไร</h3>
-      <p>เลือก League และกดปุ่ม "วิเคราะห์กลยุทธ์" เพื่อหากลยุทธ์ที่ให้กำไรสูงสุด</p>
+      <div class="empty-icon">Ã°Å¸â€œË†</div>
+      <h3>Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸Â§Ã Â¸Â´Ã Â¹â‚¬Ã Â¸â€žÃ Â¸Â£Ã Â¸Â²Ã Â¸Â°Ã Â¸Â«Ã Â¹Å’Ã Â¸ÂÃ Â¸Â³Ã Â¹â€žÃ Â¸Â£</h3>
+      <p>Ã Â¹â‚¬Ã Â¸Â¥Ã Â¸Â·Ã Â¸Â­Ã Â¸Â League Ã Â¹ÂÃ Â¸Â¥Ã Â¸Â°Ã Â¸ÂÃ Â¸â€Ã Â¸â€ºÃ Â¸Â¸Ã Â¹Ë†Ã Â¸Â¡ "Ã Â¸Â§Ã Â¸Â´Ã Â¹â‚¬Ã Â¸â€žÃ Â¸Â£Ã Â¸Â²Ã Â¸Â°Ã Â¸Â«Ã Â¹Å’Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’" Ã Â¹â‚¬Ã Â¸Å¾Ã Â¸Â·Ã Â¹Ë†Ã Â¸Â­Ã Â¸Â«Ã Â¸Â²Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€°Ã Â¸ÂÃ Â¸Â³Ã Â¹â€žÃ Â¸Â£Ã Â¸ÂªÃ Â¸Â¹Ã Â¸â€¡Ã Â¸ÂªÃ Â¸Â¸Ã Â¸â€</p>
     </div>
   </div>
 </template>
@@ -409,6 +454,7 @@ import { usePOE2Data } from '../composables/usePOE2'
 import { useDetailedItems } from '../composables/useDetailedItems'
 import ItemCard from './ItemCard.vue'
 import poe2BaseItems from '../assets/poe2_base_items.json'
+import { getItemTypeIcon } from '../utils/itemIcons'
 
 // Composables
 const poe2Data = usePOE2Data()
@@ -424,9 +470,62 @@ const error = ref<string | null>(null)
 const strategies = ref<any[]>([])
 
 // Weapon Selection State
-const selectedWeaponCategory = ref<string | null>(null)
+const selectedItemCategory = ref<string | null>(null)
 const selectedWeaponType = ref<string | null>(null)
 const selectedBaseItem = ref<string | null>(null)
+
+// Armour specific state (subcategories and attribute type selection)
+const armourSubcategories = [
+  { id: 'gloves', name: 'Gloves', icon: 'Ã°Å¸Â§Â¤' },
+  { id: 'boots', name: 'Boots', icon: 'Ã°Å¸Â¥Â¾' },
+  { id: 'bodyArmours', name: 'Body Armours', icon: 'Ã°Å¸â€ºÂ¡Ã¯Â¸Â' },
+  { id: 'helmets', name: 'Helmets', icon: 'Ã°Å¸Âªâ€“' }
+]
+
+const attributeTypes = [
+  { id: 'str', name: 'str' },
+  { id: 'dex', name: 'dex' },
+  { id: 'int', name: 'int' },
+  { id: 'str_dex', name: 'str/dex' },
+  { id: 'str_int', name: 'str/int' },
+  { id: 'dex_int', name: 'dex/int' }
+]
+
+const selectedArmourSubcategory = ref<string | null>(null)
+const selectedArmourAttribute = ref<string | null>(null)
+
+const selectArmourSubcategory = (id: string) => {
+  selectedArmourSubcategory.value = id
+  selectedWeaponType.value = null
+  selectedBaseItem.value = null
+  if (selectedArmourAttribute.value) {
+    selectedWeaponType.value = `${id}_${selectedArmourAttribute.value}`
+  }
+}
+
+const selectArmourAttribute = (id: string) => {
+  if (selectedArmourAttribute.value === id) {
+    return
+  }
+  selectedArmourAttribute.value = id
+  selectedBaseItem.value = null
+  if (selectedArmourSubcategory.value) {
+    selectedWeaponType.value = `${selectedArmourSubcategory.value}_${id}`
+  }
+}
+
+// Off-Hand Shields attribute selection
+const shieldAttributeTypes = [
+  { id: 'str', name: 'str' },
+  { id: 'str_dex', name: 'str/dex' },
+  { id: 'str_int', name: 'str/int' }
+]
+
+const selectedShieldAttribute = ref<string | null>(null)
+const selectShieldAttribute = (id: string) => {
+  selectedShieldAttribute.value = selectedShieldAttribute.value === id ? null : id
+  selectedBaseItem.value = null
+}
 
 // Base Acquisition System State
 const alertThreshold = ref(100)
@@ -470,8 +569,8 @@ const baseAcquisitionMethods = ref([
   {
     id: 'reforge-rare',
     name: 'Reforge from Rare Items',
-    description: 'ซื้อ rare items แล้วใช้ Chaos Orb เพื่อ reroll modifiers',
-    icon: '🔄',
+    description: 'Ã Â¸â€¹Ã Â¸Â·Ã Â¹â€°Ã Â¸Â­ rare items Ã Â¹ÂÃ Â¸Â¥Ã Â¹â€°Ã Â¸Â§Ã Â¹Æ’Ã Â¸Å Ã Â¹â€° Chaos Orb Ã Â¹â‚¬Ã Â¸Å¾Ã Â¸Â·Ã Â¹Ë†Ã Â¸Â­ reroll modifiers',
+    icon: 'Ã°Å¸â€â€ž',
     averageCostEx: 2.8,
     averageCostDivine: 1,
     successRate: 80
@@ -479,8 +578,8 @@ const baseAcquisitionMethods = ref([
   {
     id: 'purchase-normal',
     name: 'Purchase Normal/Magic Bases',
-    description: 'ซื้อ normal/magic bases ที่มี modifiers เริ่มต้นดี',
-    icon: '🛒',
+    description: 'Ã Â¸â€¹Ã Â¸Â·Ã Â¹â€°Ã Â¸Â­ normal/magic bases Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸Â¡Ã Â¸Âµ modifiers Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€Ã Â¸Âµ',
+    icon: 'Ã°Å¸â€ºâ€™',
     averageCostEx: 1.2,
     averageCostDivine: 0,
     successRate: 80
@@ -488,8 +587,8 @@ const baseAcquisitionMethods = ref([
   {
     id: 'fracturing-orb',
     name: 'Fracturing Orb Strategy',
-    description: 'ซื้อ rare base แล้วใช้ Fracturing Orb เพื่อล็อค modifier ที่ดี',
-    icon: '💎',
+    description: 'Ã Â¸â€¹Ã Â¸Â·Ã Â¹â€°Ã Â¸Â­ rare base Ã Â¹ÂÃ Â¸Â¥Ã Â¹â€°Ã Â¸Â§Ã Â¹Æ’Ã Â¸Å Ã Â¹â€° Fracturing Orb Ã Â¹â‚¬Ã Â¸Å¾Ã Â¸Â·Ã Â¹Ë†Ã Â¸Â­Ã Â¸Â¥Ã Â¹â€¡Ã Â¸Â­Ã Â¸â€ž modifier Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¸â€Ã Â¸Âµ',
+    icon: 'Ã°Å¸â€™Å½',
     averageCostEx: 6.5,
     averageCostDivine: 2,
     successRate: 80
@@ -497,24 +596,36 @@ const baseAcquisitionMethods = ref([
 ])
 
 // Weapon Categories (POE2)
-const weaponCategories = ref([
+const itemCategories = ref([
   {
     id: 'oneHanded',
     name: 'One Handed Weapons',
-    icon: '⚔️',
+    icon: 'Ã¢Å¡â€Ã¯Â¸Â',
     count: 4 // wands, maces, sceptres, spears
   },
   {
     id: 'twoHanded', 
     name: 'Two Handed Weapons',
-    icon: '🗡️',
+    icon: 'Ã°Å¸â€”Â¡Ã¯Â¸Â',
     count: 5 // twoHandMaces, quarterstaves, crossbows, bows, staves
   },
   {
     id: 'offHanded',
     name: 'Off Handed Items',
-    icon: '🛡️',
+    icon: 'Ã°Å¸â€ºÂ¡Ã¯Â¸Â',
     count: 4 // foci, quivers, shields, bucklers
+  },
+  {
+    id: 'jewellery',
+    name: 'Jewellery',
+    icon: 'Ã°Å¸â€™Å½',
+    count: 3 // amulets, rings, belts
+  },
+  {
+    id: 'armour',
+    name: 'Armour',
+    icon: 'Ã°Å¸Âªâ€“',
+    count: 4 // gloves, boots, body armours, helmets
   }
 ])
 
@@ -545,44 +656,80 @@ const filteredHighValueBases = computed(() => {
   return highValueBases.value.filter(base => base.potentialProfit >= alertThreshold.value)
 })
 
-// Weapon Selection Computed Properties
+// Item Selection Computed Properties
 const availableWeaponTypes = computed(() => {
-  if (!selectedWeaponCategory.value) return []
+  if (!selectedItemCategory.value) return []
   
-  let weaponData
-  if (selectedWeaponCategory.value === 'oneHanded') {
-    weaponData = poe2BaseItems.weapons.oneHandedWeapons
-  } else if (selectedWeaponCategory.value === 'twoHanded') {
-    weaponData = poe2BaseItems.weapons.twoHandedWeapons
-  } else if (selectedWeaponCategory.value === 'offHanded') {
-    weaponData = poe2BaseItems.offHandedItems
+  let itemData
+  if (selectedItemCategory.value === 'oneHanded') {
+    itemData = poe2BaseItems.weapons.oneHandedWeapons
+  } else if (selectedItemCategory.value === 'twoHanded') {
+    itemData = poe2BaseItems.weapons.twoHandedWeapons
+  } else if (selectedItemCategory.value === 'offHanded') {
+    itemData = poe2BaseItems.offHandedItems
+  } else if (selectedItemCategory.value === 'jewellery') {
+    itemData = poe2BaseItems.jewellery
+  } else if (selectedItemCategory.value === 'armour') {
+    // Expose armour subtypes as combined keys: gloves_str, gloves_dex, etc.
+    itemData = (poe2BaseItems as any).armour || {
+      gloves_str: [
+        "Stocky Mitts",
+        "Riveted Mitts",
+        "Tempered Mitts",
+        "Moulded Mitts",
+        "Titan Mitts"
+      ],
+      gloves_dex: [],
+      gloves_int: [],
+      gloves_str_dex: [],
+      gloves_str_int: [],
+      gloves_dex_int: []
+    }
   } else {
     return []
   }
 
-  return Object.entries(weaponData).map(([key, items]) => ({
+  return Object.entries(itemData).map(([key, items]) => ({
     id: key,
-    name: formatWeaponTypeName(key),
-    icon: getWeaponTypeIcon(key),
+    name: formatItemTypeName(key),
+    icon: getItemTypeIcon(key),
     items: items as string[]
   }))
 })
 
 const availableBaseItems = computed(() => {
-  if (!selectedWeaponCategory.value || !selectedWeaponType.value) return []
+  if (!selectedItemCategory.value || !selectedWeaponType.value) return []
   
-  let weaponData
-  if (selectedWeaponCategory.value === 'oneHanded') {
-    weaponData = poe2BaseItems.weapons.oneHandedWeapons
-  } else if (selectedWeaponCategory.value === 'twoHanded') {
-    weaponData = poe2BaseItems.weapons.twoHandedWeapons
-  } else if (selectedWeaponCategory.value === 'offHanded') {
-    weaponData = poe2BaseItems.offHandedItems
+  let itemData
+  if (selectedItemCategory.value === 'oneHanded') {
+    itemData = poe2BaseItems.weapons.oneHandedWeapons
+  } else if (selectedItemCategory.value === 'twoHanded') {
+    itemData = poe2BaseItems.weapons.twoHandedWeapons
+  } else if (selectedItemCategory.value === 'offHanded') {
+    itemData = poe2BaseItems.offHandedItems
+  } else if (selectedItemCategory.value === 'jewellery') {
+    itemData = poe2BaseItems.jewellery
+  } else if (selectedItemCategory.value === 'armour') {
+    // For armour, we expect selectedWeaponType to be like 'gloves_str'
+    itemData = (poe2BaseItems as any).armour || {
+      gloves_str: [
+        "Stocky Mitts",
+        "Riveted Mitts",
+        "Tempered Mitts",
+        "Moulded Mitts",
+        "Titan Mitts"
+      ],
+      gloves_dex: [],
+      gloves_int: [],
+      gloves_str_dex: [],
+      gloves_str_int: [],
+      gloves_dex_int: []
+    }
   } else {
     return []
   }
     
-  return weaponData[selectedWeaponType.value as keyof typeof weaponData] as string[] || []
+  return itemData[selectedWeaponType.value as keyof typeof itemData] as string[] || []
 })
 
 // Check if we have detailed item data for current category
@@ -591,18 +738,48 @@ const hasDetailedItemsForCategory = computed(() => {
   return hasDetailedData(selectedWeaponType.value)
 })
 
-// Get detailed items for current category
+// Get detailed items for current category (sorted by levelRequirement asc; null = no requirement -> first)
 const availableDetailedItems = computed(() => {
   if (!selectedWeaponType.value || !hasDetailedItemsForCategory.value) return []
-  return getItemsByCategory(selectedWeaponType.value)
+  const detailed = getItemsByCategory(selectedWeaponType.value)
+  const baseNames = availableBaseItems.value
+  let items = Array.isArray(baseNames) && baseNames.length > 0
+    ? detailed.filter(item => baseNames.includes(item.name))
+    : detailed
+
+  // If Off-Handed Shields with attribute selected, filter by requirements
+  if (selectedItemCategory.value === 'offHanded' && selectedWeaponType.value === 'shields' && selectedShieldAttribute.value) {
+    const attr = selectedShieldAttribute.value
+    items = items.filter((item: any) => {
+      const s = !!item?.statRequirements?.str
+      const d = !!item?.statRequirements?.dex
+      const i = !!item?.statRequirements?.int
+      // If no stat req defined, include to avoid hiding early bases
+      if (!s && !d && !i) return true
+      if (attr === 'str') return s && !d && !i
+      if (attr === 'str_dex') return s && d && !i
+      if (attr === 'str_int') return s && i && !d
+      return true
+    })
+  }
+
+  // Sort: lower level first; null treated as 0 (no requirement). If tie, sort by name.
+  items = [...items].sort((a, b) => {
+    const la = (a.levelRequirement ?? 0)
+    const lb = (b.levelRequirement ?? 0)
+    if (la !== lb) return la - lb
+    return a.name.localeCompare(b.name)
+  })
+
+  return items
 })
 
 const showMethodCards = computed(() => {
   return selectedBaseItem.value !== null && selectedBaseItem.value !== ''
 })
 
-// Helper functions for POE2 0.3.1 weapons
-const formatWeaponTypeName = (key: string): string => {
+// Helper functions for POE2 0.3.1 items
+const formatItemTypeName = (key: string): string => {
   const nameMap: { [key: string]: string } = {
     // One Handed Weapons (POE2 0.3.1)
     wands: 'Wands',
@@ -619,31 +796,13 @@ const formatWeaponTypeName = (key: string): string => {
     foci: 'Foci',
     quivers: 'Quivers',
     shields: 'Shields',
-    bucklers: 'Bucklers'
+    bucklers: 'Bucklers',
+    // Jewellery
+    amulets: 'Amulets',
+    rings: 'Rings',
+    belts: 'Belts'
   }
   return nameMap[key] || key.charAt(0).toUpperCase() + key.slice(1)
-}
-
-const getWeaponTypeIcon = (key: string): string => {
-  const iconMap: { [key: string]: string } = {
-    // One Handed Weapons (POE2 0.3.1)
-    wands: '🪄',
-    maces: '🔨',
-    sceptres: '🔮',
-    spears: '🔱',
-    // Two Handed Weapons (POE2 0.3.1)
-    twoHandMaces: '🔨',
-    quarterstaves: '🪶',
-    crossbows: '🏹',
-    bows: '🏹',
-    staves: '🪶',
-    // Off Handed Items (POE2 0.3.1)
-    foci: '🔮',
-    quivers: '🏹',
-    shields: '🛡️',
-    bucklers: '⚡'
-  }
-  return iconMap[key] || '⚔️'
 }
 
 // Methods
@@ -717,7 +876,7 @@ const generateStrategies = async () => {
     ]
     
   } catch (err) {
-    error.value = 'ไม่สามารถสร้างกลยุทธ์ได้ กรุณาลองใหม่อีกครั้ง'
+    error.value = 'Ã Â¹â€žÃ Â¸Â¡Ã Â¹Ë†Ã Â¸ÂªÃ Â¸Â²Ã Â¸Â¡Ã Â¸Â²Ã Â¸Â£Ã Â¸â€“Ã Â¸ÂªÃ Â¸Â£Ã Â¹â€°Ã Â¸Â²Ã Â¸â€¡Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â¢Ã Â¸Â¸Ã Â¸â€”Ã Â¸ËœÃ Â¹Å’Ã Â¹â€žÃ Â¸â€Ã Â¹â€° Ã Â¸ÂÃ Â¸Â£Ã Â¸Â¸Ã Â¸â€œÃ Â¸Â²Ã Â¸Â¥Ã Â¸Â­Ã Â¸â€¡Ã Â¹Æ’Ã Â¸Â«Ã Â¸Â¡Ã Â¹Ë†Ã Â¸Â­Ã Â¸ÂµÃ Â¸ÂÃ Â¸â€žÃ Â¸Â£Ã Â¸Â±Ã Â¹â€°Ã Â¸â€¡'
   } finally {
     loading.value = false
   }
@@ -725,18 +884,18 @@ const generateStrategies = async () => {
 
 const getRiskLevelText = (riskLevel: string): string => {
   const texts = {
-    'low': 'ต่ำ',
-    'medium': 'ปานกลาง',
-    'high': 'สูง'
+    'low': 'Ã Â¸â€¢Ã Â¹Ë†Ã Â¸Â³',
+    'medium': 'Ã Â¸â€ºÃ Â¸Â²Ã Â¸â„¢Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â²Ã Â¸â€¡',
+    'high': 'Ã Â¸ÂªÃ Â¸Â¹Ã Â¸â€¡'
   }
   return texts[riskLevel as keyof typeof texts] || riskLevel
 }
 
 const getDemandText = (demand: string): string => {
   const texts = {
-    'high': 'สูง',
-    'medium': 'ปานกลาง',
-    'low': 'ต่ำ'
+    'high': 'Ã Â¸ÂªÃ Â¸Â¹Ã Â¸â€¡',
+    'medium': 'Ã Â¸â€ºÃ Â¸Â²Ã Â¸â„¢Ã Â¸ÂÃ Â¸Â¥Ã Â¸Â²Ã Â¸â€¡',
+    'low': 'Ã Â¸â€¢Ã Â¹Ë†Ã Â¸Â³'
   }
   return texts[demand as keyof typeof texts] || demand
 }
@@ -748,11 +907,11 @@ const toggleAlerts = () => {
 
 const getPriorityIcon = (priority: string): string => {
   const icons = {
-    'high': '🔥',
-    'medium': '⚡',
-    'low': '💡'
+    'high': 'Ã°Å¸â€Â¥',
+    'medium': 'Ã¢Å¡Â¡',
+    'low': 'Ã°Å¸â€™Â¡'
   }
-  return icons[priority as keyof typeof icons] || '💡'
+  return icons[priority as keyof typeof icons] || 'Ã°Å¸â€™Â¡'
 }
 
 const viewBaseDetails = (alert: any) => {
@@ -764,9 +923,9 @@ const dismissAlert = (alertId: number) => {
   highValueBases.value = highValueBases.value.filter(alert => alert.id !== alertId)
 }
 
-// Weapon Selection Methods
+// Item Selection Methods
 const selectWeaponCategory = (categoryId: string) => {
-  selectedWeaponCategory.value = categoryId
+  selectedItemCategory.value = categoryId
   selectedWeaponType.value = null
   selectedBaseItem.value = null
 }
@@ -774,6 +933,30 @@ const selectWeaponCategory = (categoryId: string) => {
 const selectWeaponType = (typeId: string) => {
   selectedWeaponType.value = typeId
   selectedBaseItem.value = null
+}
+
+// Map a base item name into a minimal DetailedItem structure for ItemCard
+const mapBaseToDetailedItem = (baseName: string, subcategory: string, attr: string) => {
+  const detailedItem = getDetailedItem(baseName, subcategory)
+  if (detailedItem) {
+    return detailedItem
+  }
+
+  const reqs: any = { str: undefined, dex: undefined, int: undefined }
+  if (attr === 'str') reqs.str = 40
+  else if (attr === 'dex') reqs.dex = 40
+  else if (attr === 'int') reqs.int = 40
+  else if (attr === 'str_dex') { reqs.str = 20; reqs.dex = 20 }
+  else if (attr === 'str_int') { reqs.str = 20; reqs.int = 20 }
+  else if (attr === 'dex_int') { reqs.dex = 20; reqs.int = 20 }
+
+  return {
+    name: baseName,
+    category: subcategory,
+    rarity: 'normal',
+    statRequirements: reqs,
+    levelRequirement: null
+  }
 }
 
 const selectDetailedItem = (item: any) => {
@@ -791,7 +974,7 @@ onMounted(async () => {
   try {
     await poe2Data.initializeData()
   } catch (err) {
-    error.value = 'ไม่สามารถโหลดข้อมูลได้'
+    error.value = 'Ã Â¹â€žÃ Â¸Â¡Ã Â¹Ë†Ã Â¸ÂªÃ Â¸Â²Ã Â¸Â¡Ã Â¸Â²Ã Â¸Â£Ã Â¸â€“Ã Â¹â€šÃ Â¸Â«Ã Â¸Â¥Ã Â¸â€Ã Â¸â€šÃ Â¹â€°Ã Â¸Â­Ã Â¸Â¡Ã Â¸Â¹Ã Â¸Â¥Ã Â¹â€žÃ Â¸â€Ã Â¹â€°'
   }
 })
 </script>
@@ -967,7 +1150,7 @@ onMounted(async () => {
 }
 
 .section-subtitle {
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   text-align: center;
   margin-bottom: 2rem;
   font-style: italic;
@@ -1022,7 +1205,7 @@ onMounted(async () => {
 
 .base-type-info p {
   margin: 0;
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   font-size: 0.85rem;
 }
 
@@ -1072,7 +1255,7 @@ onMounted(async () => {
 
 .method-desc {
   margin: 0;
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -1152,7 +1335,7 @@ onMounted(async () => {
 
 .alert-toggle {
   padding: 0.6rem 1.2rem;
-  border: 2px solid #6c757d;
+  border: 2px solid oklch(0.08 0.02 264);
   background: white;
   border-radius: 8px;
   cursor: pointer;
@@ -1217,7 +1400,7 @@ onMounted(async () => {
 
 .alert-content p {
   margin: 0.5rem 0;
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   line-height: 1.4;
 }
 
@@ -1259,8 +1442,8 @@ onMounted(async () => {
 
 .dismiss-btn {
   background: white;
-  color: #6c757d;
-  border: 1px solid #6c757d;
+  color: oklch(0.08 0.02 264);
+  border: 1px solid oklch(0.08 0.02 264);
 }
 
 .dismiss-btn:hover {
@@ -1270,7 +1453,7 @@ onMounted(async () => {
 .no-alerts {
   text-align: center;
   padding: 2rem;
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   font-style: italic;
 }
 
@@ -1326,7 +1509,7 @@ onMounted(async () => {
 }
 
 .strategies-count {
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   font-size: 0.9rem;
 }
 
@@ -1374,7 +1557,7 @@ onMounted(async () => {
 }
 
 .base-item {
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
   font-size: 0.9rem;
   display: block;
   margin-bottom: 0.5rem;
@@ -1524,7 +1707,7 @@ onMounted(async () => {
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
-  color: #6c757d;
+  color: oklch(0.08 0.02 264);
 }
 
 .empty-icon {
@@ -1687,6 +1870,42 @@ onMounted(async () => {
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
+/* Attribute Selection */
+.attribute-type-selection {
+  margin-top: 1.5rem;
+}
+
+.attribute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.attr-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.attr-btn:hover,
+.attr-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.attr-btn.active {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.45);
+}
 /* Item Cards Grid */
 .item-cards-grid {
   display: grid;
@@ -1708,6 +1927,20 @@ onMounted(async () => {
     padding: 1rem;
   }
   
+  .attribute-type-selection {
+    margin-top: 0.5rem;
+  }
+
+  .attribute-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .attr-btn {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
   .item-cards-grid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
@@ -1742,3 +1975,8 @@ onMounted(async () => {
   }
 }
 </style>
+
+
+
+
+

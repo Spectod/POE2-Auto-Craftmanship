@@ -1,0 +1,134 @@
+{
+    "transmute": {
+        "name": "Orb of Transmutation",
+        "rarityRequirement": "normal",
+        "allowedItemRarities": ["normal"],
+        "resultingRarity": "magic",
+        "category": "upgrade",
+        "tags": ["base", "magic-upgrade"],
+        "description": "Upgrades a normal item to magic rarity with 1-2 random modifiers.",
+        "defaultCostRef": "poe2scout",
+        "notes": "First step of traditional alteration crafting."
+    },
+    "augment": {
+        "name": "Orb of Augmentation",
+        "rarityRequirement": "magic",
+        "allowedItemRarities": ["magic"],
+        "resultingRarity": "magic",
+        "category": "add-mod",
+        "tags": ["prefix", "suffix"],
+        "description": "Adds a new random modifier to a magic item with an open slot.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Only usable if the item has fewer than 2 mods."
+    },
+    "alch": {
+        "name": "Orb of Alchemy",
+        "rarityRequirement": "normal",
+        "allowedItemRarities": ["normal"],
+        "resultingRarity": "rare",
+        "category": "upgrade",
+        "tags": ["rare-upgrade"],
+        "description": "Upgrades a normal item to rare with 4-6 random modifiers.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Common entry point for chaos spam on good bases."
+    },
+    "regal": {
+        "name": "Regal Orb",
+        "rarityRequirement": "magic",
+        "allowedItemRarities": ["magic"],
+        "resultingRarity": "rare",
+        "category": "upgrade",
+        "tags": ["rare-upgrade"],
+        "description": "Upgrades a magic item to rare and adds a new modifier.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Consumes the magic item and creates a rare with 3 mods."
+    },
+    "chaos": {
+        "name": "Chaos Orb",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare"],
+        "resultingRarity": "rare",
+        "category": "reroll",
+        "tags": ["prefix", "suffix", "random"],
+        "description": "Reforges a rare item with new random modifiers.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Greater/Perfect variants increase weighting towards higher tiers."
+    },
+    "exalted": {
+        "name": "Exalted Orb",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare"],
+        "resultingRarity": "rare",
+        "category": "add-mod",
+        "tags": ["prefix", "suffix", "premium"],
+        "description": "Adds a new random modifier to a rare item with an open prefix/suffix.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Cannot be used if the item already has 6 modifiers."
+    },
+    "divine": {
+        "name": "Divine Orb",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare", "unique"],
+        "resultingRarity": "same",
+        "category": "value-reroll",
+        "tags": ["numerical"],
+        "description": "Randomises the numeric values of the item's modifiers within their tiers.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Best paired with Hinekora's Lock to secure high rolls."
+    },
+    "annul": {
+        "name": "Orb of Annulment",
+        "rarityRequirement": "magic",
+        "allowedItemRarities": ["magic", "rare"],
+        "resultingRarity": "same",
+        "category": "remove-mod",
+        "tags": ["prefix", "suffix", "risk"],
+        "description": "Removes a random modifier from a magic or rare item.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Used to free a slot before multi-modding or exalting."
+    },
+    "fracturing-orb": {
+        "name": "Fracturing Orb",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare"],
+        "resultingRarity": "rare",
+        "category": "lock-mod",
+        "tags": ["fracture", "prefix", "suffix"],
+        "description": "Fractures one random modifier, fixing it permanently.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Converts the item into a fractured base for safer rerolling."
+    },
+    "vaal": {
+        "name": "Vaal Orb",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare", "unique"],
+        "resultingRarity": "corrupted",
+        "category": "corruption",
+        "tags": ["implicit", "risk"],
+        "description": "Corrupts the item, applying a powerful effect or bricking it.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Prevents further crafting except via special corruption benches."
+    },
+    "hinekoras-lock": {
+        "name": "Hinekora's Lock",
+        "rarityRequirement": "rare",
+        "allowedItemRarities": ["rare", "unique"],
+        "resultingRarity": "same",
+        "category": "control",
+        "tags": ["preview", "safety"],
+        "description": "Locks in the outcome of the next crafting action, allowing acceptance or rejection.",
+        "defaultCostRef": "poe2scout",
+        "notes": "Consumes on use; typically paired with Divine/Exalted."
+    },
+    "chance": {
+        "name": "Orb of Chance",
+        "rarityRequirement": "normal",
+        "allowedItemRarities": ["normal"],
+        "resultingRarity": "random",
+        "category": "upgrade",
+        "tags": ["unique-hunting"],
+        "description": "Upgrades a normal item to a random rarity (magic/rare/unique).",
+        "defaultCostRef": "poe2scout",
+        "notes": "Used for farming specific uniques when bases are cheap."
+    }
+}

@@ -6,7 +6,7 @@
         <div class="item-image">
           <!-- Placeholder for item image -->
           <div class="icon-placeholder">
-            {{ getItemIcon(item.category) }}
+            {{ iconForCategory }}
           </div>
         </div>
       </div>
@@ -25,8 +25,8 @@
       </div>
 
       <!-- Special Properties -->
-      <div v-if="item.special" class="stat-line special">
-        <span class="stat-value special-text">{{ item.special }}</span>
+      <div v-if="hasSpecial" class="stat-line special">
+        <span class="stat-value special-text">{{ combinedSpecial }}</span>
       </div>
 
       <!-- Requirements -->
@@ -69,6 +69,7 @@
 <script setup lang="ts">
 
 import { computed } from 'vue'
+import { getItemTypeIcon, getCategoryDisplayName } from '@/utils/itemIcons'
 
 interface ItemRequirements {
   str?: number
@@ -119,6 +120,46 @@ const hasRequirements = computed(() => {
          props.item.statRequirements.int
 })
 
+// Combine special properties with derived shield stats
+const combinedSpecial = computed(() => {
+  const parts: string[] = []
+  const itemAny = props.item as any
+  const raw = itemAny.special as string | undefined
+  if (raw && raw.trim().length > 0) parts.push(raw.trim())
+
+  // Ensure Block chance is shown consistently for off-hand shields/bucklers
+  const hasBlockInParts = parts.some(p => p.toLowerCase().startsWith('block chance:'))
+  let blockStr: string | null = null
+  const bc = itemAny.blockChance as number | undefined
+  if (bc !== undefined && bc !== null) {
+    blockStr = `Block chance: ${bc}%`
+  } else if (!hasBlockInParts) {
+    // Fallback inference by category/name if blockChance missing from data
+    const name = (props.item.name || '') as string
+    if (props.item.category === 'shields') {
+      if (/Tower Shield/i.test(name)) blockStr = 'Block chance: 26%'
+      else if (/Targe|Crest Shield|Golden Shield/i.test(name)) blockStr = 'Block chance: 25%'
+      else blockStr = 'Block chance: 25%'
+    } else if (props.item.category === 'bucklers') {
+      blockStr = 'Block chance: 20%'
+    }
+  }
+  if (blockStr) parts.unshift(blockStr)
+
+  // Append Base Movement Speed if available (for shields, targes, etc.)
+  const msp = itemAny.movementSpeedPenalty
+  if (msp !== undefined && msp !== null && msp !== '') {
+    parts.push(`Base Movement Speed: ${msp}`)
+  }
+
+  return parts.filter(p => p && p.length > 0).join(' | ')
+})
+
+const hasSpecial = computed(() => combinedSpecial.value.trim().length > 0)
+
+// Icon for item category (unified with weapon-type icons)
+const iconForCategory = computed(() => getItemTypeIcon(props.item.category))
+
 // Dynamic stats display - generic for all weapon types
 const displayStats = computed(() => {
   const stats: Array<{
@@ -153,6 +194,70 @@ const displayStats = computed(() => {
     }
   })
 
+  // Jewellery-specific fields (amulets, rings, belts)
+  if ((item as any).lifeRegeneration) {
+    stats.push({ key: 'lifeRegen', label: 'Life Regeneration', value: (item as any).lifeRegeneration, cssClass: 'life-regen' })
+  }
+  // Physical damage added by rings (e.g., Iron Ring)
+  if ((item as any).physicalDamageToAttacks) {
+    stats.push({ key: 'physicalDamageToAttacks', label: 'Physical Damage to Attacks', value: (item as any).physicalDamageToAttacks, cssClass: 'damage' })
+  }
+  if ((item as any).accuracyRating) {
+    stats.push({ key: 'accuracyRating', label: 'Accuracy Rating', value: (item as any).accuracyRating, cssClass: 'accuracy-rating' })
+  }
+  if ((item as any).castSpeed) {
+    stats.push({ key: 'castSpeed', label: 'Cast Speed', value: (item as any).castSpeed, cssClass: 'cast-speed' })
+  }
+  if ((item as any).manaRegeneration) {
+    stats.push({ key: 'manaRegen', label: 'Mana Regeneration', value: (item as any).manaRegeneration, cssClass: 'mana-regen' })
+  }
+  if ((item as any).maximumLife) {
+    stats.push({ key: 'maxLife', label: 'Maximum Life', value: (item as any).maximumLife, cssClass: 'max-life' })
+  }
+  if ((item as any).maximumMana) {
+    stats.push({ key: 'maxMana', label: 'Maximum Mana', value: (item as any).maximumMana, cssClass: 'max-mana' })
+  }
+  if ((item as any).maximumEnergyShield) {
+    stats.push({ key: 'maxES', label: 'Maximum Energy Shield', value: (item as any).maximumEnergyShield, cssClass: 'max-es' })
+  }
+  if ((item as any).attributeBonus) {
+    stats.push({ key: 'attrBonus', label: 'Attribute Bonus', value: (item as any).attributeBonus, cssClass: 'attr-bonus' })
+  }
+  if ((item as any).spiritBonus) {
+    stats.push({ key: 'spiritBonus', label: 'Spirit Bonus', value: (item as any).spiritBonus, cssClass: 'spirit' })
+  }
+  if ((item as any).rarityBonus) {
+    stats.push({ key: 'rarityBonus', label: 'Item Rarity Bonus', value: (item as any).rarityBonus, cssClass: 'rarity-bonus' })
+  }
+  if ((item as any).resistances) {
+    const res = (item as any).resistances
+    Object.keys(res).forEach(k => {
+      stats.push({ key: `res_${k}`, label: `${k.charAt(0).toUpperCase() + k.slice(1)} Resistance`, value: res[k], cssClass: 'resistance' })
+    })
+  }
+  if ((item as any).modifierLimits) {
+    const ml = (item as any).modifierLimits
+    if (ml.prefixModifier) stats.push({ key: 'mod_pref', label: 'Prefix Modifier', value: ml.prefixModifier, cssClass: 'modifier-limits' })
+    if (ml.suffixModifier) stats.push({ key: 'mod_suf', label: 'Suffix Modifier', value: ml.suffixModifier, cssClass: 'modifier-limits' })
+  }
+  if ((item as any).charmSlots) {
+    stats.push({ key: 'charmSlots', label: 'Charm Slots', value: (item as any).charmSlots, cssClass: 'charm-slots' })
+  }
+  if ((item as any).flaskEffects) {
+    stats.push({ key: 'flaskEffects', label: 'Flask Effects', value: (item as any).flaskEffects, cssClass: 'flask-effects' })
+  }
+
+  // Armour / Evasion / Energy Shield for armour pieces (Gloves, Boots, Body, Helm)
+  if ((item as any).armour !== undefined) {
+    stats.push({ key: 'armour', label: 'Armour', value: (item as any).armour, cssClass: 'armour' })
+  }
+  if ((item as any).evasionRating !== undefined) {
+    stats.push({ key: 'evasionRating', label: 'Evasion Rating', value: (item as any).evasionRating, cssClass: 'evasion' })
+  }
+  if ((item as any).energyShield !== undefined) {
+    stats.push({ key: 'energyShield', label: 'Energy Shield', value: (item as any).energyShield, cssClass: 'energy-shield' })
+  }
+
   return stats
 })
 
@@ -174,29 +279,29 @@ const formatCategory = (category: string): string => {
 
 const getItemIcon = (category: string): string => {
   const iconMap: { [key: string]: string } = {
-    sceptres: '🔮',
-    wands: '🪄',
-    spears: '🔱',
-    maces: '🔨',
-    bows: '🏹',
-    staves: '🪶',
-    foci: '🔮',
-    shields: '🛡️',
-    bucklers: '⚡',
-    quivers: '🏹'
+    sceptres: 'ðŸ”®',
+    wands: 'ðŸª„',
+    spears: 'ðŸ”±',
+    maces: 'ðŸ”¨',
+    bows: 'ðŸ¹',
+    staves: 'ðŸª¶',
+    foci: 'ðŸ”®',
+    shields: 'ðŸ›¡ï¸',
+    bucklers: 'âš¡',
+    quivers: 'ðŸ¹'
   }
-  return iconMap[category] || '⚔️'
+  return iconMap[category] || 'âš”ï¸'
 }
 
 const getSkillIcon = (color: string): string => {
   const skillIconMap: { [key: string]: string } = {
-    green: '💀',    // Skeletal Warrior
-    blue: '🧊',     // Discipline, Heart of Ice
-    red: '🔥',      // Mauge
-    orange: '🔥',   // Purify of Fire
-    purple: '⚡',   // Fulmination
+    green: '🟢',
+    blue: '🔵',
+    red: '🔴',
+    orange: '🟠',
+    purple: '🟣',
   }
-  return skillIconMap[color] || '✨'
+  return skillIconMap[color] || '⚪'
 }
 </script>
 
