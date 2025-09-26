@@ -25,14 +25,15 @@ export function useModsWorker() {
 
   const load = (url?: string) => call('load', { url })
   const search = (query: string) => call<any[]>('search', { query })
-  const applicable = (baseName: string, opts?: { affix?: 'prefix' | 'suffix'; mtypeId?: number; ilvl?: number }) =>
+  const applicable = (baseName: string, opts?: { affix?: 'prefix' | 'suffix'; mtypeId?: number; ilvl?: number; source?: 'base'|'desecrated'|'essence' }) =>
     call<any[]>('applicable', { baseName, opts })
+  const ev = (payload: { successRate: number; attemptCost: number; targetSellPrice: number; attempts?: number }) =>
+    call<{ evPerAttempt: number; attempts: number; totalEV: number }>('ev', payload)
 
   onBeforeUnmount(() => {
     worker.terminate()
     pendings.clear()
   })
 
-  return { load, search, applicable }
+  return { load, search, applicable, ev }
 }
-

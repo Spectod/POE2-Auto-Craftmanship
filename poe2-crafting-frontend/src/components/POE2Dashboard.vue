@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="poe2-dashboard">
     <!-- Tab Navigation -->
     <div class="tab-navigation">
@@ -53,7 +53,7 @@
         <!-- Data Display -->
         <div v-else class="data-grid">
           <!-- Leagues Section -->
-          <div class="data-section">
+          <div class="data-section league-section">
             <h2>Leagues</h2>
             <div v-if="leagues.leagues.value.length > 0" class="leagues-list">
               <div 
@@ -79,7 +79,7 @@
                   class="sort-button"
                   :class="{ 'desc': currency.sortOrder.value === 'desc' }"
                 >
-                  {{ currency.sortOrder.value === 'asc' ? '↑ Low to High' : '↓ High to Low' }}
+                  {{ currency.sortOrder.value === 'asc' ? '🔼 Low to High' : '🔽 High to Low' }}
                 </button>
                 <button 
                   @click="currency.toggleExtendedList()"
@@ -129,9 +129,78 @@
               </small>
             </div>
           </div>
+          <!-- Omens (Ritual) Section -->
+          <div class="data-section">
+            <div class="section-header">
+              <h2>Ritual Omens</h2>
+              <div class="currency-controls">
+                <button @click="toggleSort('omens')" class="sort-button" :class="{ 'desc': sortOrder.omens === 'desc' }">
+                  {{ sortOrder.omens === 'asc' ? '🔼 Low to High' : '🔽 High to Low' }}
+                </button>
+                <button @click="toggleShowMore('omens')" class="toggle-button" :class="{ 'active': showMore.omens }">
+                  {{ showMore.omens ? 'Show Less' : 'Show More' }}
+                </button>
+              </div>
+            </div>
+            <div v-if="omenList.length > 0" class="currency-list">
+              <div v-for="o in displayedOmenList" :key="o.name" class="currency-card">
+                <img v-if="o.iconUrl" :src="o.iconUrl" :alt="o.name" class="currency-icon"/>
+                <div class="currency-info">
+                  <h4>{{ o.name }}</h4>
+                  <div class="prices">
+                    <div class="comparison-values">
+                      <template v-if="getDivineToExaltRate() <= 0">
+                        <span class="error-price">Rate Error</span>
+                      </template>
+                      <template v-else>
+                        <span class="divine-cost">{{ o.divineValue.toFixed(3) }} Divine per 1 item</span>
+                        <span class="exalt-equivalent">{{ (o.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p v-else class="no-data">No omen data available</p>
+          </div>
+
+          <!-- Abyss Section -->
+          <div class="data-section">
+            <div class="section-header">
+              <h2>Abyssal Bones</h2>
+              <div class="currency-controls">
+                <button @click="toggleSort('abyss')" class="sort-button" :class="{ 'desc': sortOrder.abyss === 'desc' }">
+                  {{ sortOrder.abyss === 'asc' ? '🔼 Low to High' : '🔽 High to Low' }}
+                </button>
+                <button @click="toggleShowMore('abyss')" class="toggle-button" :class="{ 'active': showMore.abyss }">
+                  {{ showMore.abyss ? 'Show Less' : 'Show More' }}
+                </button>
+              </div>
+            </div>
+            <div v-if="abyssList.length > 0" class="currency-list">
+              <div v-for="a in displayedAbyssList" :key="a.name" class="currency-card">
+                <img v-if="a.iconUrl" :src="a.iconUrl" :alt="a.name" class="currency-icon"/>
+                <div class="currency-info">
+                  <h4>{{ a.name }}</h4>
+                  <div class="prices">
+                    <div class="comparison-values">
+                      <template v-if="getDivineToExaltRate() <= 0">
+                        <span class="error-price">Rate Error</span>
+                      </template>
+                      <template v-else>
+                        <span class="divine-cost">{{ a.divineValue.toFixed(3) }} Divine per 1 item</span>
+                        <span class="exalt-equivalent">{{ (a.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p v-else class="no-data">No abyss data available</p>
+          </div>
         </div>
       </div>
-
+          
       <!-- Profit Optimizer Tab -->
       <div v-if="currentTab === 'profit'" class="tab-panel">
         <ProfitOptimizer />
@@ -152,13 +221,14 @@
 import { ref, computed, onMounted } from 'vue'
 import { usePOE2Data } from '../composables/usePOE2'
 import ProfitOptimizer from './ProfitOptimizer.vue'
+import { poe2Api } from "../services/api"
 
 // Tab management
 const currentTab = ref('market')
 const tabs = [
-  { id: 'market', label: '📊 Market Overview' },
-  { id: 'profit', label: '🎯 Profit Optimizer' },
-  ...(import.meta.env.VITE_ENABLE_DEBUG === 'true' ? [{ id: 'debug', label: '🔧 Debug' }] : [])
+  { id: 'market', label: '🛍️ Market Overview' },
+  { id: 'profit', label: '💵 Profit Optimizer' },
+  ...(import.meta.env.VITE_ENABLE_DEBUG === 'true' ? [{ id: 'debug', label: '🐞 Debug' }] : [])
 ]
 
 // Use the POE2 data composable
@@ -227,6 +297,48 @@ const isDevelopment = computed(() =>
   import.meta.env.VITE_ENABLE_DEBUG === 'true'
 )
 
+// Market overview: Omens & Abyss lists
+const omenList = ref<{ name:string; iconUrl:string|null; divineValue:number }[]>([])
+const abyssList = ref<{ name:string; iconUrl:string|null; divineValue:number }[]>([])
+const sortOrder = ref<{ omens:'asc'|'desc'; abyss:'asc'|'desc' }>({ omens:'asc', abyss:'asc' })
+const showMore = ref<{ omens:boolean; abyss:boolean }>({ omens:false, abyss:false })
+
+const sortByDivine = (arr: any[], order: 'asc'|'desc') => {
+  const sorted = [...arr].sort((a,b)=> order==='asc' ? a.divineValue - b.divineValue : b.divineValue - a.divineValue)
+  return sorted
+}
+
+const displayedOmenList = computed(()=>{
+  const sorted = sortByDivine(omenList.value, sortOrder.value.omens)
+  return showMore.value.omens ? sorted : sorted.slice(0, 12)
+})
+const displayedAbyssList = computed(()=>{
+  const sorted = sortByDivine(abyssList.value, sortOrder.value.abyss)
+  return showMore.value.abyss ? sorted : sorted.slice(0, 12)
+})
+
+const toggleSort = (which: 'omens'|'abyss') => {
+  sortOrder.value[which] = sortOrder.value[which] === 'asc' ? 'desc' : 'asc'
+}
+const toggleShowMore = (which: 'omens'|'abyss') => {
+  showMore.value[which] = !showMore.value[which]
+}
+
+async function fetchCategoryPrices(category: string) {
+  try {
+    const league = leagues.currentLeague.value?.value
+    if (!league) return []
+    const res = await poe2Api.getCurrency({ league, category, page: 1 })
+    const dPrice = leagues.currentLeague.value?.divinePrice || 0
+    const list = (res.items || [])
+      .filter((it:any)=> it.currentPrice !== null)
+      .map((it:any)=>({ name: it.text, iconUrl: it.iconUrl, divineValue: dPrice>0 ? (it.currentPrice!/dPrice) : 0 }))
+    return list
+  } catch (e) {
+    console.error('fetchCategoryPrices error', category, e)
+    return []
+  }
+}
 const debugInfo = computed(() => ({
   connection: {
     isConnected: connection.isConnected.value,
@@ -245,8 +357,10 @@ const debugInfo = computed(() => ({
 }))
 
 // Initialize data on mount
-onMounted(() => {
-  initializeData()
+onMounted(async () => {
+  await initializeData()
+  omenList.value = await fetchCategoryPrices("ritual")
+  abyssList.value = await fetchCategoryPrices("abyss")
 })
 </script>
 
@@ -442,6 +556,14 @@ button.primary:hover:not(:disabled) {
   padding-bottom: 8px;
 }
 
+.data-section.league-section h2 {
+  border-bottom: 2px solid white;
+}
+
+.league-section {
+  background-color: #e7e7e7;
+}
+
 /* Section Headers */
 .section-header {
   display: flex;
@@ -477,6 +599,9 @@ button.primary:hover:not(:disabled) {
   color: white;
   border-color: #3b82f6;
 }
+.sort-button.desc:hover {
+  color: #374151;
+}
 
 .toggle-button.active {
   background-color: #10b981;
@@ -493,7 +618,7 @@ button.primary:hover:not(:disabled) {
 
 .league-card {
   padding: 12px;
-  border: 1px solid #e5e7eb;
+  border: 2px solid white;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -530,7 +655,7 @@ button.primary:hover:not(:disabled) {
   align-items: center;
   gap: 12px;
   padding: 12px;
-  border: 1px solid #f3f4f6;
+  border: 2px solid #f3f4f6;
   border-radius: 6px;
   background-color: #fafafa;
 }
@@ -640,3 +765,6 @@ button.primary:hover:not(:disabled) {
   }
 }
 </style>
+
+
+

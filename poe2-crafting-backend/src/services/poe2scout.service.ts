@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+﻿import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import {
   LeagueResponse,
   GetCurrencyItemsResponse,
@@ -313,3 +313,4 @@ export class POE2ScoutService {
     };
   }
 }
+

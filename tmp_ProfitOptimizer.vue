@@ -2,7 +2,7 @@
   <div class="profit-optimizer">
     <div class="optimizer-header">
       <h2 class="section-title">Profit Optimizer</h2>
-      <p class="section-description">Plan crafts, compare costs and expected value.</p>
+      <p class="section-description">à¸•à¸±à¸§à¸Šà¹ˆà¸§à¸¢à¸§à¸²à¸‡à¹à¸œà¸™à¸à¸³à¹„à¸£à¸ˆà¸²à¸à¸à¸²à¸£à¸„à¸£à¸²à¸Ÿ à¹€à¸¥à¸·à¸­à¸à¸¥à¸µà¸ à¸à¸²à¸™à¹„à¸­à¹€à¸—à¹‡à¸¡ à¹à¸¥à¸°à¹ƒà¸«à¹‰à¸£à¸°à¸šà¸šà¸„à¸³à¸™à¸§à¸“à¸•à¹‰à¸™à¸—à¸¸à¸™/à¹‚à¸­à¸à¸²à¸ªà¸ªà¸³à¹€à¸£à¹‡à¸ˆ</p>
     </div>
 
     <div class="controls-section">
@@ -22,20 +22,20 @@
         </div>
       </div>
       <button @click="generateStrategies" :disabled="!selectedLeague || loading" class="generate-btn">
-        <span v-if="loading" class="loading-spinner">Ã¢ÂÂ³</span>
-        {{ loading ? 'Generatingâ€¦' : 'Generate' }}
+        <span v-if="loading" class="loading-spinner">â³</span>
+        {{ loading ? 'à¸à¸³à¸¥à¸±à¸‡à¸ªà¸£à¹‰à¸²à¸‡à¸à¸¥à¸¢à¸¸à¸—à¸˜à¹Œ...' : 'à¸ªà¸£à¹‰à¸²à¸‡à¸à¸¥à¸¢à¸¸à¸—à¸˜à¹Œ' }}
       </button>
     </div>
 
-    <div v-if="error" class="error-message">Error: {{ error }}</div>
+    <div v-if="error" class="error-message">à¹€à¸à¸´à¸”à¸‚à¹‰à¸­à¸œà¸´à¸”à¸žà¸¥à¸²à¸”: {{ error }}</div>
 
     <div class="weapon-selection-section">
-      <h3>Select category, type and base</h3>
-      <p class="section-subtitle">Follow the steps below to choose items and filters.</p>
+      <h3>à¹€à¸¥à¸·à¸­à¸à¸­à¸²à¸§à¸¸à¸˜à¸ªà¸³à¸«à¸£à¸±à¸šà¸§à¸´à¹€à¸„à¸£à¸²à¸°à¸«à¹Œà¸à¸²à¸£à¸„à¸£à¸²à¸Ÿ</h3>
+      <p class="section-subtitle">à¹€à¸¥à¸·à¸­à¸à¸«à¸¡à¸§à¸”à¹à¸¥à¸°à¸Šà¸™à¸´à¸”à¹„à¸­à¹€à¸—à¹‡à¸¡ à¹à¸¥à¹‰à¸§à¹€à¸¥à¸·à¸­à¸à¸à¸²à¸™à¸ªà¸³à¸«à¸£à¸±à¸šà¸„à¸³à¸™à¸§à¸“</p>
 
       <!-- Step 1: Category -->
       <div class="category-selection">
-        <h4>Step 1: Choose Category</h4>
+        <h4>Step 1: à¹€à¸¥à¸·à¸­à¸à¸«à¸¡à¸§à¸”à¹„à¸­à¹€à¸—à¹‡à¸¡</h4>
         <div class="category-grid">
           <div v-for="category in itemCategories" :key="category.id" class="category-card" :class="{ selected: selectedItemCategory === category.id }" @click="selectWeaponCategory(category.id)">
             <div class="category-icon">{{ category.icon }}</div>
@@ -49,7 +49,7 @@
 
       <!-- Step 2: Type -->
       <div v-if="selectedItemCategory" class="weapon-type-selection">
-        <h4>Step 2: Choose Type</h4>
+        <h4>Step 2: à¹€à¸¥à¸·à¸­à¸à¸Šà¸™à¸´à¸”à¹„à¸­à¹€à¸—à¹‡à¸¡</h4>
 
         <template v-if="selectedItemCategory === 'armour'">
           <div class="weapon-type-grid">
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div v-if="selectedArmourSubcategory" class="attribute-type-selection">
-            <p class="section-subtitle">Pick attribute combination (STR / DEX / INT / Hybrids)</p>
+            <p class="section-subtitle">à¹€à¸¥à¸·à¸­à¸à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸° (STR/DEX/INT/à¹à¸šà¸šà¸œà¸ªà¸¡) à¸ªà¸³à¸«à¸£à¸±à¸šà¸Šà¸¸à¸”à¹€à¸à¸£à¸²à¸° à¹€à¸žà¸·à¹ˆà¸­à¸à¸£à¸­à¸‡à¸à¸²à¸™à¹„à¸­à¹€à¸—à¹‡à¸¡</p>
             <div class="attribute-grid">
               <button v-for="attr in attributeTypes" :key="attr.id" type="button" :class="['attr-btn', { active: selectedArmourAttribute === attr.id }]" :aria-pressed="selectedArmourAttribute === attr.id" @click="selectArmourAttribute(attr.id)">
                 {{ attr.name }}
@@ -79,7 +79,7 @@
             </div>
           </div>
           <div v-if="selectedItemCategory === 'offHanded' && selectedWeaponType === 'shields'" class="attribute-type-selection">
-            <p class="section-subtitle">Pick shield attribute group (STR / STR+DEX / STR+INT)</p>
+            <p class="section-subtitle">à¸à¸£à¸­à¸‡à¸•à¸²à¸¡à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸°à¸‚à¸­à¸‡à¹‚à¸¥à¹ˆ (STR / STR+DEX / STR+INT)</p>
             <div class="attribute-grid">
               <button v-for="attr in shieldAttributeTypes" :key="attr.id" type="button" :class="['attr-btn', { active: selectedShieldAttribute === attr.id }]" :aria-pressed="selectedShieldAttribute === attr.id" @click="selectShieldAttribute(attr.id)">
                 {{ attr.name }}
@@ -100,12 +100,12 @@
             </label>
             <label class="filter-option">
               <input type="radio" name="base-filter" value="endgame" v-model="currentFilterMode" :disabled="!endgameFilterAllowed" />
-              <span>End-game (Req Lvl >= 67)</span>
+              <span>End-game (Req Lvl â‰¥ 67)</span>
             </label>
           </div>
         </div>
-        <h4>Step 3: Choose Base Item</h4>
-        <p class="section-subtitle">Select an item to target for crafting.</p>
+        <h4>Step 3: à¹€à¸¥à¸·à¸­à¸à¸à¸²à¸™à¹„à¸­à¹€à¸—à¹‡à¸¡ (Base Item)</h4>
+        <p class="section-subtitle">à¹€à¸¥à¸·à¸­à¸à¸à¸²à¸™à¹„à¸­à¹€à¸—à¹‡à¸¡à¸—à¸µà¹ˆà¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸žà¸·à¹ˆà¸­à¸”à¸¹à¸£à¸²à¸¢à¸¥à¸°à¹€à¸­à¸µà¸¢à¸”à¹à¸¥à¸°à¸§à¸´à¸˜à¸µà¸à¸²à¸£à¹„à¸”à¹‰à¸¡à¸²</p>
         <div v-if="hasDetailedItemsForCategory" class="item-cards-grid">
           <ItemCard v-for="d in availableDetailedItems" :key="d.name" :item="d" :isSelected="selectedBaseItem === d.name" @select="selectDetailedItem" />
         </div>
@@ -131,15 +131,15 @@
               {{ lvl }}
             </button>
           </div>
-          <ModsSelector :base="selectedBaseItem" :ilvl="selectedIlvl" :successRate="globalSuccessRate" @update:selected="mods => (void mods)" />
+          <div class="ilvl-help">Min iLvl: {{ minIlvl }} • Max: 84 • Current: {{ selectedIlvl }}</div>\n          <ModsSelector :base="selectedBaseItem" :ilvl="selectedIlvl" :successRate="globalSuccessRate" @update:selected="mods => (void mods)" />
         </div>
       </div>
     </div>
 
     <div v-if="!loading && strategies.length === 0" class="empty-state">
-      <div class="empty-icon">⚙️</div>
-      <h3>Select category, type and base</h3>
-      <p>Choose a League and select an item category, type and base to start generating strategies.</p>
+      <div class="empty-icon">ðŸ“­</div>
+      <h3>à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸‚à¹‰à¸­à¸¡à¸¹à¸¥</h3>
+      <p>à¹€à¸¥à¸·à¸­à¸ League à¹à¸¥à¸°à¸à¸” "à¸ªà¸£à¹‰à¸²à¸‡à¸à¸¥à¸¢à¸¸à¸—à¸˜à¹Œ" à¹€à¸žà¸·à¹ˆà¸­à¹€à¸£à¸´à¹ˆà¸¡à¸§à¸´à¹€à¸„à¸£à¸²à¸°à¸«à¹Œ</p>
     </div>
   </div>
 </template>
@@ -189,12 +189,12 @@ const currentFilterMode = computed<'all' | 'endgame'>(
   }
 )
 
-// show/hide filter-row (hidden for quivers) Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€°Ã Â¹ÂÃ Â¸ÂªÃ Â¸â€Ã Â¸â€¡ ui Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¹Æ’Ã Â¸Å Ã Â¹â€°Ã Â¸ÂªÃ Â¸Â³Ã Â¸Â«Ã Â¸Â£Ã Â¸Â±Ã Â¸Å¡Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£ filter Ã Â¹â€žÃ Â¸Â«Ã Â¸Â¡
+// show/hide filter-row (hidden for quivers) à¸à¸³à¸«à¸™à¸”à¸§à¹ˆà¸²à¸ˆà¸°à¹ƒà¸«à¹‰à¹à¸ªà¸”à¸‡ ui à¸—à¸µà¹ˆà¹ƒà¸Šà¹‰à¸ªà¸³à¸«à¸£à¸±à¸šà¸à¸²à¸£ filter à¹„à¸«à¸¡
 const showFilterRow = computed(() => {
   return !(selectedWeaponType.value === 'quivers'|| selectedWeaponType.value === 'shields' || selectedItemCategory.value === 'jewellery')
 })
 
-// Per-type base item filter: 'all' | 'endgame' Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸â€žÃ Â¹Ë†Ã Â¸Â²Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€šÃ Â¸Â­Ã Â¸â€¡Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£ filter Ã Â¹ÂÃ Â¸Å¡Ã Â¸Å¡Ã Â¹â‚¬Ã Â¸Â£Ã Â¸ÂµÃ Â¸Â¢Ã Â¸Â¥Ã Â¹â€žÃ Â¸â€”Ã Â¸Â¡Ã Â¹Å’
+// Per-type base item filter: 'all' | 'endgame' à¸à¸³à¸«à¸™à¸”à¸„à¹ˆà¸²à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™à¸‚à¸­à¸‡à¸à¸²à¸£ filter à¹à¸šà¸šà¹€à¸£à¸µà¸¢à¸¥à¹„à¸—à¸¡à¹Œ
 const filterModeByType = ref<Record<string, 'all' | 'endgame'>>({})
 const endgameFilterAllowed = computed(() => {
   if (selectedItemCategory.value === 'jewellery') return false
@@ -203,7 +203,7 @@ const endgameFilterAllowed = computed(() => {
   return true
 })
 
-//Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸Â£Ã Â¸â€Ã Â¸â€žÃ Â¹Ë†Ã Â¸Â²Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â² filter Ã Â¸Ë†Ã Â¸Â°Ã Â¹â‚¬Ã Â¸â€ºÃ Â¹â€¡Ã Â¸â„¢ all Ã Â¸Â«Ã Â¸Â£Ã Â¸Â·Ã Â¸Â­ endgame Ã Â¹Æ’Ã Â¸â„¢Ã Â¸Â­Ã Â¸â€¢Ã Â¸â„¢Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€žÃ Â¸Â£Ã Â¸Â±Ã Â¸â€¡Ã Â¹ÂÃ Â¸Â£Ã Â¸Â
+//à¸à¸³à¸«à¸£à¸”à¸„à¹ˆà¸²à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™à¸§à¹ˆà¸² filter à¸ˆà¸°à¹€à¸›à¹‡à¸™ all à¸«à¸£à¸·à¸­ endgame à¹ƒà¸™à¸­à¸•à¸™à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™à¸„à¸£à¸±à¸‡à¹à¸£à¸
 const getDefaultFilterForCurrent = () =>{
   const t = selectedWeaponType.value ?? ''
   const isSpecial = selectedItemCategory.value === 'jewellery' || ['quivers', 'shields'].includes(t)
@@ -222,15 +222,15 @@ const selectWeaponType = (typeId: string) => {
   }
 }
 
-//Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€ Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â§Ã Â¸â€Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â¹Ã Â¹Ë†Ã Â¸Â£Ã Â¸Â­Ã Â¸â€¡Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€° Armours
+//à¸à¸³à¸«à¸™à¸” à¸«à¸¡à¸§à¸”à¸«à¸¡à¸¹à¹ˆà¸£à¸­à¸‡à¹ƒà¸«à¹‰ Armours
 const armourSubcategories = [
-  { id: 'gloves', name: 'Gloves', icon: 'Ã°Å¸Â§Â¤' },
-  { id: 'boots', name: 'Boots', icon: 'Ã°Å¸Â¥Â¾' },
-  { id: 'bodyArmours', name: 'Body Armours', icon: 'Ã°Å¸Â¥â€¹' },
-  { id: 'helmets', name: 'Helmets', icon: 'Ã°Å¸Âªâ€“' }
+  { id: 'gloves', name: 'Gloves', icon: 'ðŸ§¤' },
+  { id: 'boots', name: 'Boots', icon: 'ðŸ¥¾' },
+  { id: 'bodyArmours', name: 'Body Armours', icon: 'ðŸ¥‹' },
+  { id: 'helmets', name: 'Helmets', icon: 'ðŸª–' }
 ]
 
-//Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Â¡Ã Â¸ÂµÃ Â¸Â«Ã Â¸Â¡Ã Â¸Â§Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â¹Ã Â¹â‚¬Ã Â¸â€ºÃ Â¹â€¡Ã Â¸Â¯ Attribute Ã Â¹â€žÃ Â¸Â«Ã Â¸â„¢Ã Â¸Å¡Ã Â¹â€°Ã Â¸Â²Ã Â¸â€¡
+//à¸à¸³à¸«à¸™à¸”à¸§à¹ˆà¸²à¸¡à¸µà¸«à¸¡à¸§à¸«à¸¡à¸¹à¹€à¸›à¹‡à¸¯ Attribute à¹„à¸«à¸™à¸šà¹‰à¸²à¸‡
 const attributeTypes = [
   { id: 'str', name: 'str' },
   { id: 'dex', name: 'dex' },
@@ -304,11 +304,11 @@ const allLeagues = computed(() => {
 })
 
 const itemCategories = ref([
-  { id: 'oneHanded', name: 'One Handed Weapons', icon: '🗡️', count: 4 },
-  { id: 'twoHanded', name: 'Two Handed Weapons', icon: '⚔️', count: 5 },
-  { id: 'offHanded', name: 'Off Handed Items', icon: '🛡️', count: 4 },
-  { id: 'jewellery', name: 'Jewellery', icon: '💎', count: 3 },
-  { id: 'armour', name: 'Armour', icon: '🪖', count: 4 }
+  { id: 'oneHanded', name: 'One Handed Weapons', icon: 'ðŸ—¡ï¸', count: 4 },
+  { id: 'twoHanded', name: 'Two Handed Weapons', icon: 'ðŸª“', count: 5 },
+  { id: 'offHanded', name: 'Off Handed Items', icon: 'ðŸ›¡ï¸', count: 4 },
+  { id: 'jewellery', name: 'Jewellery', icon: 'ðŸ’', count: 3 },
+  { id: 'armour', name: 'Armour', icon: 'ðŸ¥‹', count: 4 }
 ])
 
 const availableWeaponTypes = computed(() => {
@@ -388,14 +388,14 @@ const onLeagueChange = () => { strategies.value = []; error.value = null }
 const generateStrategies = async () => {
   if (!selectedLeague.value) return
   loading.value = true; error.value = null
-  try { await new Promise(r => setTimeout(r, 300)); strategies.value = [] } catch (e) { error.value = 'Ã Â¹â€šÃ Â¸Â«Ã Â¸Â¥Ã Â¸â€Ã Â¸â€šÃ Â¹â€°Ã Â¸Â­Ã Â¸Â¡Ã Â¸Â¹Ã Â¸Â¥/Ã Â¸â€žÃ Â¸Â³Ã Â¸â„¢Ã Â¸Â§Ã Â¸â€œÃ Â¹â€žÃ Â¸Â¡Ã Â¹Ë†Ã Â¸ÂªÃ Â¸Â³Ã Â¹â‚¬Ã Â¸Â£Ã Â¹â€¡Ã Â¸Ë† Ã Â¹â€šÃ Â¸â€ºÃ Â¸Â£Ã Â¸â€Ã Â¸Â¥Ã Â¸Â­Ã Â¸â€¡Ã Â¹Æ’Ã Â¸Â«Ã Â¸Â¡Ã Â¹Ë†' } finally { loading.value = false }
+  try { await new Promise(r => setTimeout(r, 300)); strategies.value = [] } catch (e) { error.value = 'à¹‚à¸«à¸¥à¸”à¸‚à¹‰à¸­à¸¡à¸¹à¸¥/à¸„à¸³à¸™à¸§à¸“à¹„à¸¡à¹ˆà¸ªà¸³à¹€à¸£à¹‡à¸ˆ à¹‚à¸›à¸£à¸”à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆ' } finally { loading.value = false }
 }
 
 const selectWeaponCategory = (categoryId: string) => { selectedItemCategory.value = categoryId; selectedWeaponType.value = null; selectedBaseItem.value = null }
 const selectDetailedItem = (item: any) => { selectedBaseItem.value = item.name }
 const onBaseItemChange = () => {}
 
-onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { error.value = 'Ã Â¹â€šÃ Â¸Â«Ã Â¸Â¥Ã Â¸â€Ã Â¸â€šÃ Â¹â€°Ã Â¸Â­Ã Â¸Â¡Ã Â¸Â¹Ã Â¸Â¥Ã Â¹â‚¬Ã Â¸Å¡Ã Â¸Â·Ã Â¹â€°Ã Â¸Â­Ã Â¸â€¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¹â€žÃ Â¸Â¡Ã Â¹Ë†Ã Â¸ÂªÃ Â¸Â³Ã Â¹â‚¬Ã Â¸Â£Ã Â¹â€¡Ã Â¸Ë† Ã Â¹â€šÃ Â¸â€ºÃ Â¸Â£Ã Â¸â€Ã Â¸Â¥Ã Â¸Â­Ã Â¸â€¡Ã Â¹Æ’Ã Â¸Â«Ã Â¸Â¡Ã Â¹Ë†' } })
+onMounted(async () => { try { await poe2Data.initializeData() } catch (e) { error.value = 'à¹‚à¸«à¸¥à¸”à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¹€à¸šà¸·à¹‰à¸­à¸‡à¸•à¹‰à¸™à¹„à¸¡à¹ˆà¸ªà¸³à¹€à¸£à¹‡à¸ˆ à¹‚à¸›à¸£à¸”à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆ' } })
 // ========== iLvl picker logic ==========
 const minIlvl = computed(() => {
   const base = selectedBaseItem.value
@@ -450,6 +450,7 @@ watch([selectedBaseItem, selectedWeaponType], () => { selectedIlvl.value = clamp
 .ilvl-btn{padding:.35rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.2);color:#fff;cursor:pointer}
 .ilvl-btn.active{border-color:#ffd700;background:rgba(255,215,0,.2)}
 .ilvl-btn.disabled{opacity:.35;cursor:not-allowed}
+.ilvl-help{margin-top:.4rem;font-size:.85rem;color:#eee;opacity:.85}
 .empty-state{text-align:center;padding:3rem 1rem;color:#444}
 .empty-icon{font-size:3rem;margin-bottom:.5rem}
 @media (max-width:768px){.item-cards-grid{grid-template-columns:1fr}}

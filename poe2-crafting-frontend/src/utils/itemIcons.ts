@@ -7,7 +7,6 @@
     spears: 'Spear',
     // Two Handed Weapons
     twoHandMaces: 'Two Hand Mace',
-    twoHandedMaces: 'Two Hand Mace',
     quarterstaves: 'Quarterstaff',
     crossbows: 'Crossbow',
     bows: 'Bow',
@@ -31,7 +30,6 @@
 }
 
 export function getItemTypeIcon(key: string): string {
-  if (key === 'twoHandedMaces') key = 'twoHandMaces'
   // Prefer a clear emoji for two-hand maces
   if (key === 'twoHandMaces') return String.fromCodePoint(0x1FA93) // 🪓
   const iconMap: Record<string, string> = {
@@ -39,7 +37,7 @@ export function getItemTypeIcon(key: string): string {
     wands: '🪄',
     maces: '🔨',
     sceptres: '⚚',
-    spears: '🗡️',
+    spears: '🔱',
     // Two Handed Weapons
     twoHandMaces: '🪓',
     quarterstaves: '🪵',
@@ -54,7 +52,7 @@ export function getItemTypeIcon(key: string): string {
     // Jewellery
     amulets: '📿',
     rings: '💍',
-    belts: '🧷',
+    belts: '💎',
     // Armour
     gloves: '🧤',
     boots: '🥾',
