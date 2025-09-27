@@ -1,9 +1,6 @@
 ﻿<template>
   <div class="profit-optimizer">
-    <div class="optimizer-header">
-      <h2 class="section-title">Profit Optimizer</h2>
-      <p class="section-description">Plan crafts, compare costs and expected value.</p>
-    </div>
+
 
     <div class="controls-section">
       <div class="control-group">
@@ -30,12 +27,27 @@
     <div v-if="error" class="error-message">Error: {{ error }}</div>
 
     <div class="weapon-selection-section">
-      <h3>Select category, type and base</h3>
-      <p class="section-subtitle">Follow the steps below to choose items and filters.</p>
+      <h3>Crafting Setup</h3>
+
+      <!-- Simple Breadcrumb -->
+      <div class="breadcrumb">
+        <span :class="{ active: currentStep === 'category' }">{{ selectedItemCategory || 'Category' }}</span>
+        <span class="arrow">→</span>
+        <span :class="{ active: currentStep === 'type' }">{{ selectedWeaponType ? getTypeDisplayName(selectedWeaponType) : 'Type' }}</span>
+        <span class="arrow">→</span>
+        <span :class="{ active: currentStep === 'base' }">{{ selectedBaseItem || 'Base Item' }}</span>
+        <span class="arrow">→</span>
+        <span :class="{ active: currentStep === 'ilvl' }">{{ selectedIlvl ? `iLvl ${selectedIlvl}` : 'Level' }}</span>
+        <span class="arrow">→</span>
+        <span :class="{ active: currentStep === 'mods' }">Mods</span>
+      </div>
 
       <!-- Step 1: Category -->
-      <div class="category-selection">
-        <h4>Step 1: Choose Category</h4>
+      <div v-if="currentStep === 'category'" class="step-section">
+        <div class="step-header">
+          <h4>Step 1: Choose Category</h4>
+          <p class="step-description">Select the item category you want to craft.</p>
+        </div>
         <div class="category-grid">
           <div v-for="category in itemCategories" :key="category.id" class="category-card" :class="{ selected: selectedItemCategory === category.id }" @click="selectWeaponCategory(category.id)">
             <div class="category-icon">{{ category.icon }}</div>
@@ -48,8 +60,12 @@
       </div>
 
       <!-- Step 2: Type -->
-      <div v-if="selectedItemCategory" class="weapon-type-selection">
-        <h4>Step 2: Choose Type</h4>
+      <div v-if="currentStep === 'type'" class="step-section">
+        <div class="step-header">
+          <button @click="goToStep('category')" class="back-btn">← Back</button>
+          <h4>Step 2: Choose Type</h4>
+          <p class="step-description">Select the specific item type within {{ selectedItemCategory }}.</p>
+        </div>
 
         <template v-if="selectedItemCategory === 'armour'">
           <div class="weapon-type-grid">
@@ -90,7 +106,13 @@
       </div>
 
       <!-- Step 3: Base item -->
-      <div v-if="selectedWeaponType" class="base-item-selection">
+      <div v-if="currentStep === 'base'" class="step-section">
+        <div class="step-header">
+          <button @click="goToStep('type')" class="back-btn">← Back</button>
+          <h4>Step 3: Choose Base Item</h4>
+          <p class="step-description">Select the base item you want to craft.</p>
+        </div>
+
         <div v-if="showFilterRow" class="filter-row">
           <label class="filter-label">Filter</label>
           <div class="filter-options">
@@ -104,8 +126,7 @@
             </label>
           </div>
         </div>
-        <h4>Step 3: Choose Base Item</h4>
-        <p class="section-subtitle">Select an item to target for crafting.</p>
+
         <div v-if="hasDetailedItemsForCategory" class="item-cards-grid">
           <ItemCard v-for="d in availableDetailedItems" :key="d.name" :item="d" :isSelected="selectedBaseItem === d.name" @select="selectDetailedItem" />
         </div>
@@ -115,10 +136,17 @@
             <option v-for="baseItem in availableBaseItems" :key="baseItem" :value="baseItem">{{ baseItem }}</option>
           </select>
         </div>
+      </div>
 
-        <!-- Item Level Picker -->
-        <div v-if="selectedBaseItem" class="ilvl-picker">
-          <div class="ilvl-label">Select item level</div>
+      <!-- Step 4: Item Level -->
+      <div v-if="currentStep === 'ilvl'" class="step-section">
+        <div class="step-header">
+          <button @click="goToStep('base')" class="back-btn">← Back</button>
+          <h4>Step 4: Select Item Level</h4>
+          <p class="step-description">Choose the item level for {{ selectedBaseItem }}.</p>
+        </div>
+
+        <div class="ilvl-picker">
           <div class="ilvl-grid">
             <button
               v-for="lvl in 84"
@@ -131,7 +159,22 @@
               {{ lvl }}
             </button>
           </div>
-          <ModsSelector :base="selectedBaseItem" :ilvl="selectedIlvl" :successRate="globalSuccessRate" @update:selected="mods => (void mods)" />
+        </div>
+      </div>
+
+      <!-- Step 5: Mods Selector -->
+      <div v-if="currentStep === 'mods'" class="step-section">
+        <div class="step-header">
+          <button @click="goToStep('ilvl')" class="back-btn">← Back</button>
+          <h4>Step 5: Select Mods</h4>
+          <p class="step-description">Choose the mods you want on this {{ selectedBaseItem }}.</p>
+        </div>
+
+        <ModsSelector :base="selectedBaseItem" :ilvl="selectedIlvl" :successRate="globalSuccessRate" @update:selected="mods => (void mods)" />
+
+        <!-- Save Preset Button -->
+        <div class="preset-actions">
+          <button @click="savePreset" class="save-preset-btn">💾 Save as Preset</button>
         </div>
       </div>
     </div>
@@ -167,7 +210,49 @@ const selectedItemCategory = ref<string | null>(null)
 const selectedWeaponType = ref<string | null>(null)
 const selectedBaseItem = ref<string | null>(null)
 // Item level selection (default 81, clamped by min..84)
-const selectedIlvl = ref<number>(81)
+const selectedIlvl = ref<number | null>(81)
+// Editing state for collapsible UI
+const isEditingBaseItem = ref(false)
+
+// Step management for wizard UI
+const currentStep = computed<'category' | 'type' | 'base' | 'ilvl' | 'mods'>(() => {
+  if (!selectedItemCategory.value) return 'category'
+  if (!selectedWeaponType.value) return 'type'
+  if (!selectedBaseItem.value) return 'base'
+  if (selectedIlvl.value === null || selectedIlvl.value === undefined) return 'ilvl'
+  return 'mods'
+})
+
+const goToStep = (step: 'category' | 'type' | 'base' | 'ilvl') => {
+  console.log('goToStep called with:', step)
+  if (step === 'category') {
+    selectedItemCategory.value = null
+    selectedWeaponType.value = null
+    selectedArmourSubcategory.value = null
+    selectedArmourAttribute.value = null
+    selectedShieldAttribute.value = null
+    selectedBaseItem.value = null
+    selectedIlvl.value = null // Reset to null to go back to ilvl step
+  } else if (step === 'type') {
+    selectedWeaponType.value = null
+    selectedArmourSubcategory.value = null
+    selectedArmourAttribute.value = null
+    selectedShieldAttribute.value = null
+    selectedBaseItem.value = null
+    selectedIlvl.value = null
+  } else if (step === 'base') {
+    selectedBaseItem.value = null
+    selectedIlvl.value = null
+  } else if (step === 'ilvl') {
+    selectedIlvl.value = null // Reset to null to go back to ilvl step
+  }
+  console.log('State after goToStep:', {
+    category: selectedItemCategory.value,
+    type: selectedWeaponType.value,
+    base: selectedBaseItem.value,
+    ilvl: selectedIlvl.value
+  })
+}
 
 const currentFilterMode = computed<'all' | 'endgame'>(
   {
@@ -189,9 +274,9 @@ const currentFilterMode = computed<'all' | 'endgame'>(
   }
 )
 
-// show/hide filter-row (hidden for quivers) Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€°Ã Â¹ÂÃ Â¸ÂªÃ Â¸â€Ã Â¸â€¡ ui Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¹Æ’Ã Â¸Å Ã Â¹â€°Ã Â¸ÂªÃ Â¸Â³Ã Â¸Â«Ã Â¸Â£Ã Â¸Â±Ã Â¸Å¡Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£ filter Ã Â¹â€žÃ Â¸Â«Ã Â¸Â¡
+// show/hide filter-row (hidden for quivers, shields, wands, sceptres) Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Ë†Ã Â¸Â°Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€°Ã Â¹ÂÃ Â¸ÂªÃ Â¸â€Ã Â¸â€¡ ui Ã Â¸â€”Ã Â¸ÂµÃ Â¹Ë†Ã Â¹Æ’Ã Â¸Å Ã Â¹â€°Ã Â¸ÂªÃ Â¸Â³Ã Â¸Â«Ã Â¸Â£Ã Â¸Â±Ã Â¸Å¡Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£ filter Ã Â¹â€žÃ Â¸Â«Ã Â¸Â¡
 const showFilterRow = computed(() => {
-  return !(selectedWeaponType.value === 'quivers'|| selectedWeaponType.value === 'shields' || selectedItemCategory.value === 'jewellery')
+  return !(selectedWeaponType.value === 'quivers'|| selectedWeaponType.value === 'shields' || selectedWeaponType.value === 'wands' || selectedWeaponType.value === 'sceptres' || selectedItemCategory.value === 'jewellery')
 })
 
 // Per-type base item filter: 'all' | 'endgame' Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸â€žÃ Â¹Ë†Ã Â¸Â²Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€šÃ Â¸Â­Ã Â¸â€¡Ã Â¸ÂÃ Â¸Â²Ã Â¸Â£ filter Ã Â¹ÂÃ Â¸Å¡Ã Â¸Å¡Ã Â¹â‚¬Ã Â¸Â£Ã Â¸ÂµÃ Â¸Â¢Ã Â¸Â¥Ã Â¹â€žÃ Â¸â€”Ã Â¸Â¡Ã Â¹Å’
@@ -199,14 +284,16 @@ const filterModeByType = ref<Record<string, 'all' | 'endgame'>>({})
 const endgameFilterAllowed = computed(() => {
   if (selectedItemCategory.value === 'jewellery') return false
   if (selectedWeaponType.value === 'quivers') return false
-  if (selectedWeaponType.value === 'shields') return false 
+  if (selectedWeaponType.value === 'shields') return false
+  if (selectedWeaponType.value === 'wands') return false
+  if (selectedWeaponType.value === 'sceptres') return false
   return true
 })
 
 //Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸Â£Ã Â¸â€Ã Â¸â€žÃ Â¹Ë†Ã Â¸Â²Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â² filter Ã Â¸Ë†Ã Â¸Â°Ã Â¹â‚¬Ã Â¸â€ºÃ Â¹â€¡Ã Â¸â„¢ all Ã Â¸Â«Ã Â¸Â£Ã Â¸Â·Ã Â¸Â­ endgame Ã Â¹Æ’Ã Â¸â„¢Ã Â¸Â­Ã Â¸â€¢Ã Â¸â„¢Ã Â¹â‚¬Ã Â¸Â£Ã Â¸Â´Ã Â¹Ë†Ã Â¸Â¡Ã Â¸â€¢Ã Â¹â€°Ã Â¸â„¢Ã Â¸â€žÃ Â¸Â£Ã Â¸Â±Ã Â¸â€¡Ã Â¹ÂÃ Â¸Â£Ã Â¸Â
 const getDefaultFilterForCurrent = () =>{
   const t = selectedWeaponType.value ?? ''
-  const isSpecial = selectedItemCategory.value === 'jewellery' || ['quivers', 'shields'].includes(t)
+  const isSpecial = selectedItemCategory.value === 'jewellery' || ['quivers', 'shields', 'wands', 'sceptres'].includes(t)
   return isSpecial ? 'all' : 'endgame'
 }
 const selectWeaponType = (typeId: string) => {
@@ -224,10 +311,10 @@ const selectWeaponType = (typeId: string) => {
 
 //Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€ Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â§Ã Â¸â€Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â¹Ã Â¹Ë†Ã Â¸Â£Ã Â¸Â­Ã Â¸â€¡Ã Â¹Æ’Ã Â¸Â«Ã Â¹â€° Armours
 const armourSubcategories = [
-  { id: 'gloves', name: 'Gloves', icon: 'Ã°Å¸Â§Â¤' },
-  { id: 'boots', name: 'Boots', icon: 'Ã°Å¸Â¥Â¾' },
-  { id: 'bodyArmours', name: 'Body Armours', icon: 'Ã°Å¸Â¥â€¹' },
-  { id: 'helmets', name: 'Helmets', icon: 'Ã°Å¸Âªâ€“' }
+  { id: 'gloves', name: 'Gloves', icon: '🧤' },
+  { id: 'boots', name: 'Boots', icon: '🥾' },
+  { id: 'bodyArmours', name: 'Body Armours', icon: '🥼' },
+  { id: 'helmets', name: 'Helmets', icon: '⛑️' }
 ]
 
 //Ã Â¸ÂÃ Â¸Â³Ã Â¸Â«Ã Â¸â„¢Ã Â¸â€Ã Â¸Â§Ã Â¹Ë†Ã Â¸Â²Ã Â¸Â¡Ã Â¸ÂµÃ Â¸Â«Ã Â¸Â¡Ã Â¸Â§Ã Â¸Â«Ã Â¸Â¡Ã Â¸Â¹Ã Â¹â‚¬Ã Â¸â€ºÃ Â¹â€¡Ã Â¸Â¯ Attribute Ã Â¹â€žÃ Â¸Â«Ã Â¸â„¢Ã Â¸Å¡Ã Â¹â€°Ã Â¸Â²Ã Â¸â€¡
@@ -241,8 +328,8 @@ const attributeTypes = [
 ]
 
 const selectedArmourSubcategory = ref<string | null>(null)
-// Default Armour attribute to 'int' so armour types start at INT by default
-const selectedArmourAttribute = ref<string>('int')
+// No default selection for armour attributes
+const selectedArmourAttribute = ref<string | null>(null)
 const selectArmourSubcategory = (id: string) => {
   selectedArmourSubcategory.value = id
   selectedWeaponType.value = null
@@ -407,8 +494,46 @@ const minIlvl = computed(() => {
   return min
 })
 const clampIlvl = (lvl: number) => Math.max(minIlvl.value, Math.min(84, lvl))
-const onSelectIlvl = (lvl: number) => { selectedIlvl.value = clampIlvl(lvl) }
+const onSelectIlvl = (lvl: number) => { selectedIlvl.value = clampIlvl(lvl); isEditingBaseItem.value = false }
+
+// UI state management
+const startEditingBaseItem = () => { isEditingBaseItem.value = true }
+
+// Preset management
+const savePreset = () => {
+  const preset = {
+    id: Date.now().toString(),
+    name: `${selectedBaseItem.value} (iLvl ${selectedIlvl.value})`,
+    category: selectedItemCategory.value,
+    type: selectedWeaponType.value,
+    baseItem: selectedBaseItem.value,
+    ilvl: selectedIlvl.value,
+    mods: [], // TODO: get from ModsSelector
+    createdAt: new Date().toISOString()
+  }
+  // TODO: Save to localStorage or backend
+  console.log('Saving preset:', preset)
+  alert(`Preset "${preset.name}" saved!`)
+}
+
 watch([selectedBaseItem, selectedWeaponType], () => { selectedIlvl.value = clampIlvl(81) })
+
+// Helper functions for display names
+const getCategoryDisplayName = (categoryId: string) => {
+  const category = itemCategories.value.find(c => c.id === categoryId)
+  return category?.name || categoryId
+}
+
+const getTypeDisplayName = (typeId: string) => {
+  if (typeId.includes('_')) {
+    // Handle armour types like "gloves_str"
+    const [sub, attr] = typeId.split('_')
+    const subName = armourSubcategories.find(s => s.id === sub)?.name || sub
+    const attrName = attributeTypes.find(a => a.id === attr)?.name || attr
+    return `${subName} (${attrName})`
+  }
+  return formatItemTypeName(typeId)
+}
 
 </script>
 
@@ -427,6 +552,15 @@ watch([selectedBaseItem, selectedWeaponType], () => { selectedIlvl.value = clamp
 .error-message{background:#fee;border:1px solid #fcc;color:#a00;padding:1rem;border-radius:8px;margin-bottom:1rem;text-align:center}
 .weapon-selection-section{background-color: darkslateblue;border-radius:12px;padding:1.5rem;margin-bottom:2rem;color:#fff}
 .section-subtitle{text-align:center;margin:.25rem 0 1rem 0;opacity:.9}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:6px;font-size:.9rem}
+.breadcrumb span{color:#fff;opacity:.7}
+.breadcrumb span.active{color:#ffd700;font-weight:600}
+/* Removed ::after for arrows */
+.step-section{background:rgba(255,255,255,.05);border-radius:8px;padding:1.5rem;margin-bottom:1rem}
+.step-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.back-btn{background:none;border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.5rem 1rem;color:#fff;cursor:pointer}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.step-description{color:#fff;opacity:.8;font-size:.95rem}
 .category-grid,.weapon-type-grid{display:grid;gap:1rem}
 .category-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .weapon-type-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
@@ -448,12 +582,23 @@ watch([selectedBaseItem, selectedWeaponType], () => { selectedIlvl.value = clamp
 .ilvl-label{font-weight:700;margin-bottom:.5rem;color:#fff;opacity:.95}
 .ilvl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:.35rem}
 .ilvl-btn{padding:.35rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.2);color:#fff;cursor:pointer}
+.ilvl-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.05);box-shadow:0 2px 4px rgba(0,0,0,.2)}
 .ilvl-btn.active{border-color:#ffd700;background:rgba(255,215,0,.2)}
 .ilvl-btn.disabled{opacity:.35;cursor:not-allowed}
+.selected-summary{margin-top:1rem}
+.summary-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:1rem;display:flex;gap:1rem;align-items:center;cursor:pointer}
+.summary-card:hover{background:rgba(255,255,255,.12)}
+.summary-icon{font-size:2rem}
+.summary-content{flex:1}
+.summary-content h5{margin:0 0 .25rem 0;color:#fff}
+.summary-content p{margin:.25rem 0;color:#fff;opacity:.9}
+.summary-content small{color:#fff;opacity:.7}
+.summary-arrow{font-size:1.5rem}
+.mods-section{margin-top:1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1rem}
+.preset-actions{margin-top:1rem;text-align:center}
+.save-preset-btn{background:#28a745;color:#fff;border:none;padding:.6rem 1.2rem;border-radius:6px;font-weight:600;cursor:pointer}
+.save-preset-btn:hover{background:#218838}
 .empty-state{text-align:center;padding:3rem 1rem;color:#444}
 .empty-icon{font-size:3rem;margin-bottom:.5rem}
 @media (max-width:768px){.item-cards-grid{grid-template-columns:1fr}}
 </style>
-
-
-

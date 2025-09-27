@@ -23,17 +23,19 @@ export function useModsWorker() {
       worker.postMessage({ id, type, payload })
     })
 
-  const load = (url?: string) => call('load', { url })
+  const load = () => call('load')
   const search = (query: string) => call<any[]>('search', { query })
   const applicable = (baseName: string, opts?: { affix?: 'prefix' | 'suffix'; mtypeId?: number; ilvl?: number; source?: 'base'|'desecrated'|'essence' }) =>
     call<any[]>('applicable', { baseName, opts })
   const ev = (payload: { successRate: number; attemptCost: number; targetSellPrice: number; attempts?: number }) =>
     call<{ evPerAttempt: number; attempts: number; totalEV: number }>('ev', payload)
+  const tierStats = (payload: { modId: number; ilvl: number; method: 'base'|'desecrated'|'essence'; attemptCost: number }) =>
+    call<{ tier:number; p:number; attempts:number; cost:number }[]>('tierStats', payload)
 
   onBeforeUnmount(() => {
     worker.terminate()
     pendings.clear()
   })
 
-  return { load, search, applicable, ev }
+  return { load, search, applicable, ev, tierStats }
 }

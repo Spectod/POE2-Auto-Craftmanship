@@ -32,7 +32,12 @@ function main() {
     console.error('Raw file not found:', RAW)
     process.exit(1)
   }
-  const raw = JSON.parse(fs.readFileSync(RAW, 'utf8'))
+  let rawContent = fs.readFileSync(RAW, 'utf8')
+  // Remove BOM if present
+  if (rawContent.charCodeAt(0) === 0xFEFF) {
+    rawContent = rawContent.slice(1)
+  }
+  const raw = JSON.parse(rawContent)
 
   const mtypesById = new Map()
   if (raw.mtypes?.seq) {
@@ -140,4 +145,3 @@ function main() {
 }
 
 main()
-

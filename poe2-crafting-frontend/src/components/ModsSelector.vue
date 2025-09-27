@@ -15,25 +15,42 @@
       <input class="mods-search" v-model="query" placeholder="Search mods..." @input="refresh" />
     </div>
 
-    <div class="mods-pane">
-      <div class="mods-list">
-        <div class="mods-title">Applicable Mods</div>
-        <div v-if="applicable.length === 0" class="empty-hint">No mods found</div>
-        <div v-for="m in applicable" :key="m.id" class="mod-row">
-          <div class="mod-name">{{ m.name }} <span class="tag">{{ m.affix }}</span></div>
-          <button type="button" class="add-btn" @click="add(m)">Add</button>
+    <div class="mods-cards">
+      <div v-for="category in modCategories" :key="category.key" class="mod-category-card">
+        
+        <div class="category-header">
+          <h4 class="category-title">{{ category.title }}</h4>
+          <span class="category-count">{{ category.mods.length }}</span>
         </div>
+        <div class="mods-grid">
+          <div v-for="m in category.mods" :key="m.id" class="mod-card" @click="openTierSelector(m)">
+            <div class="mod-name">{{ m.name }}</div>
+            <div class="mod-meta">
+              <span class="tag">{{ m.affix }}</span>
+              <span v-if="m.source !== 'base'" class="source-tag">{{ m.source }}</span>
+            </div>
+            <div class="mod-tiers" v-if="getTiersForDisplay(m).length > 0">
+              <div v-for="tier in getTiersForDisplay(m)" :key="tier.tier" class="tier-preview">
+                <span class="tier-label">T{{ tier.tier }}:</span>
+                <span class="tier-values">{{ formatTierValues(tier.values) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="mods-selected">
-        <div class="mods-title">Selected Mods</div>
-        <div v-if="selected.length === 0" class="empty-hint">No mods selected</div>
-        <div v-for="sm in selected" :key="sm.id" class="mod-row selected">
-          <div class="mod-name">{{ sm.name }} <span class="tag">{{ sm.affix }}</span></div>
-          <select v-model.number="sm.selectedTier" class="tier-select">
-            <option v-for="t in sm.tiers" :key="t.tier" :value="t.tier">T{{ t.tier }}</option>
-          </select>
-          <button type="button" class="remove-btn" @click="remove(sm.id)">Remove</button>
-        </div>
+
+    </div>
+
+    <div class="mods-selected">
+      <div class="mods-title">Selected Mods</div>
+      <div v-if="selected.length === 0" class="empty-hint">No mods selected</div>
+      <div v-for="sm in selected" :key="sm.id" class="mod-row selected">
+        <div class="mod-name">{{ sm.name }} <span class="tag">{{ sm.affix }}</span></div>
+        <select v-model.number="sm.selectedTier" class="tier-select">
+          <option v-for="t in sm.tiers" :key="t.tier" :value="t.tier">T{{ t.tier }}</option>
+        </select>
+        <button type="button" class="remove-btn" @click="remove(sm.id)">Remove</button>
       </div>
     </div>
 
@@ -57,14 +74,23 @@
         <div>Total EV: {{ ev.totalEV.toFixed(3) }} div</div>
       </div>
     </div>
+
+    <TierSelector
+      :visible="tierSelectorVisible"
+      :tiers="currentTiers"
+      :mod-name="currentMod?.name || ''"
+      @select="onTierSelect"
+      @cancel="closeTierSelector"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, computed } from 'vue'
 import { useModsWorker } from '@/composables/useModsWorker'
+import TierSelector from './TierSelector.vue'
 
-interface Props { base: string | null; ilvl: number; successRate: number }
+interface Props { base: string | null; ilvl: number | null; successRate: number }
 const props = defineProps<Props>()
 const emit = defineEmits<{ (e:'update:selected', value:{ id:number; tier:number|null }[]): void }>()
 
@@ -81,8 +107,53 @@ const targetSellPrice = ref(1.0)
 const attempts = ref(1)
 const ev = ref<{ evPerAttempt:number; attempts:number; totalEV:number } | null>(null)
 
+// Tier selector state
+const tierSelectorVisible = ref(false)
+const currentMod = ref<any>(null)
+const currentTiers = ref<any[]>([])
+
+const modCategories = computed(() => {
+  const categories = [
+    { key: 'prefix', title: 'Prefix', mods: [] as any[] },
+    { key: 'suffix', title: 'Suffix', mods: [] as any[] },
+    { key: 'desecrated_prefix', title: 'Desecrated Modifiers Prefix', mods: [] as any[] },
+    { key: 'desecrated_suffix', title: 'Desecrated Modifiers Suffix', mods: [] as any[] },
+    { key: 'essence_prefix', title: 'Essence Prefix', mods: [] as any[] },
+    { key: 'essence_suffix', title: 'Essence Suffix', mods: [] as any[] },
+    { key: 'corrupted', title: 'Corrupted', mods: [] as any[] }
+  ]
+
+  applicable.value.forEach(mod => {
+    if (mod.corrupted) {
+      categories.find(c => c.key === 'corrupted')?.mods.push(mod)
+    } else if (mod.source === 'desecrated' && mod.affix === 'prefix') {
+      categories.find(c => c.key === 'desecrated_prefix')?.mods.push(mod)
+    } else if (mod.source === 'desecrated' && mod.affix === 'suffix') {
+      categories.find(c => c.key === 'desecrated_suffix')?.mods.push(mod)
+    } else if (mod.source === 'essence' && mod.affix === 'prefix') {
+      categories.find(c => c.key === 'essence_prefix')?.mods.push(mod)
+    } else if (mod.source === 'essence' && mod.affix === 'suffix') {
+      categories.find(c => c.key === 'essence_suffix')?.mods.push(mod)
+    } else if (mod.affix === 'prefix') {
+      categories.find(c => c.key === 'prefix')?.mods.push(mod)
+    } else if (mod.affix === 'suffix') {
+      categories.find(c => c.key === 'suffix')?.mods.push(mod)
+    }
+  })
+
+  // เพิ่มใน computed modCategories
+  console.log('modCategories debug:', {
+    applicableLength: applicable.value.length,
+    base: props.base,
+    ilvl: props.ilvl,
+    categories: categories.map(c => ({ key: c.key, modsCount: c.mods.length }))
+  })
+
+  return categories.filter(cat => cat.mods.length > 0)
+})
+
 const refresh = async () => {
-  if (!props.base) { applicable.value = []; return }
+  if (!props.base || props.ilvl === null) { applicable.value = []; return }
   const opts: any = { ilvl: props.ilvl }
   if (affix.value !== 'all') opts.affix = affix.value
   if (source.value !== 'all') opts.source = source.value
@@ -92,7 +163,26 @@ const refresh = async () => {
   applicable.value = list
 }
 
-const tiersForIlvl = (mod:any) => (mod?.tiers||[]).filter((t:any)=> (t?.ilvl??0) <= props.ilvl)
+const tiersForIlvl = (mod:any) => (mod?.tiers||[]).filter((t:any)=> (t?.ilvl??0) <= (props.ilvl ?? 0))
+
+const getTiersForDisplay = (mod: any) => {
+  const tiers = tiersForIlvl(mod)
+  // Show only the top 2 tiers for display to avoid clutter
+  return tiers.slice(-2)
+}
+
+const formatTierValues = (values: any) => {
+  if (!values || !Array.isArray(values)) return ''
+  // Format the values array into a readable string
+  // For example, if values is [[1,2]], show "1-2"
+  return values.map((val: any) => {
+    if (Array.isArray(val)) {
+      return val.join('-')
+    }
+    return String(val)
+  }).join(', ')
+}
+
 const add = (mod:any) => {
   if (!mod) return
   if (selected.value.some(m=>m.id===mod.id)) return
@@ -106,7 +196,27 @@ const pushSelection = () => { emit('update:selected', selected.value.map(s=>({ i
 
 const compute = async () => { ev.value = await workerEV({ successRate: props.successRate, attemptCost: attemptCost.value, targetSellPrice: targetSellPrice.value, attempts: attempts.value }) }
 
-onMounted(async ()=>{ try{ await load('/data/poe2_mods_normalized.json') }catch{}; await refresh() })
+// Tier selector functions
+const openTierSelector = (mod: any) => {
+  currentMod.value = mod
+  currentTiers.value = tiersForIlvl(mod)
+  tierSelectorVisible.value = true
+}
+
+const onTierSelect = (tier: any) => {
+  if (currentMod.value) {
+    add({ ...currentMod.value, selectedTier: tier.tier })
+  }
+  closeTierSelector()
+}
+
+const closeTierSelector = () => {
+  tierSelectorVisible.value = false
+  currentMod.value = null
+  currentTiers.value = []
+}
+
+onMounted(async ()=>{ try{ await load() }catch{}; await refresh() })
 watch(()=>[props.base, props.ilvl, affix.value, source.value], ()=>{ refresh() })
 watch(selected, ()=>pushSelection(), { deep:true })
 </script>
@@ -115,12 +225,27 @@ watch(selected, ()=>pushSelection(), { deep:true })
 .mods-selector{margin-top:1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.75rem}
 .mods-filters{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:.5rem}
 .mods-search{flex:1;min-width:220px;max-width:320px;padding:.4rem .6rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff}
-.mods-pane{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.mods-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem;}
+.mod-category-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1rem;}
+.category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.category-title{font-size:1.1rem;font-weight:700;color:#fff;margin:0}
+.category-count{background:rgba(255,215,0,.2);color:#ffd700;padding:.2rem .5rem;border-radius:12px;font-size:.8rem;font-weight:600}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem}
+.mod-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:.5rem;cursor:pointer;transition:background .2s}
+.mod-card:hover{background:rgba(255,255,255,.15);transform:translateY(-1px)}
+.mod-name{font-size:.9rem;color:#fff;margin-bottom:.25rem;line-height:1.3}
+.mod-meta{display:flex;gap:.5rem;align-items:center}
+.tag{font-size:.7rem;background:rgba(255,215,0,.2);color:#ffd700;padding:.15rem .4rem;border-radius:10px;font-weight:600}
+.source-tag{font-size:.7rem;background:rgba(138,43,226,.2);color:#ba55d3;padding:.15rem .4rem;border-radius:10px;font-weight:600}
+.mod-tiers{margin-top:.25rem}
+.tier-preview{font-size:.7rem;color:#ccc;margin-top:.15rem}
+.tier-label{font-weight:600;color:#ffd700}
+.tier-values{color:#aaa;margin-left:.25rem}
+.mods-selected{margin-top:1rem;border-top:1px solid rgba(255,255,255,.15);padding-top:1rem}
 .mods-title{font-weight:700;margin-bottom:.25rem}
-.mod-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.35rem .4rem;border-bottom:1px dashed rgba(255,255,255,.1)}
+.mod-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.35rem .4rem;border-bottom:1px dashed rgba(255,255,255,.1);cursor:pointer}
+.mod-row:hover{background:rgba(255,255,255,.08)}
 .mod-row.selected{background:rgba(255,255,255,.04)}
-.mod-name{color:#fff;opacity:.95}
-.tag{font-size:.8rem;opacity:.7;margin-left:.35rem}
 .add-btn,.remove-btn,.compute-btn{padding:.35rem .6rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;cursor:pointer}
 .tier-select{padding:.25rem .4rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff}
 .empty-hint{opacity:.7;font-size:.9rem}
