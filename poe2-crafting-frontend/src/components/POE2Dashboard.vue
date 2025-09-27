@@ -14,7 +14,7 @@
     </div>
 
     <!-- Connection Status -->
-    <div class="connection-status" :class="{ 'connected': connection.isConnected.value, 'disconnected': !connection.isConnected.value }">
+    <div v-if="currentTab === 'market'  " class="connection-status" :class="{ 'connected': connection.isConnected.value, 'disconnected': !connection.isConnected.value }">
       <div class="status-indicator">
         <div class="dot"></div>
         <span>{{ connection.isConnected.value ? 'Connected' : 'Disconnected' }}</span>
@@ -415,7 +415,7 @@ onMounted(async () => {
 
 <style scoped>
 .poe2-dashboard {
-  max-width: 1200px;
+  max-width: 90vw;
   margin: 0 auto;
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -427,8 +427,9 @@ onMounted(async () => {
   background: white;
   border-radius: 12px;
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 0rem auto 2rem auto;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 50%;
 }
 
 .tab-button {
@@ -472,7 +473,8 @@ onMounted(async () => {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
+  width: 60%;
   border-radius: 8px;
   border: 2px solid;
 }
@@ -586,7 +588,7 @@ button.primary:hover:not(:disabled) {
 /* Data Grid */
 .data-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 20px;
   padding: 2rem;
 }
@@ -801,12 +803,6 @@ button.primary:hover:not(:disabled) {
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 1rem;
-  }
-  
-  .connection-status {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
   }
   
   .actions {
