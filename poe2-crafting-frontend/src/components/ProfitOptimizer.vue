@@ -538,7 +538,7 @@ const getTypeDisplayName = (typeId: string) => {
 </script>
 
 <style scoped>
-.profit-optimizer{max-width:1200px;margin:0 auto;padding:2rem}
+.profit-optimizer{;margin:0 auto;padding:2rem}
 .optimizer-header{text-align:center;margin-bottom:2rem}
 .section-title{font-size:2.2rem;font-weight:700;color:#2c3e50;margin-bottom:.25rem}
 .section-description{font-size:1rem;color:#7f8c8d;margin:0}
@@ -550,7 +550,7 @@ const getTypeDisplayName = (typeId: string) => {
 .success-rate-value{font-weight:700;color:#2c3e50;min-width:50px;text-align:center}
 .generate-btn{background-color: darkslateblue;color:#fff;border:none;padding:.7rem 1.4rem;border-radius:8px;font-weight:600;cursor:pointer;display:flex;gap:.5rem;align-items:center}
 .error-message{background:#fee;border:1px solid #fcc;color:#a00;padding:1rem;border-radius:8px;margin-bottom:1rem;text-align:center}
-.weapon-selection-section{background-color: darkslateblue;border-radius:12px;padding:1.5rem;margin-bottom:2rem;color:#fff}
+.weapon-selection-section{background-color: darkslateblue;border-radius:12px;padding:1.5rem;color:#fff; width: 85%; margin: 0 auto 2rem auto;}
 .section-subtitle{text-align:center;margin:.25rem 0 1rem 0;opacity:.9}
 .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:6px;font-size:.9rem}
 .breadcrumb span{color:#fff;opacity:.7}

@@ -225,7 +225,7 @@ watch(selected, ()=>pushSelection(), { deep:true })
 .mods-selector{margin-top:1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.75rem}
 .mods-filters{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:.5rem}
 .mods-search{flex:1;min-width:220px;max-width:320px;padding:.4rem .6rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff}
-.mods-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem;}
+.mods-cards{display:grid;grid-template-columns:repeat(2, 1fr);gap:2rem 1rem;margin-bottom:1rem;}
 .mod-category-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1rem;}
 .category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
 .category-title{font-size:1.1rem;font-weight:700;color:#fff;margin:0}
