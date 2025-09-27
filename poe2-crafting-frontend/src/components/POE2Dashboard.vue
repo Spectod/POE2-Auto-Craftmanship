@@ -153,8 +153,13 @@
                         <span class="error-price">Rate Error</span>
                       </template>
                       <template v-else>
-                        <span class="divine-cost">{{ o.divineValue.toFixed(3) }} Divine per 1 item</span>
-                        <span class="exalt-equivalent">{{ (o.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        <template v-if="o.divineValue >= 1">
+                          <span class="divine-cost">{{ o.divineValue.toFixed(3) }} Divine per 1 item</span>
+                          <span class="exalt-equivalent">{{ (o.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        </template>
+                        <template v-else>
+                          <span class="exalt-cost">{{ (o.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        </template>
                       </template>
                     </div>
                   </div>
@@ -162,6 +167,14 @@
               </div>
             </div>
             <p v-else class="no-data">No omen data available</p>
+            <div class="currency-note">
+              <small v-if="getDivineToExaltRate() > 0">
+                Current Exchange Rates: {{ getDivineToExaltRate().toFixed(0) }} Exalt = 1 Divine
+              </small>
+              <small v-else class="error-rate">
+                Exchange Rate: Error loading rate data
+              </small>
+            </div>
           </div>
 
           <!-- Abyss Section -->
@@ -188,8 +201,13 @@
                         <span class="error-price">Rate Error</span>
                       </template>
                       <template v-else>
-                        <span class="divine-cost">{{ a.divineValue.toFixed(3) }} Divine per 1 item</span>
-                        <span class="exalt-equivalent">{{ (a.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        <template v-if="a.divineValue >= 1">
+                          <span class="divine-cost">{{ a.divineValue.toFixed(3) }} Divine per 1 item</span>
+                          <span class="exalt-equivalent">{{ (a.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        </template>
+                        <template v-else>
+                          <span class="exalt-cost">{{ (a.divineValue * getDivineToExaltRate()).toFixed(3) }} Exalt per 1 item</span>
+                        </template>
                       </template>
                     </div>
                   </div>
@@ -197,6 +215,14 @@
               </div>
             </div>
             <p v-else class="no-data">No abyss data available</p>
+            <div class="currency-note">
+              <small v-if="getDivineToExaltRate() > 0">
+                Current Exchange Rates: {{ getDivineToExaltRate().toFixed(0) }} Exalt = 1 Divine
+              </small>
+              <small v-else class="error-rate">
+                Exchange Rate: Error loading rate data
+              </small>
+            </div>
           </div>
         </div>
       </div>
@@ -308,9 +334,32 @@ const sortByDivine = (arr: any[], order: 'asc'|'desc') => {
   return sorted
 }
 
+// Whitelist for "Show Less" view (specific omens to show)
+const omenShowLessWhitelist = [
+  'Omen of Homogenising Coronation',
+  'Omen of Catalysing Exaltation',
+  'Omen of Corruption',
+  'Omen of Sinistral Necromancy',
+  'Omen of Dextral Crystallisation',
+  'Omen of Recombination',
+  'Omen of Sinistral Crystallisation',
+  'Omen of Abyssal Echoes',
+  'Omen of Sanctification',
+  'Omen of Dextral Erasure',
+  'Omen of Whittling',
+  'Omen of Dextral Annulment',
+  'Omen of Sinistral Erasure',
+  'Omen of Light',
+  'Omen of Sinistral Annulment'
+]
+
 const displayedOmenList = computed(()=>{
   const sorted = sortByDivine(omenList.value, sortOrder.value.omens)
-  return showMore.value.omens ? sorted : sorted.slice(0, 12)
+  if (showMore.value.omens) return sorted
+
+  // Filter to whitelist, preserve sort order
+  const filtered = sorted.filter(o => omenShowLessWhitelist.includes(o.name))
+  return filtered
 })
 const displayedAbyssList = computed(()=>{
   const sorted = sortByDivine(abyssList.value, sortOrder.value.abyss)
