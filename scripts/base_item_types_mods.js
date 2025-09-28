@@ -15,7 +15,7 @@ const outFile = path.resolve(__dirname, '../data/valid_mods_by_base.json');
 
 // User-provided mod lists for all base item types
 const baseMods = {
-  Spear: {
+  Spears: {
     prefix: [
       { name: "Adds # to # Physical Damage", total_tier: 9, max_iLvl: 75, Weights: 6300, tags: ["Damage", "Physical", "Attack"] },
       { name: "Adds # to # Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 6615, tags: ["Damage", "Elemental", "Fire", "Attack"] },
@@ -328,6 +328,734 @@ const baseMods = {
       { name: "Allies in your Presence have (10-15)% increased Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Critical"] }
     ]
   },
+  TwoHandMaces: {
+    prefix: [
+      { name: "Adds # to # Physical Damage", total_tier: 9, max_iLvl: 75, Weights: 6300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds # to # Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 8820, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds # to # Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 5880, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds # to # Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 5880, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "#% increased Physical Damage", total_tier: 8, max_iLvl: 82, Weights: 3775, tags: ["Damage", "Physical", "Attack"] },
+      { name: "#% increased Physical Damage# to Accuracy Rating", total_tier: 8, max_iLvl: 81, Weights: 5300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "# to Accuracy Rating", total_tier: 9, max_iLvl: 76, Weights: 5700, tags: ["Attack"] },
+      { name: "#% increased Elemental Damage with Attacks", total_tier: 6, max_iLvl: 81, Weights: 3000, tags: ["Damage", "Elemental", "Attack"] }
+    ],
+    suffix: [
+      { name: "# to Strength", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 5000, tags: null },
+      { name: "# to Level of all Melee Skills", total_tier: 5, max_iLvl: 81, Weights: 2600, tags: ["Attack"] },
+      { name: "Leeches #% of Physical Damage as Life", total_tier: 5, max_iLvl: 81, Weights: 5000, tags: ["Life", "Physical", "Attack"] },
+      { name: "Leeches #% of Physical Damage as Mana", total_tier: 5, max_iLvl: 81, Weights: 5000, tags: ["Mana", "Physical", "Attack"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 8, max_iLvl: 77, Weights: 6000, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 8, max_iLvl: 78, Weights: 6000, tags: ["Mana"] },
+      { name: "Grants # Life per Enemy Hit", total_tier: 4, max_iLvl: 40, Weights: 4000, tags: ["Life", "Attack"] },
+      { name: "#% increased Attack Speed", total_tier: 8, max_iLvl: 77, Weights: 5300, tags: ["Attack", "Speed"] },
+      { name: "#% to Critical Hit Chance", total_tier: 6, max_iLvl: 77, Weights: 3875, tags: ["Attack", "Critical"] },
+      { name: "#% to Critical Damage Bonus", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Damage", "Attack", "Critical"] },
+      { name: "# to Accuracy Rating#% increased Light Radius", total_tier: 3, max_iLvl: 30, Weights: 3000, tags: ["Attack"] },
+      { name: "#% increased Stun Duration", total_tier: 6, max_iLvl: 71, Weights: 6000, tags: null },
+      { name: "Causes #% increased Stun Buildup", total_tier: 6, max_iLvl: 74, Weights: 6000, tags: null }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "(86-99)% increased Damage against Enemies with Fully Broken Armour", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Fire Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Cold Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Empowered Attacks deal (86-99)% increased Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage", "Attack"] },
+        { name: "(110-154)% increased Physical Damage, 15% reduced Attack Speed", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Physical", "Attack", "Speed"] },
+        { name: "(86-99)% increased Damage while you have a Totem", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Damage"] },
+        { name: "Melee Attack Skills have +1 to maximum number of Summoned Totems", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Lightning Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Damage", "Elemental", "Lightning", "Attack"] }
+      ],
+      suffix: [
+        { name: "Fissure Skills have a (25-31)% chance to create an additional Fissure", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attack"] },
+        { name: "(5-10)% increased Spirit Reservation Efficiency of Skills", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(16-23)% chance for Mace Slam Skills you use yourself to cause Aftershocks", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attack"] },
+        { name: "Break Armour equal to (4-7)% of Physical Damage dealt", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage", "Physical"] },
+        { name: "#% increased Cost Efficiency of Attacks", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attack"] },
+        { name: "(25-31)% increased Warcry Cooldown Recovery Rate", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(25-31)% increased Totem Placement speed", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Speed"] },
+        { name: "(15-20)% of Skill Mana Costs Converted to Life Costs", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "Adds # to # Physical Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Physical", "Attack"] },
+        { name: "Adds # to # Fire Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Adds # to # Cold Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Adds # to # Lightning Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "# to Accuracy Rating", total_tier: 4, max_iLvl: 58, Weights: 0, tags: ["Attack"] },
+        { name: "Gain #% of Damage as Extra Physical Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Physical"] },
+        { name: "Gain #% of Damage as Extra Fire Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Fire"] },
+        { name: "Gain #% of Damage as Extra Cold Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Cold"] },
+        { name: "Gain #% of Damage as Extra Lightning Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Lightning"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% increased Attack Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Attack", "Speed"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+6 to Level of all Attack Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Attack"] },
+        { name: "(20-25)% chance to gain Onslaught on Killing Hits with this Weapon", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Speed"] },
+        { name: "#% to Critical Hit Chance", total_tier: 3, max_iLvl: 44, Weights: 0, tags: ["Attack", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ]
+    },
+    Corrupted: [
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(15-25)% increased Physical Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds (13-20) to (21-31) Fire Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds (11-17) to (18-26) Cold Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds (1-3) to (41-61) Lightning Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "Adds (10-16) to (17-25) Chaos Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Chaos", "Attack"] },
+      { name: "(6-8)% increased Attack Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack", "Speed"] },
+      { name: "+(5-10)% to Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Attack", "Critical"] },
+      { name: "Causes (20-30)% increased Stun Buildup", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(10-20)% increased Melee Strike Range with this weapon", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(10-15)% chance to cause Bleeding on Hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Physical", "Attack", "Ailment"] },
+      { name: "Gain 1 Rage on Hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(40-50)% increased Elemental Damage with Attacks", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Attack"] }
+    ]
+  },
+  Quarterstaves: {
+    prefix: [
+      { name: "Adds # to # Physical Damage", total_tier: 9, max_iLvl: 75, Weights: 6300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds # to # Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 5880, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds # to # Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 6615, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds # to # Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 8085, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "#% increased Physical Damage", total_tier: 8, max_iLvl: 82, Weights: 3775, tags: ["Damage", "Physical", "Attack"] },
+      { name: "#% increased Physical Damage# to Accuracy Rating", total_tier: 8, max_iLvl: 81, Weights: 5300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "# to Accuracy Rating", total_tier: 9, max_iLvl: 76, Weights: 5700, tags: ["Attack"] },
+      { name: "#% increased Elemental Damage with Attacks", total_tier: 6, max_iLvl: 81, Weights: 3000, tags: ["Damage", "Elemental", "Attack"] }
+    ],
+    suffix: [
+      { name: "# to Dexterity", total_tier: 8, max_iLvl: 74, Weights: 6000, tags: ["Attribute"] },
+      { name: "# to Intelligence", total_tier: 8, max_iLvl: 74, Weights: 6000, tags: ["Attribute"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 5000, tags: null },
+      { name: "# to Level of all Melee Skills", total_tier: 5, max_iLvl: 81, Weights: 2600, tags: ["Attack"] },
+      { name: "Leeches #% of Physical Damage as Life", total_tier: 5, max_iLvl: 81, Weights: 5000, tags: ["Life", "Physical", "Attack"] },
+      { name: "Leeches #% of Physical Damage as Mana", total_tier: 5, max_iLvl: 81, Weights: 5000, tags: ["Mana", "Physical", "Attack"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 8, max_iLvl: 77, Weights: 6000, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 8, max_iLvl: 78, Weights: 6000, tags: ["Mana"] },
+      { name: "Grants # Life per Enemy Hit", total_tier: 4, max_iLvl: 40, Weights: 4000, tags: ["Life", "Attack"] },
+      { name: "#% increased Attack Speed", total_tier: 8, max_iLvl: 77, Weights: 5300, tags: ["Attack", "Speed"] },
+      { name: "#% to Critical Hit Chance", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Attack", "Critical"] },
+      { name: "#% to Critical Damage Bonus", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Damage", "Attack", "Critical"] },
+      { name: "# to Accuracy Rating#% increased Light Radius", total_tier: 3, max_iLvl: 30, Weights: 3000, tags: ["Attack"] },
+      { name: "#% increased Stun Duration", total_tier: 6, max_iLvl: 71, Weights: 6000, tags: null },
+      { name: "Causes #% increased Stun Buildup", total_tier: 6, max_iLvl: 74, Weights: 6000, tags: null }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "Attacks with this Weapon Penetrate (15-25)% Fire Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage", "Elemental", "Fire", "Attack"] },
+        { name: "(86-99)% increased Fire Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Elemental", "Fire", "Ailment"] },
+        { name: "(14-23)% increased Ignite Magnitude", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Cold Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage", "Elemental", "Cold", "Attack"] },
+        { name: "(86-99)% increased Cold Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Elemental", "Cold"] },
+        { name: "(14-23)% increased Freeze Buildup", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Lightning Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "(86-99)% increased Lightning Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Elemental", "Lightning"] },
+        { name: "(14-23)% increased Magnitude of Shock you inflict", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ],
+      suffix: [
+        { name: "(5-10)% increased Spirit Reservation Efficiency of Skills", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(25-40)% chance to build an additional Combo on Hit", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(8-15)% increased Cost Efficiency of Attacks", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attack"] },
+        { name: "Recover #% of Maximum Mana when you expend at least # Combo", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Mana"] },
+        { name: "Recover #% of Maximum Life when you expend at least # Combo", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(15-20)% of Skill Mana Costs Converted to Life Costs", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "Adds # to # Physical Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Physical", "Attack"] },
+        { name: "Adds # to # Fire Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Adds # to # Cold Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Adds # to # Lightning Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "# to Accuracy Rating", total_tier: 4, max_iLvl: 58, Weights: 0, tags: ["Attack"] },
+        { name: "Gain #% of Damage as Extra Physical Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Physical"] },
+        { name: "Gain #% of Damage as Extra Fire Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Fire"] },
+        { name: "Gain #% of Damage as Extra Cold Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Cold"] },
+        { name: "Gain #% of Damage as Extra Lightning Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Lightning"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% increased Attack Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Attack", "Speed"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+6 to Level of all Attack Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Attack"] },
+        { name: "(20-25)% chance to gain Onslaught on Killing Hits with this Weapon", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Speed"] },
+        { name: "#% to Critical Hit Chance", total_tier: 3, max_iLvl: 44, Weights: 0, tags: ["Attack", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ]
+    },
+    Corrupted: [
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(15-25)% increased Physical Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds (13-20) to (21-31) Fire Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds (11-17) to (18-26) Cold Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds (1-3) to (41-61) Lightning Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "Adds (10-16) to (17-25) Chaos Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Chaos", "Attack"] },
+      { name: "(6-8)% increased Attack Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack", "Speed"] },
+      { name: "+(5-10)% to Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Attack", "Critical"] },
+      { name: "Causes (20-30)% increased Stun Buildup", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(10-20)% increased Melee Strike Range with this weapon", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(10-15)% chance to Poison on Hit with this weapon", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Chaos", "Attack", "Ailment"] },
+      { name: "Gain 1 Rage on Hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(40-50)% increased Elemental Damage with Attacks", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Attack"] }
+    ]
+  },
+  Crossbows: {
+    prefix: [
+      { name: "Adds # to # Physical Damage", total_tier: 9, max_iLvl: 75, Weights: 6300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds # to # Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 7350, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds # to # Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 5880, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds # to # Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 7350, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "#% increased Physical Damage", total_tier: 8, max_iLvl: 82, Weights: 3775, tags: ["Damage", "Physical", "Attack"] },
+      { name: "#% increased Physical Damage# to Accuracy Rating", total_tier: 8, max_iLvl: 81, Weights: 5300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "# to Accuracy Rating", total_tier: 10, max_iLvl: 82, Weights: 5800, tags: ["Attack"] },
+      { name: "#% increased Elemental Damage with Attacks", total_tier: 6, max_iLvl: 81, Weights: 3000, tags: ["Damage", "Elemental", "Attack"] }
+    ],
+    suffix: [
+      { name: "# to Strength", total_tier: 8, max_iLvl: 74, Weights: 4000, tags: ["Attribute"] },
+      { name: "# to Dexterity", total_tier: 8, max_iLvl: 74, Weights: 4000, tags: ["Attribute"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 5000, tags: null },
+      { name: "# to Level of all Projectile Skills", total_tier: 5, max_iLvl: 81, Weights: 2600, tags: ["Attack"] },
+      { name: "Leeches #% of Physical Damage as Life", total_tier: 4, max_iLvl: 68, Weights: 4000, tags: ["Life", "Physical", "Attack"] },
+      { name: "Leeches #% of Physical Damage as Mana", total_tier: 4, max_iLvl: 68, Weights: 4000, tags: ["Mana", "Physical", "Attack"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 8, max_iLvl: 77, Weights: 6000, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 8, max_iLvl: 78, Weights: 6000, tags: ["Mana"] },
+      { name: "Grants # Life per Enemy Hit", total_tier: 4, max_iLvl: 40, Weights: 4000, tags: ["Life", "Attack"] },
+      { name: "#% increased Attack Speed", total_tier: 5, max_iLvl: 77, Weights: 3900, tags: ["Attack", "Speed"] },
+      { name: "#% to Critical Hit Chance", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Attack", "Critical"] },
+      { name: "#% to Critical Damage Bonus", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Damage", "Attack", "Critical"] },
+      { name: "# to Accuracy Rating#% increased Light Radius", total_tier: 3, max_iLvl: 30, Weights: 3000, tags: ["Attack"] },
+      { name: "Loads an additional bolt", total_tier: 2, max_iLvl: 82, Weights: 375, tags: ["Attack"] },
+      { name: "Loads # additional bolts", total_tier: 2, max_iLvl: 82, Weights: 375, tags: ["Attack"] }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "Grenade Skills have +1 Cooldown Use", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(101-121)% increased Grenade Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage"] },
+        { name: "(20-30)% increased Grenade Duration", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Fire Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Projectiles deal (85-109)% increased Damage with Hits against Enemies within 2m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Cold Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage", "Elemental", "Cold", "Attack"] },
+        { name: "+1 to Maximum number of Summoned Ballista Totems", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Lightning Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Damage", "Elemental", "Lightning", "Attack"] }
+      ],
+      suffix: [
+        { name: "Grenades have (15-25)% chance to activate a second time", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(5-10)% increased Spirit Reservation Efficiency of Skills", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "#% chance when you Reload a Crossbow to be immediate", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "#% increased Reload Speed", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attack"] },
+        { name: "(8-15)% increased Cost Efficiency of Attacks", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attack"] },
+        { name: "Attacks Chain an additional time", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "Projectiles have (27-38)% increased Critical Damage Bonus against Enemies within 2m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "(15-20)% of Skill Mana Costs Converted to Life Costs", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "Adds # to # Physical Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Physical", "Attack"] },
+        { name: "Adds # to # Fire Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Adds # to # Cold Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Adds # to # Lightning Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "# to Accuracy Rating", total_tier: 4, max_iLvl: 58, Weights: 0, tags: ["Attack"] },
+        { name: "Gain #% of Damage as Extra Physical Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Physical"] },
+        { name: "Gain #% of Damage as Extra Fire Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Fire"] },
+        { name: "Gain #% of Damage as Extra Cold Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Cold"] },
+        { name: "Gain #% of Damage as Extra Lightning Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Lightning"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% increased Attack Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Attack", "Speed"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+6 to Level of all Attack Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Attack"] },
+        { name: "(20-25)% chance to gain Onslaught on Killing Hits with this Weapon", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Speed"] },
+        { name: "#% to Critical Hit Chance", total_tier: 3, max_iLvl: 44, Weights: 0, tags: ["Attack", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ]
+    },
+    Corrupted: [
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(15-25)% increased Physical Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds (13-20) to (21-31) Fire Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds (11-17) to (18-26) Cold Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds (1-3) to (41-61) Lightning Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "Adds (10-16) to (17-25) Chaos Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Chaos", "Attack"] },
+      { name: "(6-8)% increased Attack Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack", "Speed"] },
+      { name: "+(5-10)% to Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Attack", "Critical"] },
+      { name: "(10-15)% chance to Maim on Hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(5-10)% chance to Blind Enemies on hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(40-50)% increased Elemental Damage with Attacks", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Attack"] },
+      { name: "Loads an additional bolt", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] }
+    ]
+  },
+  Bows: {
+    prefix: [
+      { name: "Adds # to # Physical Damage", total_tier: 9, max_iLvl: 75, Weights: 6300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds # to # Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 7350, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds # to # Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 5880, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds # to # Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 8820, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "#% increased Physical Damage", total_tier: 8, max_iLvl: 82, Weights: 3775, tags: ["Damage", "Physical", "Attack"] },
+      { name: "#% increased Physical Damage# to Accuracy Rating", total_tier: 8, max_iLvl: 81, Weights: 5300, tags: ["Damage", "Physical", "Attack"] },
+      { name: "# to Accuracy Rating", total_tier: 10, max_iLvl: 82, Weights: 5800, tags: ["Attack"] },
+      { name: "#% increased Elemental Damage with Attacks", total_tier: 6, max_iLvl: 81, Weights: 3000, tags: ["Damage", "Elemental", "Attack"] }
+    ],
+    suffix: [
+      { name: "# to Dexterity", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 5000, tags: null },
+      { name: "# to Level of all Projectile Skills", total_tier: 5, max_iLvl: 81, Weights: 2600, tags: ["Attack"] },
+      { name: "Leeches #% of Physical Damage as Life", total_tier: 4, max_iLvl: 68, Weights: 4000, tags: ["Life", "Physical", "Attack"] },
+      { name: "Leeches #% of Physical Damage as Mana", total_tier: 4, max_iLvl: 68, Weights: 4000, tags: ["Mana", "Physical", "Attack"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 8, max_iLvl: 77, Weights: 6000, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 8, max_iLvl: 78, Weights: 6000, tags: ["Mana"] },
+      { name: "Grants # Life per Enemy Hit", total_tier: 4, max_iLvl: 40, Weights: 4000, tags: ["Life", "Attack"] },
+      { name: "#% increased Attack Speed", total_tier: 5, max_iLvl: 77, Weights: 3900, tags: ["Attack", "Speed"] },
+      { name: "#% to Critical Hit Chance", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Attack", "Critical"] },
+      { name: "#% to Critical Damage Bonus", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Damage", "Attack", "Critical"] },
+      { name: "# to Accuracy Rating#% increased Light Radius", total_tier: 3, max_iLvl: 30, Weights: 3000, tags: ["Attack"] },
+      { name: "Bow Attacks fire an additional Arrow", total_tier: 2, max_iLvl: 82, Weights: 375, tags: ["Attack"] },
+      { name: "Bow Attacks fire # additional Arrows", total_tier: 2, max_iLvl: 82, Weights: 375, tags: ["Attack"] }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "(12-23)% increased Area of Effect for Attacks", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attack"] },
+        { name: "Companions deal (40-59)% increased Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(40-59)% increased Damage while your Companion is in your Presence", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Fire Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Projectiles have (25-35)% chance to Chain an additional time from terrain", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(30-40)% increased bonuses gained from Equipped Quiver", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Cold Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Attacks with this Weapon Penetrate (15-25)% Lightning Resistance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "Projectiles deal (60-79)% increased Damage with Hits against Enemies further than 6m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ],
+      suffix: [
+        { name: "(40-60)% Chance to Pierce an Enemy", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(12-18)% increased Attack Speed", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Companions have (12-18)% increased Attack Speed", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(5-10)% increased Spirit Reservation Efficiency of Skills", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(25-34)% increased Immobilisation buildup", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "Projectiles have (25-34)% increased Critical Hit Chance against Enemies further than 6m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(8-15)% increased Cost Efficiency of Attacks", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attack"] },
+        { name: "(15-20)% of Skill Mana Costs Converted to Life Costs", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life"] },
+        { name: "Projectile Attacks have a (10-18)% chance to fire two additional Projectiles while moving", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "(8-13)% increased Attack Speed", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "(8-13)% increased Attack Speed while your Companion is in your Presence", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "Adds # to # Physical Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Physical", "Attack"] },
+        { name: "Adds # to # Fire Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+        { name: "Adds # to # Cold Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+        { name: "Adds # to # Lightning Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+        { name: "# to Accuracy Rating", total_tier: 4, max_iLvl: 58, Weights: 0, tags: ["Attack"] },
+        { name: "Gain #% of Damage as Extra Physical Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Physical"] },
+        { name: "Gain #% of Damage as Extra Fire Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Fire"] },
+        { name: "Gain #% of Damage as Extra Cold Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Cold"] },
+        { name: "Gain #% of Damage as Extra Lightning Damage", total_tier: 4, max_iLvl: 72, Weights: 0, tags: ["Damage", "Elemental", "Lightning"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% increased Attack Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Attack", "Speed"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+4 to Level of all Attack Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Attack"] },
+        { name: "(20-25)% chance to gain Onslaught on Killing Hits with this Weapon", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Speed"] },
+        { name: "#% to Critical Hit Chance", total_tier: 3, max_iLvl: 44, Weights: 0, tags: ["Attack", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ]
+    },
+    Corrupted: [
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(15-25)% increased Physical Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds (9-14) to (15-22) Fire Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds (8-12) to (13-19) Cold Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds (1-2) to (29-43) Lightning Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "Adds (7-11) to (12-18) Chaos Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Chaos", "Attack"] },
+      { name: "(6-8)% increased Attack Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack", "Speed"] },
+      { name: "+(5-10)% to Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Attack", "Critical"] },
+      { name: "(10-15)% chance to Maim on Hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(5-10)% chance to Blind Enemies on hit", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(20-30)% increased Elemental Damage with Attacks", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Elemental", "Attack"] },
+      { name: "Bow Attacks fire an additional Arrow", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] }
+    ]
+  },
+  Staves: {
+    prefix: [
+      { name: "# to maximum Mana", total_tier: 11, max_iLvl: 70, Weights: 11000, tags: ["Mana"] },
+      { name: "#% increased Spell Damage", total_tier: 8, max_iLvl: 80, Weights: 4350, tags: ["Damage", "Caster"] },
+      { name: "#% increased Spell Damage# to maximum Mana", total_tier: 7, max_iLvl: 79, Weights: 4300, tags: ["Mana", "Damage", "Caster"] },
+      { name: "#% increased Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Fire"] },
+      { name: "#% increased Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Cold"] },
+      { name: "#% increased Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Lightning"] },
+      { name: "#% increased Chaos Damage", total_tier: 8, max_iLvl: 80, Weights: 12750, tags: ["Damage", "Chaos"] },
+      { name: "#% increased Spell Physical Damage", total_tier: 8, max_iLvl: 80, Weights: 12750, tags: ["Damage", "Physical"] },
+      { name: "Gain #% of Damage as Extra Fire Damage", total_tier: 6, max_iLvl: 80, Weights: 6, tags: ["Damage", "Elemental", "Fire"] },
+      { name: "Gain #% of Damage as Extra Cold Damage", total_tier: 6, max_iLvl: 80, Weights: 6, tags: ["Damage", "Elemental", "Cold"] },
+      { name: "Gain #% of Damage as Extra Lightning Damage", total_tier: 6, max_iLvl: 80, Weights: 6, tags: ["Damage", "Elemental", "Lightning"] }
+    ],
+    suffix: [
+      { name: "# to Intelligence", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 5000, tags: null },
+      { name: "# to Level of all Spell Skills", total_tier: 29, max_iLvl: 81, Weights: 13500, tags: ["Caster", "Gem"] },
+      { name: "# to Level of all Fire Spell Skills", total_tier: 8, max_iLvl: 80, Weights: 0, tags: null },
+      { name: "# to Level of all Cold Spell Skills", total_tier: 8, max_iLvl: 80, Weights: 0, tags: null },
+      { name: "# to Level of all Lightning Spell Skills", total_tier: 8, max_iLvl: 80, Weights: 0, tags: null },
+      { name: "# to Level of all Chaos Spell Skills", total_tier: 8, max_iLvl: 80, Weights: 0, tags: null },
+      { name: "# to Level of all Physical Spell Skills", total_tier: 8, max_iLvl: 80, Weights: 0, tags: null },
+      { name: "#% increased Mana Regeneration Rate", total_tier: 6, max_iLvl: 79, Weights: 6, tags: ["Mana"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 8, max_iLvl: 77, Weights: 6000, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 8, max_iLvl: 78, Weights: 6000, tags: ["Mana"] },
+      { name: "#% increased Cast Speed", total_tier: 7, max_iLvl: 81, Weights: 5750, tags: ["Caster", "Speed"] },
+      { name: "#% increased Critical Hit Chance for Spells", total_tier: 6, max_iLvl: 76, Weights: 6, tags: ["Caster", "Critical"] },
+      { name: "#% increased Critical Spell Damage Bonus", total_tier: 6, max_iLvl: 73, Weights: 6, tags: ["Caster", "Critical"] },
+      { name: "#% increased Mana Regeneration Rate#% increased Light Radius", total_tier: 3, max_iLvl: 30, Weights: 3000, tags: ["Mana"] },
+      { name: "#% increased Flammability Magnitude", total_tier: 5, max_iLvl: 75, Weights: 4000, tags: null },
+      { name: "#% increased Freeze Buildup", total_tier: 5, max_iLvl: 75, Weights: 4000, tags: null },
+      { name: "#% increased chance to Shock", total_tier: 5, max_iLvl: 75, Weights: 4000, tags: null }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "(35-50) to Spirit", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "#% increased Spell Damage with Spells that cost Life", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "#% increased Spell Damage per # Maximum Mana", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "#% increased Spell Damage per # Maximum Life", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "+(1-2) to maximum number of Elemental Infusions", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Elemental"] },
+        { name: "(31-49)% increased Magnitude of Damaging Ailments you inflict", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Ailment"] }
+      ],
+      suffix: [
+        { name: "(25-35)% increased Archon Buff duration", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(12-16)% to Block Chance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(25-35)% of Spell Mana Cost Converted to Life Cost", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Life", "Caster"] },
+        { name: "Archon recovery period expires (25-35)% faster", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(30-40)% increased Cast Speed when on Low Life", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Caster", "Speed"] },
+        { name: "(25-35)% chance for Spell Skills to fire 2 additional Projectiles", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Caster"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "#% increased Spell Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Caster"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+5 to Level of all Spell Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Caster", "Gem"] },
+        { name: "#% increased Critical Hit Chance for Spells", total_tier: 3, max_iLvl: 41, Weights: 0, tags: ["Caster", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null },
+        { name: "#% increased Cast Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Caster", "Speed"] },
+        { name: "(28-32)% increased Mana Cost Efficiency", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Mana"] }
+      ]
+    },
+    Corrupted: [
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "# to Level of all Fire Spell Skills", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Elemental", "Fire", "Caster", "Gem"] },
+      { name: "# to Level of all Cold Spell Skills", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "# to Level of all Lightning Spell Skills", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "# to Level of all Chaos Spell Skills", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "# to Level of all Physical Spell Skills", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(40-50)% increased Spell Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Caster"] },
+      { name: "(20-30)% increased Flammability Magnitude", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(20-30)% increased Freeze Buildup", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(20-30)% increased chance to Shock", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(20-30)% increased Critical Hit Chance for Spells", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Caster", "Critical"] },
+      { name: "Gain (20-25) Life per Enemy Killed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Life"] },
+      { name: "Gain (10-15) Mana per Enemy Killed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] },
+      { name: "(10-15)% increased Cast Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Caster", "Speed"] }
+    ]
+  },
+  Foci: {
+    prefix: [
+      { name: "# to maximum Mana", total_tier: 11, max_iLvl: 70, Weights: 11000, tags: ["Mana"] },
+      { name: "# to maximum Energy Shield", total_tier: 10, max_iLvl: 70, Weights: 10000, tags: ["Defences"] },
+      { name: "#% increased Energy Shield", total_tier: 7, max_iLvl: 65, Weights: 7000, tags: ["Defences"] },
+      { name: "#% Increased Energy Shield# to maximum Mana", total_tier: 6, max_iLvl: 78, Weights: 6000, tags: ["Mana", "Defences"] },
+      { name: "#% increased Spell Damage", total_tier: 8, max_iLvl: 80, Weights: 4350, tags: ["Damage", "Caster"] },
+      { name: "#% increased Fire Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Fire"] },
+      { name: "#% increased Cold Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Cold"] },
+      { name: "#% increased Lightning Damage", total_tier: 10, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Elemental", "Lightning"] },
+      { name: "#% increased Chaos Damage", total_tier: 8, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Chaos"] },
+      { name: "#% increased Spell Physical Damage", total_tier: 8, max_iLvl: 81, Weights: 12750, tags: ["Damage", "Physical"] }
+    ],
+    suffix: [
+      { name: "# to Intelligence", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "# to Fire Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Fire", "Resistance"] },
+      { name: "# to Cold Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Cold", "Resistance"] },
+      { name: "# to Lightning Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Lightning", "Resistance"] },
+      { name: "# to Chaos Resistance", total_tier: 8, max_iLvl: 81, Weights: 1500, tags: ["Chaos", "Resistance"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 4000, tags: null },
+      { name: "# to Level of all Spell Skills", total_tier: 4, max_iLvl: 71, Weights: 750, tags: ["Caster", "Gem"] },
+      { name: "#% increased Mana Regeneration Rate", total_tier: 6, max_iLvl: 79, Weights: 6000, tags: ["Mana"] },
+      { name: "#% increased Cast Speed", total_tier: 7, max_iLvl: 80, Weights: 5500, tags: ["Caster", "Speed"] },
+      { name: "#% increased Critical Hit Chance for Spells", total_tier: 6, max_iLvl: 59, Weights: 3750, tags: ["Caster", "Critical"] },
+      { name: "#% increased Critical Spell Damage Bonus", total_tier: 6, max_iLvl: 59, Weights: 3750, tags: ["Caster", "Critical"] },
+      { name: "#% increased Energy Shield Recharge Rate", total_tier: 6, max_iLvl: 81, Weights: 6000, tags: ["Defences"] },
+      { name: "#% faster start of Energy Shield Recharge", total_tier: 6, max_iLvl: 81, Weights: 6000, tags: ["Defences"] }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "Offering Skills have (12-20)% increased Buff effect", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Caster"] },
+        { name: "(8-16)% increased Curse Magnitudes", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Caster", "Curse"] },
+        { name: "Spell Skills have (10-20)% increased Area of Effect", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Caster"] },
+        { name: "Invocated Spells deal (61-79)% increased Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Caster"] },
+        { name: "Spell Skills have +1 to maximum number of Summoned Totems", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Caster"] },
+        { name: "(61-79)% increased Spell Damage while wielding a Melee Weapon", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Caster"] }
+      ],
+      suffix: [
+        { name: "# to Strength and Intelligence", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "# to Strength and Dexterity", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "# to Level of all Minion Skills", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Minion", "Gem"] },
+        { name: "(10-20)% faster Curse Activation", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Curse"] },
+        { name: "(13-17)% to Fire and Chaos Resistances", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Elemental", "Fire", "Chaos", "Resistance"] },
+        { name: "# to Dexterity and Intelligence", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attribute"] },
+        { name: "# to Cold and Chaos Resistances", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Elemental", "Cold", "Chaos", "Resistance"] },
+        { name: "(15-25)% chance when collecting an Elemental Infusion to gain an additional Elemental Infusion of the same type", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "(6-10)% increased Mana Cost Efficiency", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Mana"] },
+        { name: "(13-17)% to Lightning and Chaos Resistances", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Elemental", "Lightning", "Chaos", "Resistance"] },
+        { name: "(10-16)% chance for Spell Skills to fire 2 additional Projectiles", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Caster"] },
+        { name: "(10-20)% of Spell Mana Cost Converted to Life Cost", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life", "Caster"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "+(30-39) to maximum Life", total_tier: 1, max_iLvl: 16, Weights: 0, tags: ["Life"] },
+        { name: "#% increased Armour, Evasion or Energy Shield", total_tier: 18, max_iLvl: 54, Weights: 0, tags: ["Defences"] },
+        { name: "#% increased Spell Damage", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Damage", "Caster"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "# to Chaos Resistance", total_tier: 3, max_iLvl: 56, Weights: 0, tags: ["Chaos", "Resistance"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "+5 to Level of all Spell Skills", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Caster", "Gem"] },
+        { name: "#% increased Energy Shield Recharge Rate", total_tier: 3, max_iLvl: 45, Weights: 0, tags: ["Defences"] },
+        { name: "#% increased Critical Hit Chance for Spells", total_tier: 3, max_iLvl: 41, Weights: 0, tags: ["Caster", "Critical"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null },
+        { name: "# to Fire Resistance", total_tier: 3, max_iLvl: 51, Weights: 0, tags: ["Elemental", "Fire", "Resistance"] },
+        { name: "# to Cold Resistance", total_tier: 3, max_iLvl: 51, Weights: 0, tags: ["Elemental", "Cold", "Resistance"] },
+        { name: "# to Lightning Resistance", total_tier: 3, max_iLvl: 51, Weights: 0, tags: ["Elemental", "Lightning", "Resistance"] },
+        { name: "#% increased Cast Speed", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Caster", "Speed"] },
+        { name: "(28-32)% increased Mana Cost Efficiency", total_tier: 1, max_iLvl: 72, Weights: 0, tags: ["Mana"] }
+      ]
+    },
+    Corrupted: [
+      { name: "(15-25)% Increased Energy Shield", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Defences"] },
+      { name: "(10-20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "+(20-25) to maximum Mana", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] },
+      { name: "(20-30)% Increased Spell Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Caster"] },
+      { name: "(20-30)% Faster start of Energy Shield Recharge", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Defences"] }
+    ]
+  },
+  Quivers: {
+    prefix: [
+      { name: "Adds # to # Physical Damage to Attacks", total_tier: 9, max_iLvl: 75, Weights: 7800, tags: ["Damage", "Physical", "Attack"] },
+      { name: "Adds # to # Fire damage to Attacks", total_tier: 9, max_iLvl: 75, Weights: 3900, tags: ["Damage", "Elemental", "Fire", "Attack"] },
+      { name: "Adds # to # Cold damage to Attacks", total_tier: 9, max_iLvl: 75, Weights: 3900, tags: ["Damage", "Elemental", "Cold", "Attack"] },
+      { name: "Adds # to # Lightning damage to Attacks", total_tier: 9, max_iLvl: 75, Weights: 3900, tags: ["Damage", "Elemental", "Lightning", "Attack"] },
+      { name: "# to Accuracy Rating", total_tier: 9, max_iLvl: 76, Weights: 6200, tags: ["Attack"] },
+      { name: "#% increased Projectile Speed", total_tier: 8, max_iLvl: 81, Weights: 3900, tags: ["Speed"] },
+      { name: "#% increased Damage with Bow Skills", total_tier: 6, max_iLvl: 81, Weights: 3900, tags: ["Damage"] }
+    ],
+    suffix: [
+      { name: "# to Dexterity", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "# to Level of all Projectile Skills", total_tier: 2, max_iLvl: 41, Weights: 750, tags: ["Attack"] },
+      { name: "Gain # Life per Enemy Killed", total_tier: 6, max_iLvl: 56, Weights: 4500, tags: ["Life"] },
+      { name: "Gain # Mana per Enemy Killed", total_tier: 6, max_iLvl: 56, Weights: 4500, tags: ["Mana"] },
+      { name: "#% increased Attack Speed", total_tier: 5, max_iLvl: 77, Weights: 2000, tags: ["Attack", "Speed"] },
+      { name: "#% increased Critical Hit Chance for Attacks", total_tier: 6, max_iLvl: 73, Weights: 3875, tags: ["Attack", "Critical"] },
+      { name: "#% increased Critical Damage Bonus for Attack Damage", total_tier: 6, max_iLvl: 74, Weights: 3875, tags: ["Attack", "Critical", "Damage"] },
+      { name: "#% chance to Pierce an Enemy", total_tier: 5, max_iLvl: 77, Weights: 2500, tags: null }
+    ],
+    Desecrated: {
+      prefix: [
+        { name: "Projectiles deal #% increased Damage with Hits against Enemies within #m", total_tier: 3, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Damage"] },
+        { name: "Projectiles deal #% increased Damage with Hits against Enemies further than #m", total_tier: 3, max_iLvl: 65, Weights: 0, tags: null },
+        { name: "Increases and Reductions to Projectile Speed also apply to Damage with Bows", total_tier: 1, max_iLvl: 65, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "Projectiles have (18-26)% increased Critical Damage Bonus against Enemies within 2m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "(6-10)% increased Mana Cost Efficiency", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Mana"] },
+        { name: "Projectiles have (18-26)% increased Critical Hit Chance against Enemies further than 6m", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "(10-14)% of Skill Mana Costs Converted to Life Costs", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Life"] },
+        { name: "Projectile Attacks have a (8-12)% chance to fire two additional Projectiles while moving", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "# to Accuracy Rating", total_tier: 2, max_iLvl: 58, Weights: 0, tags: ["Attack"] },
+        { name: "(43-50)% increased Damage with Bow Skills", total_tier: 1, max_iLvl: 60, Weights: 0, tags: ["Damage"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ]
+    },
+    Corrupted: [
+      { name: "(20-25) to Maximum Mana", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] },
+      { name: "+(50-100) to Accuracy Rating", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Attack"] },
+      { name: "(20-30)% Increased Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage"] },
+      { name: "(4-6)% Increased Skill Speed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Speed"] },
+      { name: "(15-20)% Increased Critical Damage Bonus", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage", "Critical"] },
+      { name: "Gain (20-25) Life per Enemy Killed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Life"] },
+      { name: "Gain (10-15) Mana per Enemy Killed", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] },
+      { name: "(20-30)% chance to Pierce an Enemy", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "Projectiles have (10-20)% chance to Chain an additional time from terrain", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null }
+    ]
+  },
+  Shield_STR: {
+    prefix: [
+      { name: "# to maximum Life", total_tier: 11, max_iLvl: 70, Weights: 11000, tags: ["Life"] },
+      { name: "# to Armour", total_tier: 11, max_iLvl: 75, Weights: 10000, tags: ["Defences"] },
+      { name: "#% increased Armour", total_tier: 8, max_iLvl: 75, Weights: 8000, tags: ["Defences"] },
+      { name: "#% increased Armour# to Stun Threshold", total_tier: 6, max_iLvl: 74, Weights: 6000, tags: ["Defences"] },
+      { name: "# to # Physical Thorns damage", total_tier: 7, max_iLvl: 74, Weights: 3000, tags: ["Damage", "Physical"] },
+      { name: "#% increased Block chance", total_tier: 3, max_iLvl: 65, Weights: 4500, tags: null }
+    ],
+    suffix: [
+      { name: "# to Strength", total_tier: 8, max_iLvl: 74, Weights: 8000, tags: ["Attribute"] },
+      { name: "#% to Fire Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Fire", "Resistance"] },
+      { name: "#% to Cold Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Cold", "Resistance"] },
+      { name: "#% to Lightning Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Lightning", "Resistance"] },
+      { name: "#% to Chaos Resistance", total_tier: 6, max_iLvl: 81, Weights: 1500, tags: ["Chaos", "Resistance"] },
+      { name: "#% reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 4000, tags: null },
+      { name: "# to Stun Threshold", total_tier: 10, max_iLvl: 72, Weights: 8000, tags: null },
+      { name: "#% additional Physical Damage Reduction", total_tier: 5, max_iLvl: 77, Weights: 5000, tags: ["Physical"] },
+      { name: "#% to Maximum Fire Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Fire", "Resistance"] },
+      { name: "#% to Maximum Cold Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Cold", "Resistance"] },
+      { name: "#% to Maximum Lightning Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Lightning", "Resistance"] },
+      { name: "#% to Maximum Chaos Resistance", total_tier: 3, max_iLvl: 81, Weights: 375, tags: ["Chaos", "Resistance"] },
+      { name: "#% to all Maximum Elemental Resistances", total_tier: 2, max_iLvl: 81, Weights: 250, tags: ["Elemental", "Resistance"] },
+      { name: "#% of Armour also applies to Elemental Damage", total_tier: 6, max_iLvl: 81, Weights: 375, tags: ["Defences", "Elemental"] }
+    ],
+    Desecrated: {
+      prefix: [],
+      suffix: [
+        { name: "# to Strength and Intelligence", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "# to Strength and Dexterity", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "Hits with Shield Skills which Heavy Stun enemies break fully Break Armour", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Your Heavy Stun buildup empties (30–40)% faster", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "+1% to all maximum Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Resistance"] },
+        { name: "(10–20)% of Damage taken Recouped as Life", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Life"] },
+        { name: "(25–35)% reduced effect of Curses on you", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Caster", "Curse"] },
+        { name: "+(13–17)% to Fire and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Elemental", "Fire", "Chaos", "Resistance"] },
+        { name: "(10–20)% of Damage taken Recouped as Mana", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Life", "Mana"] },
+        { name: "(6–12) Mana gained when you Block", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Mana"] },
+        { name: "+(23–31)% of Armour also applies to Chaos Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "+(9–15) to Dexterity and Intelligence", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attribute"] },
+        { name: "+(13–17)% to Cold and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Elemental", "Cold", "Chaos", "Resistance"] },
+        { name: "Hits have (17–25)% reduced Critical Hit Chance against you", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Critical"] },
+        { name: "+(13–17)% to Lightning and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Elemental", "Lightning", "Chaos", "Resistance"] },
+        { name: "You take (8–15)% of damage from Blocked Hits while Active Blocking", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Physical", "Elemental", "Lightning"] },
+        { name: "(30–40)% of Physical Damage taken as Lightning while Active Blocking", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "+(1–2)% to maximum Block chance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: null },
+        { name: "#% increased Parried Debuff Duration", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "#% increased Parried Debuff Magnitude", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "# to maximum Life", total_tier: 3, max_iLvl: 54, Weights: 0, tags: ["Life"] },
+        { name: "#% increased Armour, Evasion or Energy Shield", total_tier: 18, max_iLvl: 54, Weights: 0, tags: ["Defences"] },
+        { name: "(20–24)% increased Block chance", total_tier: 1, max_iLvl: 33, Weights: 0, tags: null },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% to Chaos Resistance", total_tier: 3, max_iLvl: 56, Weights: 0, tags: ["Chaos", "Resistance"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null },
+        { name: "#% to Fire Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Fire", "Resistance"] },
+        { name: "#% to Cold Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Cold", "Resistance"] },
+        { name: "#% to Lightning Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Lightning", "Resistance"] }
+      ]
+    },
+    Corrupted: [
+      { name: "(15–25)% increased Armour", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Defences"] },
+      { name: "(10–20)% reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(40–50)% increased Thorns damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage"] },
+      { name: "(10–15)% increased Block chance", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "+3% to maximum Block chance", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(20–25) Life gained when you Block", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Life"] },
+      { name: "(10–15) Mana gained when you Block", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] }
+    ]
+  },
+  Shield_DEX: {
+    prefix: [
+      { name: "# to Maximum Life", total_tier: 11, max_iLvl: 70, Weights: 11000, tags: ["Life"] },
+      { name: "# to Armour# to Evasion Rating", total_tier: 7, max_iLvl: 65, Weights: 7000, tags: ["Defences"] },
+      { name: "#% increased Armour and Evasion", total_tier: 8, max_iLvl: 75, Weights: 8000, tags: ["Defences"] },
+      { name: "#% increased Armour and Evasion# to Stun Threshold", total_tier: 6, max_iLvl: 74, Weights: 6000, tags: ["Defences"] },
+      { name: "# to # Physical Thorns damage", total_tier: 7, max_iLvl: 74, Weights: 7000, tags: ["Damage", "Physical"] },
+      { name: "#% increased Block chance", total_tier: 3, max_iLvl: 65, Weights: 3000, tags: null }
+    ],
+    suffix: [
+      { name: "# to Strength", total_tier: 8, max_iLvl: 74, Weights: 4000, tags: ["Attribute"] },
+      { name: "# to Dexterity", total_tier: 8, max_iLvl: 74, Weights: 4000, tags: ["Attribute"] },
+      { name: "#% to Fire Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Fire", "Resistance"] },
+      { name: "#% to Cold Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Cold", "Resistance"] },
+      { name: "#% to Lightning Resistance", total_tier: 8, max_iLvl: 82, Weights: 8000, tags: ["Elemental", "Lightning", "Resistance"] },
+      { name: "#% to Chaos Resistance", total_tier: 6, max_iLvl: 81, Weights: 1500, tags: ["Chaos", "Resistance"] },
+      { name: "#% Reduced Attribute Requirements", total_tier: 5, max_iLvl: 60, Weights: 4000, tags: null },
+      { name: "# to Stun Threshold", total_tier: 10, max_iLvl: 72, Weights: 8000, tags: null },
+      { name: "Hits against you have #% reduced Critical Damage Bonus", total_tier: 5, max_iLvl: 81, Weights: 4000, tags: ["Damage", "Critical"] },
+      { name: "#% to Maximum Fire Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Fire", "Resistance"] },
+      { name: "#% to Maximum Cold Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Cold", "Resistance"] },
+      { name: "#% to Maximum Lightning Resistance", total_tier: 3, max_iLvl: 81, Weights: 750, tags: ["Elemental", "Lightning", "Resistance"] },
+      { name: "#% to Maximum Chaos Resistance", total_tier: 3, max_iLvl: 81, Weights: 375, tags: ["Chaos", "Resistance"] },
+      { name: "#% to all Maximum Elemental Resistances", total_tier: 2, max_iLvl: 81, Weights: 250, tags: ["Elemental", "Resistance"] },
+      { name: "#% of Armour also applies to Elemental Damage", total_tier: 6, max_iLvl: 81, Weights: 6, tags: ["Defences", "Elemental"] },
+      { name: "Gain Deflection Rating equal to #% of Evasion Rating", total_tier: 6, max_iLvl: 81, Weights: 6, tags: ["Defences"] }
+    ],
+    Desecrated: {
+      prefix: [],
+      suffix: [
+        { name: "# to Strength and Intelligence", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "# to Strength and Dexterity", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Attribute"] },
+        { name: "Hits with Shield Skills which Heavy Stun enemies break fully", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "Your Heavy Stun buildup empties (30-40)% faster", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu"] },
+        { name: "+1% to all Maximum Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Resistance"] },
+        { name: "(10-20)% of Damage taken Recouped as Life", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Life"] },
+        { name: "(25-35)% reduced Effect of Curses on you", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Caster", "Curse"] },
+        { name: "+(13-17)% to Fire and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Amanamu", "Elemental", "Fire", "Chaos", "Resistance"] },
+        { name: "(10-20)% of Damage taken Recouped as Mana", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Life", "Mana"] },
+        { name: "(6-12) Mana gained when you Block", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Mana"] },
+        { name: "+(23-31)% of Armour also applies to Chaos Damage", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal"] },
+        { name: "+(9-15) to Dexterity and Intelligence", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Attribute"] },
+        { name: "+(13-17)% to Cold and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Kurgal", "Elemental", "Cold", "Chaos", "Resistance"] },
+        { name: "Hits have (17-25)% reduced Critical Hit Chance against you", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Critical"] },
+        { name: "+(13-17)% to Lightning and Chaos Resistances", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Elemental", "Lightning", "Chaos", "Resistance"] },
+        { name: "You take (8-15)% of Damage from Blocked Hits while Active Blocking", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman", "Physical", "Elemental", "Lightning"] },
+        { name: "(30-40)% of Physical Damage taken as Lightning while Active Blocking", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "+(1-2)% to Maximum Block Chance", total_tier: 1, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "#% increased Parried Debuff Duration", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] },
+        { name: "#% increased Parried Debuff Magnitude", total_tier: 2, max_iLvl: 65, Weights: 0, tags: ["Ulaman"] }
+      ]
+    },
+    Essence: {
+      prefix: [
+        { name: "# to Maximum Life", total_tier: 3, max_iLvl: 54, Weights: 0, tags: ["Life"] },
+        { name: "#% increased Armour, Evasion or Energy Shield", total_tier: 18, max_iLvl: 54, Weights: 0, tags: ["Defences"] },
+        { name: "(20-24)% Increased Block chance", total_tier: 1, max_iLvl: 33, Weights: 0, tags: null },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null }
+      ],
+      suffix: [
+        { name: "#% to Chaos Resistance", total_tier: 3, max_iLvl: 56, Weights: 0, tags: ["Chaos", "Resistance"] },
+        { name: "# to Strength, Dexterity or Intelligence", total_tier: 3, max_iLvl: 55, Weights: 0, tags: ["Attribute"] },
+        { name: "Mark of the Abyssal Lord", total_tier: 1, max_iLvl: 1, Weights: 0, tags: null },
+        { name: "#% to Fire Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Fire", "Resistance"] },
+        { name: "#% to Cold Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Cold", "Resistance"] },
+        { name: "#% to Lightning Resistance", total_tier: 3, max_iLvl: 60, Weights: 0, tags: ["Elemental", "Lightning", "Resistance"] }
+      ]
+    },
+    Corrupted: [
+      { name: "(15-25)% Increased Armour and Evasion", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Defences"] },
+      { name: "(10-20)% Reduced Attribute Requirements", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "(40-50)% Increased Thorns Damage", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Damage"] },
+      { name: "(10-15)% Increased Block Chance", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "+3% to Maximum Block Chance", total_tier: 1, max_iLvl: 1, Weights: 1, tags: null },
+      { name: "Gain (20-25) Life when you Block", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Life"] },
+      { name: "Gain (10-15) Mana when you Block", total_tier: 1, max_iLvl: 1, Weights: 1, tags: ["Mana"] }
+    ]
+  },
+
+
 };
 
 const main = () => {
