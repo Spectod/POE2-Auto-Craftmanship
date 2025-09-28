@@ -1,0 +1,45 @@
+{
+  // ซ่อน/ไม่ต้อง index ใน Explorer & Search
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/.venv": true,
+    "**/__pycache__": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/*.log": true,
+    "**/*.sqlite": true,
+    "**/*.db": true,
+    "**/*.mp4": true,
+    "**/*.zip": true,
+    "**/*.7z": true
+  },
+
+  // ไม่สร้าง file watcher (ลดโหลดมากที่สุด)
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/.turbo/**": true,
+    "**/.venv/**": true,
+    "**/__pycache__/**": true,
+    "**/*.mp4": true,
+    "**/*.zip": true,
+    "**/*.7z": true
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda",
+  "python-envs.pythonProjects": []
+}

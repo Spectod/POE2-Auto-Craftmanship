@@ -2,7 +2,7 @@
   <div v-if="visible" class="tier-selector-overlay" @click="cancel">
     <div class="tier-selector" @click.stop>
       <div class="tier-title">{{ modName }}</div>
-      <div class="tier-list" ref="tierList" @wheel="handleWheel">
+  <div class="tier-list" ref="tierList" @wheel="handleWheel" tabindex="0">
         <div
           v-for="(tier, index) in tiers"
           :key="tier.tier"
@@ -104,6 +104,10 @@ watch(() => props.visible, (newVisible) => {
   if (newVisible) {
     selectedIndex.value = 0
     nextTick(() => scrollToSelected())
+    nextTick(() => {
+      try { if (tierList.value && (tierList.value as HTMLElement).focus) (tierList.value as HTMLElement).focus() } catch (e) {}
+      scrollToSelected()
+    })
   }
 })
 

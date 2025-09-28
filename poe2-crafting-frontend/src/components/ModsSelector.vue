@@ -23,17 +23,26 @@
           <span class="category-count">{{ category.mods.length }}</span>
         </div>
         <div class="mods-grid">
-          <div v-for="m in category.mods" :key="m.id" class="mod-card" @click="openTierSelector(m)">
-            <div class="mod-name">{{ m.name }}</div>
-            <div class="mod-meta">
-              <span class="tag">{{ m.affix }}</span>
-              <span v-if="m.source !== 'base'" class="source-tag">{{ m.source }}</span>
-            </div>
-            <div class="mod-tiers" v-if="getTiersForDisplay(m).length > 0">
-              <div v-for="tier in getTiersForDisplay(m)" :key="tier.tier" class="tier-preview">
-                <span class="tier-label">T{{ tier.tier }}:</span>
-                <span class="tier-values">{{ formatTierValues(tier.values) }}</span>
+          <div v-for="m in category.mods" :key="m.id" class="mod-card" @click="onModClick(m)">
+            <div class="mod-name">
+              {{ m.name }}
+              <div class="mod-meta">
+                <span class="tag">{{ m.affix }}</span>
+                <span v-if="m.source !== 'base'" class="source-tag">{{ m.source }}</span>
+                <span class="tag" v-if="m.groupId">G{{ m.groupId }}</span>
+                <span class="tier-count">{{ (m.tiers||[]).length }} tiers</span>
               </div>
+              <div class="mod-tiers" v-if="getTiersForDisplay(m).length > 0">
+                <div class="tier-preview" v-for="tier in getTiersForDisplay(m)" :key="tier.tier">
+                  <span class="tier-label">T{{ tier.tier }}</span>
+                  <span class="tier-values">{{ formatTierValues(tier.values) }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="mod-actions">
+              <button class="add-btn" :disabled="!canSelect(m)" @click.stop="openTierSelector(m)">
+                {{ canSelect(m) ? 'Add' : 'Conflict' }}
+              </button>
             </div>
           </div>
         </div>
@@ -100,7 +109,7 @@ const affix = ref<'all'|'prefix'|'suffix'>('all')
 const source = ref<'all'|'base'|'desecrated'|'essence'>('all')
 const query = ref('')
 const applicable = ref<any[]>([])
-const selected = ref<{ id:number; name:string; affix:string; selectedTier:number|null; tiers:any[] }[]>([])
+const selected = ref<{ id:number; name:string; affix:string; groupId?:number; selectedTier:number|null; tiers:any[] }[]>([])
 
 const attemptCost = ref(0.2)
 const targetSellPrice = ref(1.0)
@@ -183,12 +192,23 @@ const formatTierValues = (values: any) => {
   }).join(', ')
 }
 
+const canSelect = (mod:any) => {
+  if (!mod) return false
+  // if already selected
+  if (selected.value.some(s => s.id === mod.id)) return false
+  // if group conflict exists
+  if (mod.groupId != null) {
+    if (selected.value.some(s => s.groupId != null && s.groupId === mod.groupId)) return false
+  }
+  return true
+}
+
 const add = (mod:any) => {
   if (!mod) return
-  if (selected.value.some(m=>m.id===mod.id)) return
+  if (!canSelect(mod)) return
   const tiers = tiersForIlvl(mod)
   const best = tiers.length ? tiers[tiers.length-1].tier : null
-  selected.value.push({ id:mod.id, name:mod.name, affix:mod.affix, selectedTier:best, tiers })
+  selected.value.push({ id:mod.id, name:mod.name, affix:mod.affix, groupId:mod.groupId, selectedTier:best, tiers })
   pushSelection()
 }
 const remove = (id:number) => { selected.value = selected.value.filter(m=>m.id!==id); pushSelection() }
@@ -197,15 +217,26 @@ const pushSelection = () => { emit('update:selected', selected.value.map(s=>({ i
 const compute = async () => { ev.value = await workerEV({ successRate: props.successRate, attemptCost: attemptCost.value, targetSellPrice: targetSellPrice.value, attempts: attempts.value }) }
 
 // Tier selector functions
-const openTierSelector = (mod: any) => {
+  const openTierSelector = (mod: any) => {
+  console.log('openTierSelector called for mod:', mod?.id, mod?.name)
   currentMod.value = mod
   currentTiers.value = tiersForIlvl(mod)
   tierSelectorVisible.value = true
 }
 
+const onModClick = (mod: any) => {
+  console.log('mod card clicked:', mod?.id, mod?.name, 'canSelect=', canSelect(mod))
+  if (!canSelect(mod)) return
+  openTierSelector(mod)
+}
+
 const onTierSelect = (tier: any) => {
+  console.log('onTierSelect:', tier)
   if (currentMod.value) {
-    add({ ...currentMod.value, selectedTier: tier.tier })
+    add(currentMod.value)
+    const idx = selected.value.findIndex(s => s.id === currentMod.value.id)
+    if (idx !== -1) selected.value[idx].selectedTier = tier.tier
+    console.log('added selection idx=', idx, selected.value[idx])
   }
   closeTierSelector()
 }
@@ -226,14 +257,14 @@ watch(selected, ()=>pushSelection(), { deep:true })
 .mods-filters{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:.5rem}
 .mods-search{flex:1;min-width:220px;max-width:320px;padding:.4rem .6rem;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff}
 .mods-cards{display:grid;grid-template-columns:repeat(2, 1fr);gap:2rem 1rem;margin-bottom:1rem;}
-.mod-category-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1rem;}
+.mod-category-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:1rem;box-shadow:0 2px 4px rgba(0,0,0,.1);}
 .category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
 .category-title{font-size:1.1rem;font-weight:700;color:#fff;margin:0}
 .category-count{background:rgba(255,215,0,.2);color:#ffd700;padding:.2rem .5rem;border-radius:12px;font-size:.8rem;font-weight:600}
-.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem}
+.mods-grid{display:flex; gap: 0.25rem; flex-direction: column;}
 .mod-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:.5rem;cursor:pointer;transition:background .2s}
 .mod-card:hover{background:rgba(255,255,255,.15);transform:translateY(-1px)}
-.mod-name{font-size:.9rem;color:#fff;margin-bottom:.25rem;line-height:1.3}
+.mod-name{display: flex; font-size:.9rem;color:#fff;margin-bottom:.25rem;line-height:1.3}
 .mod-meta{display:flex;gap:.5rem;align-items:center}
 .tag{font-size:.7rem;background:rgba(255,215,0,.2);color:#ffd700;padding:.15rem .4rem;border-radius:10px;font-weight:600}
 .source-tag{font-size:.7rem;background:rgba(138,43,226,.2);color:#ba55d3;padding:.15rem .4rem;border-radius:10px;font-weight:600}
