@@ -1521,7 +1521,7 @@ const baseMods = {
 
 // 🔧 ฟังก์ชันเอาชื่อ mod แบบ unique
 function uniqueMods(mods) {
-  if (!mods) return [];
+  if (!Array.isArray(mods)) return [];
   return [...new Set(mods.map(mod => mod.name))];
 }
 
@@ -1580,10 +1580,12 @@ function mergeBaseItems(baseItems) {
   };
 }
 const main = () => {
-  const modsInBaseItems = mergeBaseItems([Spears, Wands, OneHandMaces, Sceptres, //Base item of one hand weapons
-    TwoHandMaces, Quarterstaves, Crossbows, Bows, Staves, //Base item of two hand weapons
-    Foci, Quivers, Shield_STR, Shield_DEX, Shield_INT, Bucklers, //Base item of off-hand
-    Amulets, Rings, Belts //Base item of accessories
+  const modsInBaseItems = mergeBaseItems([baseMods.Spears, baseMods.Wands, baseMods.OneHandMaces, baseMods.Sceptres, //Base item of one hand weapons
+    baseMods.TwoHandMaces, baseMods.Quarterstaves, baseMods.Crossbows, baseMods.Bows, baseMods.Staves, //Base item of two hand weapons
+    baseMods.Foci, baseMods.Quivers, baseMods.Shield_STR, baseMods.Shield_DEX, baseMods.Shield_INT, baseMods.Bucklers, //Base item of off-hand
+    baseMods.Amulets, baseMods.Rings, baseMods.Belts //Base item of accessories
   ]);
+
+  console.log(JSON.stringify(modsInBaseItems, null, 2));
 }
 main();
