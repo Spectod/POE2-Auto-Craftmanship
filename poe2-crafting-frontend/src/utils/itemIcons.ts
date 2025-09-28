@@ -1,17 +1,17 @@
 ﻿export function getCategoryDisplayName(key: string): string {
   const nameMap: Record<string, string> = {
-    // One Handed Weapons
+    // One Hand Weapons
     wands: 'Wand',
     maces: 'Mace',
     sceptres: 'Sceptre',
     spears: 'Spear',
-    // Two Handed Weapons
+    // Two Hand Weapons
     twoHandMaces: 'Two Hand Mace',
     quarterstaves: 'Quarterstaff',
     crossbows: 'Crossbow',
     bows: 'Bow',
     staves: 'Staff',
-    // Off Handed Items
+    // Off Hand Items
     foci: 'Focus',
     quivers: 'Quiver',
     shields: 'Shield',

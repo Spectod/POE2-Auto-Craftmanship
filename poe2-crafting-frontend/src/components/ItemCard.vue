@@ -277,22 +277,6 @@ const formatCategory = (category: string): string => {
   return categoryMap[category] || category
 }
 
-const getItemIcon = (category: string): string => {
-  const iconMap: { [key: string]: string } = {
-    sceptres: 'ðŸ”®',
-    wands: 'ðŸª„',
-    spears: 'ðŸ”±',
-    maces: 'ðŸ”¨',
-    bows: 'ðŸ¹',
-    staves: 'ðŸª¶',
-    foci: 'ðŸ”®',
-    shields: 'ðŸ›¡ï¸',
-    bucklers: 'âš¡',
-    quivers: 'ðŸ¹'
-  }
-  return iconMap[category] || 'âš”ï¸'
-}
-
 const getSkillIcon = (color: string): string => {
   const skillIconMap: { [key: string]: string } = {
     green: '🟢',
