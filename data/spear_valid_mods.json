@@ -1,0 +1,168 @@
+{
+  "base": "Spear",
+  "prefix": [
+    {
+      "name": "Adds # to # Physical Damage",
+      "mtypeNames": [
+        "Damage",
+        "Physical",
+        "Attack"
+      ]
+    },
+    {
+      "name": "Adds # to # Fire Damage",
+      "mtypeNames": [
+        "Damage",
+        "Elemental",
+        "Fire",
+        "Attack"
+      ]
+    },
+    {
+      "name": "Adds # to # Cold Damage",
+      "mtypeNames": [
+        "Damage",
+        "Elemental",
+        "Cold",
+        "Attack"
+      ]
+    },
+    {
+      "name": "Adds # to # Lightning Damage",
+      "mtypeNames": [
+        "Damage",
+        "Elemental",
+        "Lightning",
+        "Attack"
+      ]
+    },
+    {
+      "name": "#% increased Physical Damage",
+      "mtypeNames": [
+        "Damage",
+        "Physical",
+        "Attack"
+      ]
+    },
+    {
+      "name": "#% increased Physical Damage",
+      "mtypeNames": [
+        "Damage",
+        "Physical",
+        "Attack"
+      ]
+    },
+    {
+      "name": "+# to Accuracy Rating",
+      "mtypeNames": [
+        "Attack"
+      ]
+    },
+    {
+      "name": "#% increased Elemental Damage with Attacks",
+      "mtypeNames": [
+        "Damage",
+        "Elemental",
+        "Attack"
+      ]
+    }
+  ],
+  "suffix": [
+    {
+      "name": "+# to Strength",
+      "mtypeNames": [
+        "Attribute"
+      ]
+    },
+    {
+      "name": "+# to Dexterity",
+      "mtypeNames": [
+        "Attribute"
+      ]
+    },
+    {
+      "name": "#% reduced Attribute Requirements",
+      "mtypeNames": []
+    },
+    {
+      "name": "+# to Level of all Melee Skills",
+      "mtypeNames": [
+        "Attack"
+      ]
+    },
+    {
+      "name": "+# to Level of all Projectile Skills",
+      "mtypeNames": []
+    },
+    {
+      "name": "Leeches #% of Physical Damage as Life",
+      "mtypeNames": [
+        "Life",
+        "Physical",
+        "Attack"
+      ]
+    },
+    {
+      "name": "Leeches #% of Physical Damage as Mana",
+      "mtypeNames": [
+        "Mana",
+        "Physical",
+        "Attack"
+      ]
+    },
+    {
+      "name": "Gain # Life per Enemy Killed",
+      "mtypeNames": [
+        "Life"
+      ]
+    },
+    {
+      "name": "Gain # Mana per Enemy Killed",
+      "mtypeNames": [
+        "Mana"
+      ]
+    },
+    {
+      "name": "Gain # Life per Enemy Hit with Attacks",
+      "mtypeNames": [
+        "Life",
+        "Attack"
+      ]
+    },
+    {
+      "name": "#% increased Attack Speed",
+      "mtypeNames": [
+        "Attack",
+        "Speed"
+      ]
+    },
+    {
+      "name": "#% increased Critical Hit Chance",
+      "mtypeNames": [
+        "Critical"
+      ]
+    },
+    {
+      "name": "#% increased Critical Damage Bonus",
+      "mtypeNames": [
+        "Damage",
+        "Critical",
+        "Ulaman"
+      ]
+    },
+    {
+      "name": "#% increased Light Radius, +# to Accuracy Rating",
+      "mtypeNames": [
+        "Attack"
+      ]
+    },
+    {
+      "name": "#% increased Stun Duration",
+      "mtypeNames": []
+    },
+    {
+      "name": "Causes #% increased Stun Buildup",
+      "mtypeNames": []
+    }
+  ]
+}

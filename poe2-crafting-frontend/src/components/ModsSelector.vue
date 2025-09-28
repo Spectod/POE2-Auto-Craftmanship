@@ -23,7 +23,7 @@
           <span class="category-count">{{ category.mods.length }}</span>
         </div>
         <div class="mods-grid">
-          <div v-for="m in category.mods" :key="m.id" class="mod-card" @click="onModClick(m)">
+          <div v-for="m in category.mods" :key="m.id" :class="['mod-card', { 'mod-selected': isSelected(m) }]" @click="onModClick(m)">
             <div class="mod-name">
               {{ m.name }}
               <div class="mod-meta">
@@ -32,6 +32,7 @@
                 <span class="tag" v-if="m.groupId">G{{ m.groupId }}</span>
                 <span class="tier-count">{{ (m.tiers||[]).length }} tiers</span>
               </div>
+              <div v-if="isSelected(m)" class="selected-badge">Selected T{{ getSelected(m)?.selectedTier }}</div>
               <div class="mod-tiers" v-if="getTiersForDisplay(m).length > 0">
                 <div class="tier-preview" v-for="tier in getTiersForDisplay(m)" :key="tier.tier">
                   <span class="tier-label">T{{ tier.tier }}</span>
@@ -40,8 +41,8 @@
               </div>
             </div>
             <div class="mod-actions">
-              <button class="add-btn" :disabled="!canSelect(m)" @click.stop="openTierSelector(m)">
-                {{ canSelect(m) ? 'Add' : 'Conflict' }}
+              <button class="add-btn" :disabled="(!canSelect(m) && !isSelected(m))" @click.stop="openTierSelector(m)">
+                {{ isSelected(m) ? 'Edit' : (canSelect(m) ? 'Add' : 'Conflict') }}
               </button>
             </div>
           </div>
@@ -192,15 +193,31 @@ const formatTierValues = (values: any) => {
   }).join(', ')
 }
 
+// Determine if the mod can be added (not considering editing an already-selected mod)
 const canSelect = (mod:any) => {
   if (!mod) return false
-  // if already selected
+  // if already selected (we still allow opening modal to edit via isSelected)
   if (selected.value.some(s => s.id === mod.id)) return false
-  // if group conflict exists
+  // group conflict exists
   if (mod.groupId != null) {
     if (selected.value.some(s => s.groupId != null && s.groupId === mod.groupId)) return false
   }
+  // enforce prefix/suffix caps: allow up to 3 prefixes and 3 suffixes
+  const prefixCount = selected.value.filter(s => s.affix === 'prefix').length
+  const suffixCount = selected.value.filter(s => s.affix === 'suffix').length
+  if (mod.affix === 'prefix' && prefixCount >= 3) return false
+  if (mod.affix === 'suffix' && suffixCount >= 3) return false
   return true
+}
+
+const isSelected = (mod:any) => {
+  if (!mod) return false
+  return selected.value.some(s => s.id === mod.id)
+}
+
+const getSelected = (mod:any) => {
+  if (!mod) return null
+  return selected.value.find(s => s.id === mod.id) || null
 }
 
 const add = (mod:any) => {
@@ -225,19 +242,30 @@ const compute = async () => { ev.value = await workerEV({ successRate: props.suc
 }
 
 const onModClick = (mod: any) => {
-  console.log('mod card clicked:', mod?.id, mod?.name, 'canSelect=', canSelect(mod))
-  if (!canSelect(mod)) return
+  console.log('mod card clicked:', mod?.id, mod?.name, 'canSelect=', canSelect(mod), 'isSelected=', isSelected(mod))
+  // allow opening the tier selector for adding or editing a selection
+  if (!mod) return
+  if (!canSelect(mod) && !isSelected(mod)) return // conflict: neither selectable nor editable
   openTierSelector(mod)
 }
 
 const onTierSelect = (tier: any) => {
   console.log('onTierSelect:', tier)
-  if (currentMod.value) {
-    add(currentMod.value)
-    const idx = selected.value.findIndex(s => s.id === currentMod.value.id)
-    if (idx !== -1) selected.value[idx].selectedTier = tier.tier
-    console.log('added selection idx=', idx, selected.value[idx])
+  if (!currentMod.value) { closeTierSelector(); return }
+  const mod = currentMod.value
+  const existing = getSelected(mod)
+  if (existing) {
+    // update selected tier and ensure tiers list is current
+    existing.selectedTier = tier.tier
+    existing.tiers = tiersForIlvl(mod)
+    console.log('updated existing selection', existing)
+  } else {
+    // add new selection with the chosen tier
+    const tiers = tiersForIlvl(mod)
+    selected.value.push({ id:mod.id, name:mod.name, affix:mod.affix, groupId:mod.groupId, selectedTier:tier.tier, tiers })
+    console.log('added new selection', mod.id, tier.tier)
   }
+  pushSelection()
   closeTierSelector()
 }
 
@@ -264,6 +292,7 @@ watch(selected, ()=>pushSelection(), { deep:true })
 .mods-grid{display:flex; gap: 0.25rem; flex-direction: column;}
 .mod-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:.5rem;cursor:pointer;transition:background .2s}
 .mod-card:hover{background:rgba(255,255,255,.15);transform:translateY(-1px)}
+.mod-card.mod-selected{box-shadow:0 0 12px rgba(124,252,0,.25), inset 0 0 8px rgba(124,252,0,.05);border-color:rgba(124,252,0,.45);background:linear-gradient(90deg, rgba(124,252,0,.03), rgba(255,255,255,0));}
 .mod-name{display: flex; font-size:.9rem;color:#fff;margin-bottom:.25rem;line-height:1.3}
 .mod-meta{display:flex;gap:.5rem;align-items:center}
 .tag{font-size:.7rem;background:rgba(255,215,0,.2);color:#ffd700;padding:.15rem .4rem;border-radius:10px;font-weight:600}
@@ -272,6 +301,7 @@ watch(selected, ()=>pushSelection(), { deep:true })
 .tier-preview{font-size:.7rem;color:#ccc;margin-top:.15rem}
 .tier-label{font-weight:600;color:#ffd700}
 .tier-values{color:#aaa;margin-left:.25rem}
+.selected-badge{display:inline-block;margin-top:.4rem;background:rgba(34,139,34,.18);color:#7CFC00;padding:.15rem .4rem;border-radius:8px;font-weight:700;font-size:.75rem}
 .mods-selected{margin-top:1rem;border-top:1px solid rgba(255,255,255,.15);padding-top:1rem}
 .mods-title{font-weight:700;margin-bottom:.25rem}
 .mod-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.35rem .4rem;border-bottom:1px dashed rgba(255,255,255,.1);cursor:pointer}
