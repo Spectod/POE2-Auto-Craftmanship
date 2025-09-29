@@ -27,7 +27,7 @@
             <div class="mod-name">
               {{ m.name }}
               <div class="mod-meta">
-                <span class="tag">{{ m.affix }}</span>
+                <span class="tag">{{ m.type }}</span>
                 <span v-if="m.source !== 'base'" class="source-tag">{{ m.source }}</span>
                 <span class="tag" v-if="m.groupId">G{{ m.groupId }}</span>
                 <span class="tier-count">{{ (m.tiers||[]).length }} tiers</span>
@@ -41,8 +41,8 @@
               </div>
             </div>
             <div class="mod-actions">
-              <button class="add-btn" :disabled="(!canSelect(m) && !isSelected(m))" @click.stop="openTierSelector(m)">
-                {{ isSelected(m) ? 'Edit' : (canSelect(m) ? 'Add' : 'Conflict') }}
+              <button class="add-btn" :disabled="(!canSelectMod(m) && !isSelected(m))" @click.stop="openTierSelector(m)">
+                {{ isSelected(m) ? 'Edit' : (canSelectMod(m) ? 'Add' : 'Conflict') }}
               </button>
             </div>
           </div>
@@ -60,7 +60,7 @@
         <select v-model.number="sm.selectedTier" class="tier-select">
           <option v-for="t in sm.tiers" :key="t.tier" :value="t.tier">T{{ t.tier }}</option>
         </select>
-        <button type="button" class="remove-btn" @click="remove(sm.id)">Remove</button>
+        <button type="button" class="remove-btn" @click="deselectMod(String(sm.id))">Remove</button>
       </div>
     </div>
 
@@ -98,20 +98,86 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from 'vue'
 import { useModsWorker } from '@/composables/useModsWorker'
+import { useMods } from '@/composables/useMods'
+import type { ItemCategory } from '@/types/itemTypes'
+import type { NormalizedMod } from '@/types/mods'
 import TierSelector from './TierSelector.vue'
 
 interface Props { base: string | null; ilvl: number | null; successRate: number }
 const props = defineProps<Props>()
 const emit = defineEmits<{ (e:'update:selected', value:{ id:number; tier:number|null }[]): void }>()
 
-const { load, applicable: workerApplicable, ev: workerEV } = useModsWorker()
+// Legacy worker for EV calculations (keep for now)
+const { load, ev: workerEV } = useModsWorker()
 
+// New composable for mod management
+const itemCategory = computed<ItemCategory | undefined>(() => {
+  // Map legacy base string to new ItemCategory
+  // This is a temporary mapping - ideally props.base should be ItemCategory
+  const mapping: Record<string, ItemCategory> = {
+    'Spears': 'spears',
+    'Wands': 'wands',
+    'OneHandMaces': 'maces',
+    'Sceptres': 'sceptres',
+    'TwoHandMaces': 'twoHandMaces',
+    'Quarterstaves': 'quarterstaves',
+    'Crossbows': 'crossbows',
+    'Bows': 'bows',
+    'Staves': 'staves',
+    'Foci': 'foci',
+    'Quivers': 'quivers',
+    'Shield_STR': 'shields',
+    'Shield_DEX': 'shields',
+    'Shield_INT': 'shields',
+    'Bucklers': 'bucklers',
+    'Amulets': 'amulets',
+    'Rings': 'rings',
+    'Belts': 'belts',
+    'Gloves_STR': 'gloves',
+    'Gloves_DEX': 'gloves',
+    'Gloves_INT': 'gloves',
+    'Gloves_STR_DEX': 'gloves',
+    'Gloves_STR_INT': 'gloves',
+    'Gloves_DEX_INT': 'gloves',
+    'Boots_STR': 'boots',
+    'Boots_DEX': 'boots',
+    'Boots_INT': 'boots',
+    'Boots_STR_DEX': 'boots',
+    'Boots_STR_INT': 'boots',
+    'Boots_DEX_INT': 'boots',
+    'BodyArmours_STR': 'bodyArmours',
+    'BodyArmours_DEX': 'bodyArmours',
+    'BodyArmours_INT': 'bodyArmours',
+    'BodyArmours_STR_DEX': 'bodyArmours',
+    'BodyArmours_STR_INT': 'bodyArmours',
+    'BodyArmours_DEX_INT': 'bodyArmours',
+    'Helmets_STR': 'helmets'
+  }
+  return props.base ? mapping[props.base] : undefined
+})
+
+const {
+  modCategories,
+  selectedMods,
+  isLoading,
+  error,
+  selectedPrefixCount,
+  selectedSuffixCount,
+  selectionLimits,
+  loadMods,
+  canSelectMod,
+  selectMod,
+  deselectMod,
+  updateModTier,
+  setQueryOptions
+} = useMods(itemCategory.value)
+
+// Filter state
 const affix = ref<'all'|'prefix'|'suffix'>('all')
 const source = ref<'all'|'base'|'desecrated'|'essence'>('all')
 const query = ref('')
-const applicable = ref<any[]>([])
-const selected = ref<{ id:number; name:string; affix:string; groupId?:number; selectedTier:number|null; tiers:any[] }[]>([])
 
+// EV calculation state
 const attemptCost = ref(0.2)
 const targetSellPrice = ref(1.0)
 const attempts = ref(1)
@@ -119,73 +185,37 @@ const ev = ref<{ evPerAttempt:number; attempts:number; totalEV:number } | null>(
 
 // Tier selector state
 const tierSelectorVisible = ref(false)
-const currentMod = ref<any>(null)
+const currentMod = ref<NormalizedMod | null>(null)
 const currentTiers = ref<any[]>([])
 
-const modCategories = computed(() => {
-  const categories = [
-    { key: 'prefix', title: 'Prefix', mods: [] as any[] },
-    { key: 'suffix', title: 'Suffix', mods: [] as any[] },
-    { key: 'desecrated_prefix', title: 'Desecrated Modifiers Prefix', mods: [] as any[] },
-    { key: 'desecrated_suffix', title: 'Desecrated Modifiers Suffix', mods: [] as any[] },
-    { key: 'essence_prefix', title: 'Essence Prefix', mods: [] as any[] },
-    { key: 'essence_suffix', title: 'Essence Suffix', mods: [] as any[] },
-    { key: 'corrupted', title: 'Corrupted', mods: [] as any[] }
-  ]
+// Computed properties for backward compatibility
+const applicable = computed(() =>
+  modCategories.value.flatMap(cat => cat.mods)
+)
 
-  applicable.value.forEach(mod => {
-    if (mod.corrupted) {
-      categories.find(c => c.key === 'corrupted')?.mods.push(mod)
-    } else if (mod.source === 'desecrated' && mod.affix === 'prefix') {
-      categories.find(c => c.key === 'desecrated_prefix')?.mods.push(mod)
-    } else if (mod.source === 'desecrated' && mod.affix === 'suffix') {
-      categories.find(c => c.key === 'desecrated_suffix')?.mods.push(mod)
-    } else if (mod.source === 'essence' && mod.affix === 'prefix') {
-      categories.find(c => c.key === 'essence_prefix')?.mods.push(mod)
-    } else if (mod.source === 'essence' && mod.affix === 'suffix') {
-      categories.find(c => c.key === 'essence_suffix')?.mods.push(mod)
-    } else if (mod.affix === 'prefix') {
-      categories.find(c => c.key === 'prefix')?.mods.push(mod)
-    } else if (mod.affix === 'suffix') {
-      categories.find(c => c.key === 'suffix')?.mods.push(mod)
-    }
-  })
+const selected = computed(() =>
+  selectedMods.value.map(mod => ({
+    id: parseInt(mod.id.split('_').pop() || '0'), // Extract legacy ID
+    name: mod.name,
+    affix: mod.type,
+    groupId: mod.groupId,
+    selectedTier: mod.selectedTier,
+    tiers: [] // Will be populated when needed
+  }))
+)
 
-  // เพิ่มใน computed modCategories
-  console.log('modCategories debug:', {
-    applicableLength: applicable.value.length,
-    base: props.base,
-    ilvl: props.ilvl,
-    categories: categories.map(c => ({ key: c.key, modsCount: c.mods.length }))
-  })
-
-  return categories.filter(cat => cat.mods.length > 0)
-})
-
-const refresh = async () => {
-  if (!props.base || props.ilvl === null) { applicable.value = []; return }
-  const opts: any = { ilvl: props.ilvl }
-  if (affix.value !== 'all') opts.affix = affix.value
-  if (source.value !== 'all') opts.source = source.value
-  let list = await workerApplicable(props.base, opts)
-  const q = query.value.trim().toLowerCase()
-  if (q) list = list.filter((m:any) => (m?.name||'').toLowerCase().includes(q))
-  applicable.value = list
-}
-
-const tiersForIlvl = (mod:any) => (mod?.tiers||[]).filter((t:any)=> (t?.ilvl??0) <= (props.ilvl ?? 0))
-
-const getTiersForDisplay = (mod: any) => {
-  const tiers = tiersForIlvl(mod)
+// Helper functions
+const getTiersForDisplay = (mod: NormalizedMod) => {
+  const availableTiers = mod.tiers.filter(t =>
+    t.ilvl <= (props.ilvl || 100)
+  )
   // Show only the top 2 tiers for display to avoid clutter
-  return tiers.slice(-2)
+  return availableTiers.slice(-2)
 }
 
-const formatTierValues = (values: any) => {
+const formatTierValues = (values: number[][]) => {
   if (!values || !Array.isArray(values)) return ''
-  // Format the values array into a readable string
-  // For example, if values is [[1,2]], show "1-2"
-  return values.map((val: any) => {
+  return values.map(val => {
     if (Array.isArray(val)) {
       return val.join('-')
     }
@@ -193,78 +223,74 @@ const formatTierValues = (values: any) => {
   }).join(', ')
 }
 
-// Determine if the mod can be added (not considering editing an already-selected mod)
-const canSelect = (mod:any) => {
-  if (!mod) return false
-  // if already selected (we still allow opening modal to edit via isSelected)
-  if (selected.value.some(s => s.id === mod.id)) return false
-  // group conflict exists
-  if (mod.groupId != null) {
-    if (selected.value.some(s => s.groupId != null && s.groupId === mod.groupId)) return false
-  }
-  // enforce prefix/suffix caps: allow up to 3 prefixes and 3 suffixes
-  const prefixCount = selected.value.filter(s => s.affix === 'prefix').length
-  const suffixCount = selected.value.filter(s => s.affix === 'suffix').length
-  if (mod.affix === 'prefix' && prefixCount >= 3) return false
-  if (mod.affix === 'suffix' && suffixCount >= 3) return false
-  return true
+const isSelected = (mod: NormalizedMod) => {
+  return selectedMods.value.some(s => s.id === mod.id)
 }
 
-const isSelected = (mod:any) => {
-  if (!mod) return false
-  return selected.value.some(s => s.id === mod.id)
+const getSelected = (mod: NormalizedMod) => {
+  return selectedMods.value.find(s => s.id === mod.id) || null
 }
 
-const getSelected = (mod:any) => {
-  if (!mod) return null
-  return selected.value.find(s => s.id === mod.id) || null
+// Event handlers
+const refresh = async () => {
+  if (!itemCategory.value || props.ilvl === null) return
+
+  setQueryOptions({
+    ilvl: props.ilvl,
+    type: affix.value === 'all' ? 'all' : affix.value,
+    source: source.value === 'all' ? 'all' : source.value,
+    query: query.value.trim()
+  })
 }
 
-const add = (mod:any) => {
-  if (!mod) return
-  if (!canSelect(mod)) return
-  const tiers = tiersForIlvl(mod)
-  const best = tiers.length ? tiers[tiers.length-1].tier : null
-  selected.value.push({ id:mod.id, name:mod.name, affix:mod.affix, groupId:mod.groupId, selectedTier:best, tiers })
-  pushSelection()
+const pushSelection = () => {
+  emit('update:selected', selected.value.map(s => ({
+    id: s.id,
+    tier: s.selectedTier
+  })))
 }
-const remove = (id:number) => { selected.value = selected.value.filter(m=>m.id!==id); pushSelection() }
-const pushSelection = () => { emit('update:selected', selected.value.map(s=>({ id:s.id, tier:s.selectedTier }))) }
 
-const compute = async () => { ev.value = await workerEV({ successRate: props.successRate, attemptCost: attemptCost.value, targetSellPrice: targetSellPrice.value, attempts: attempts.value }) }
+const compute = async () => {
+  ev.value = await workerEV({
+    successRate: props.successRate,
+    attemptCost: attemptCost.value,
+    targetSellPrice: targetSellPrice.value,
+    attempts: attempts.value
+  })
+}
 
 // Tier selector functions
-  const openTierSelector = (mod: any) => {
-  console.log('openTierSelector called for mod:', mod?.id, mod?.name)
+const openTierSelector = (mod: NormalizedMod) => {
+  console.log('openTierSelector called for mod:', mod.id, mod.name)
   currentMod.value = mod
-  currentTiers.value = tiersForIlvl(mod)
+  currentTiers.value = mod.tiers.filter(t => t.ilvl <= (props.ilvl || 100))
   tierSelectorVisible.value = true
 }
 
-const onModClick = (mod: any) => {
-  console.log('mod card clicked:', mod?.id, mod?.name, 'canSelect=', canSelect(mod), 'isSelected=', isSelected(mod))
+const onModClick = (mod: NormalizedMod) => {
+  console.log('mod card clicked:', mod.id, mod.name, 'canSelect=', canSelectMod(mod), 'isSelected=', isSelected(mod))
   // allow opening the tier selector for adding or editing a selection
-  if (!mod) return
-  if (!canSelect(mod) && !isSelected(mod)) return // conflict: neither selectable nor editable
+  if (!canSelectMod(mod) && !isSelected(mod)) return // conflict: neither selectable nor editable
   openTierSelector(mod)
 }
 
 const onTierSelect = (tier: any) => {
   console.log('onTierSelect:', tier)
   if (!currentMod.value) { closeTierSelector(); return }
+
   const mod = currentMod.value
   const existing = getSelected(mod)
+
   if (existing) {
-    // update selected tier and ensure tiers list is current
-    existing.selectedTier = tier.tier
-    existing.tiers = tiersForIlvl(mod)
+    // Update existing selection
+    updateModTier(mod.id, tier.tier)
     console.log('updated existing selection', existing)
   } else {
-    // add new selection with the chosen tier
-    const tiers = tiersForIlvl(mod)
-    selected.value.push({ id:mod.id, name:mod.name, affix:mod.affix, groupId:mod.groupId, selectedTier:tier.tier, tiers })
+    // Add new selection
+    selectMod(mod, tier.tier)
     console.log('added new selection', mod.id, tier.tier)
   }
+
   pushSelection()
   closeTierSelector()
 }
@@ -275,9 +301,21 @@ const closeTierSelector = () => {
   currentTiers.value = []
 }
 
-onMounted(async ()=>{ try{ await load() }catch{}; await refresh() })
-watch(()=>[props.base, props.ilvl, affix.value, source.value], ()=>{ refresh() })
-watch(selected, ()=>pushSelection(), { deep:true })
+// Watchers
+watch([itemCategory, () => props.ilvl, affix, source], refresh)
+watch(selectedMods, pushSelection, { deep: true })
+
+// Initialize
+onMounted(async () => {
+  try {
+    await load() // Legacy worker
+    if (itemCategory.value) {
+      await loadMods(itemCategory.value)
+    }
+  } catch (err) {
+    console.error('Failed to initialize:', err)
+  }
+})
 </script>
 
 <style scoped>
